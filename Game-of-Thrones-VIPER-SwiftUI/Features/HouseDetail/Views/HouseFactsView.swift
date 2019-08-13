@@ -24,77 +24,106 @@ struct HouseFactsView: View {
         Group {
             Section {
                 HStack {
-                    Text("Name:")
+                    Text("Name")
                         .font(.headline)
-                    Text(name)
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.name)
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Region:")
+                    Text("Region")
                         .font(.headline)
-                    Text(region)
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.region)
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Coat of arms:")
+                    Text("Coat of arms")
                         .font(.headline)
-                    Text(coatOfArms)
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.coatOfArms)
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Words:")
+                    Text("Words")
                         .font(.headline)
-                    Text(words)
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.words)
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Founded:")
+                    Text("Founded")
                         .font(.headline)
-                    Text(founded)
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.founded)
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Died out:")
+                    Text("Died out")
                         .font(.headline)
-                    Text(diedOut)
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.diedOut)
                         .lineLimit(nil)
                 }
             }
                 
             Section {
                 HStack {
-                    Text("Current lord:")
+                    Text("Current lord")
                         .font(.headline)
-                    Text(currentLord?.absoluteString ?? "-")
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.currentLord?.absoluteString ?? "-")
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Heir:")
+                    Text("Heir")
                         .font(.headline)
-                    Text(heir?.absoluteString ?? "-")
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.heir?.absoluteString ?? "-")
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Overlord:")
+                    Text("Overlord")
                         .font(.headline)
-                    Text(overlord?.absoluteString ?? "-")
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.overlord?.absoluteString ?? "-")
                         .lineLimit(nil)
                 }
                 
                 HStack {
-                    Text("Founder:")
+                    Text("Founder")
                         .font(.headline)
-                    Text(founder?.absoluteString ?? "-")
+                        .frame(width: 110, alignment: .leading)
+                    Text(self.founder?.absoluteString ?? "-")
                         .lineLimit(nil)
                 }
             }
         }
     }
 }
+
+#if DEBUG
+struct HouseFactsView_Previews: PreviewProvider {
+    static var previews: some View {
+        List {
+            HouseFactsView(name: "House name",
+                           region: "House region",
+                           coatOfArms: "House Code of Arms",
+                           words: "House of Words",
+                           currentLord: nil,
+                           heir: nil,
+                           overlord: nil,
+                           founded: "1990",
+                           founder: nil,
+                           diedOut: "Unknown")
+        }
+    }
+}
+#endif

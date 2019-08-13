@@ -38,3 +38,11 @@ struct HouseAncestralWeaponsView: View {
         }
     }
 }
+
+#if DEBUG
+struct HouseAncestralWeaponsView_Previews: PreviewProvider {
+    static var previews: some View {
+        HouseAncestralWeaponsView(ancestralWeapons: [])
+    }
+}
+#endif

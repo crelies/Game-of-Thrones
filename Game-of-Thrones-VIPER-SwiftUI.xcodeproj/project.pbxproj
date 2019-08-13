@@ -52,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B943C44A230336DF00E1BBA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B9E03A9923032E4000E2B3F5 /* Game-of-Thrones-VIPER-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game-of-Thrones-VIPER-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E03A9C23032E4000E2B3F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9E03A9E23032E4000E2B3F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		B9E03A9023032E4000E2B3F5 = {
 			isa = PBXGroup;
 			children = (
+				B943C44A230336DF00E1BBA0 /* README.md */,
 				B9E03A9B23032E4000E2B3F5 /* Game-of-Thrones-VIPER-SwiftUI */,
 				B9E03A9A23032E4000E2B3F5 /* Products */,
 			);

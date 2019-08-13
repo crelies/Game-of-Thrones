@@ -38,3 +38,11 @@ struct HouseSwornMembersView: View {
         }
     }
 }
+
+#if DEBUG
+struct HouseSwornMembersView_Previews: PreviewProvider {
+    static var previews: some View {
+        HouseSwornMembersView(swornMembers: [])
+    }
+}
+#endif
