@@ -12,3 +12,9 @@ struct HouseViewModel {
     let url: URL
     let name: String
 }
+
+extension HouseViewModel: Identifiable {
+    var id: String {
+        return name
+    }
+}

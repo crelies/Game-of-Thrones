@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B90357642305911E00AE47BD /* ListPagination in Frameworks */ = {isa = PBXBuildFile; productRef = B90357632305911E00AE47BD /* ListPagination */; };
 		B9E03A9D23032E4000E2B3F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03A9C23032E4000E2B3F5 /* AppDelegate.swift */; };
 		B9E03A9F23032E4000E2B3F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03A9E23032E4000E2B3F5 /* SceneDelegate.swift */; };
 		B9E03AA123032E4000E2B3F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AA023032E4000E2B3F5 /* ContentView.swift */; };
@@ -105,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90357642305911E00AE47BD /* ListPagination in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +309,9 @@
 			dependencies = (
 			);
 			name = "Game-of-Thrones-VIPER-SwiftUI";
+			packageProductDependencies = (
+				B90357632305911E00AE47BD /* ListPagination */,
+			);
 			productName = "Game-of-Thrones-VIPER-SwiftUI";
 			productReference = B9E03A9923032E4000E2B3F5 /* Game-of-Thrones-VIPER-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -335,6 +340,9 @@
 				Base,
 			);
 			mainGroup = B9E03A9023032E4000E2B3F5;
+			packageReferences = (
+				B90357622305911E00AE47BD /* XCRemoteSwiftPackageReference "ListPagination" */,
+			);
 			productRefGroup = B9E03A9A23032E4000E2B3F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -592,6 +600,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B90357622305911E00AE47BD /* XCRemoteSwiftPackageReference "ListPagination" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/crelies/ListPagination";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B90357632305911E00AE47BD /* ListPagination */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B90357622305911E00AE47BD /* XCRemoteSwiftPackageReference "ListPagination" */;
+			productName = ListPagination;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B9E03A9123032E4000E2B3F5 /* Project object */;
 }

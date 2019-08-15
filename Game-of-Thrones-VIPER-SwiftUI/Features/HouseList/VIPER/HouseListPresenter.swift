@@ -3,10 +3,10 @@ import Foundation
 
 protocol HouseListPresenterProtocol: class {
     var viewModel: HouseListViewModel { get }
+    var isLoading: Bool { get }
     func didReceiveEvent(_ event: HouseListEvent)
     func didTriggerAction(_ action: HouseListAction)
-    func isEndOfListReached(_ house: HouseViewModel) -> Bool
-    func didReachEndOfList()
+    func didReachThresholdItem()
 }
 
 final class HouseListPresenter: ObservableObject {
@@ -20,6 +20,8 @@ final class HouseListPresenter: ObservableObject {
             objectWillChange.send()
         }
     }
+    
+    private(set) var isLoading: Bool = false
     
     let objectWillChange = PassthroughSubject<Void, Never>()
     
@@ -54,17 +56,9 @@ extension HouseListPresenter: HouseListPresenterProtocol {
 
     }
     
-    func isEndOfListReached(_ house: HouseViewModel) -> Bool {
-        guard !viewModel.houses.isEmpty else {
-            return true
-        }
-        let lastIndex = viewModel.houses.count - 1
-        // TODO: use identifier
-        let houseIndex = viewModel.houses.firstIndex(where: { $0.name == house.name })
-        return lastIndex == houseIndex
-    }
-    
-    func didReachEndOfList() {
+    func didReachThresholdItem() {
+        isLoading = true
+        
         getNextHousesCancellable = interactor.getNextHouses()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
@@ -75,6 +69,8 @@ extension HouseListPresenter: HouseListPresenterProtocol {
                                           name: houseDataModel.name)
                 }
                 self.viewModel.houses.append(contentsOf: houseViewModels)
+                
+                self.isLoading = false
             }
     }
 }

@@ -1,3 +1,4 @@
+import ListPagination
 import SwiftUI
 
 protocol HouseListViewProtocol: HouseListProtocol {
@@ -10,12 +11,19 @@ struct HouseListView: View {
     
     var body: some View {
         NavigationView {
-            List(presenter.viewModel.houses, id: \.name) { house in
-                NavigationLink(destination: HouseDetailView(url: house.url)) {
-                    Text(house.name)
+            List(presenter.viewModel.houses) { house in
+                VStack {
+                    NavigationLink(destination: HouseDetailView(url: house.url)) {
+                        Text(house.name)
+                    }
+                    
+                    if self.presenter.isLoading && self.presenter.viewModel.houses.isLastItem(house) {
+                        Divider()
+                        Text("Loading...")
+                    }
                 }.onAppear {
-                    if self.presenter.isEndOfListReached(house) {
-                        self.presenter.didReachEndOfList()
+                    if self.presenter.viewModel.houses.isThresholdItem(offset: 5, item: house) {
+                        self.presenter.didReachThresholdItem()
                     }
                 }
             }.navigationBarTitle("Houses")
