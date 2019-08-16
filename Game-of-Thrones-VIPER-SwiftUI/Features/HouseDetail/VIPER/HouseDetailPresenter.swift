@@ -3,6 +3,7 @@ import Foundation
 
 protocol HouseDetailPresenterProtocol: class {
     var viewModel: HouseDetailViewModel { get }
+    var isLoading: Bool { get }
     func didReceiveEvent(_ event: HouseDetailEvent)
     func didTriggerAction(_ action: HouseDetailAction)
 }
@@ -13,6 +14,12 @@ final class HouseDetailPresenter: ObservableObject {
     private var getHouseCancellable: AnyCancellable?
     
     private(set) var viewModel: HouseDetailViewModel {
+        didSet {
+            objectWillChange.send()
+        }
+    }
+    
+    private(set) var isLoading: Bool = false {
         didSet {
             objectWillChange.send()
         }
@@ -33,6 +40,8 @@ extension HouseDetailPresenter: HouseDetailPresenterProtocol {
     func didReceiveEvent(_ event: HouseDetailEvent) {
         switch event {
             case .viewAppears(let houseURL):
+                isLoading = true
+                
                 getHouseCancellable = interactor.getHouse(atURL: houseURL)
                     .receive(on: RunLoop.main)
                     .sink(receiveCompletion: { completion in
@@ -53,7 +62,10 @@ extension HouseDetailPresenter: HouseDetailPresenterProtocol {
                                                               ancestralWeapons: houseDataModel.ancestralWeapons,
                                                               cadetBranches: houseDataModel.cadetBranches,
                                                               swornMembers: houseDataModel.swornMembers)
+                        self.isLoading = false
                     }
+            case .viewDisappears:
+                getHouseCancellable?.cancel()
         }
     }
 
