@@ -2,6 +2,7 @@ import Combine
 import Foundation
 
 protocol HouseListInteractorProtocol {
+    var pageSize: Int { get }
     func getNextHouses() -> AnyPublisher<[HouseDataModel], Error>
 	func getCurrentHouses() -> AnyPublisher<[HouseDataModel], Error>
 }
@@ -9,12 +10,12 @@ protocol HouseListInteractorProtocol {
 final class HouseListInteractor {
     private let dependencies: HouseListInteractorDependenciesProtocol
     private var currentPage: Int
-    private let pageSize: Int
+    let pageSize: Int
     
     init(dependencies: HouseListInteractorDependenciesProtocol) {
         self.dependencies = dependencies
         currentPage = 1
-        pageSize = 25
+        pageSize = 50
     }
 }
 

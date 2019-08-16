@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B90357642305911E00AE47BD /* ListPagination in Frameworks */ = {isa = PBXBuildFile; productRef = B90357632305911E00AE47BD /* ListPagination */; };
+		B91CAD662306B5F300EB67B1 /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B91CAD652306B5F300EB67B1 /* AdvancedList */; };
 		B9E03A9D23032E4000E2B3F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03A9C23032E4000E2B3F5 /* AppDelegate.swift */; };
 		B9E03A9F23032E4000E2B3F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03A9E23032E4000E2B3F5 /* SceneDelegate.swift */; };
 		B9E03AA123032E4000E2B3F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AA023032E4000E2B3F5 /* ContentView.swift */; };
@@ -106,13 +106,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B90357642305911E00AE47BD /* ListPagination in Frameworks */,
+				B91CAD662306B5F300EB67B1 /* AdvancedList in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B91CAD612305AB6400EB67B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B9E03A9023032E4000E2B3F5 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +127,7 @@
 				B943C44A230336DF00E1BBA0 /* README.md */,
 				B9E03A9B23032E4000E2B3F5 /* Game-of-Thrones-VIPER-SwiftUI */,
 				B9E03A9A23032E4000E2B3F5 /* Products */,
+				B91CAD612305AB6400EB67B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -310,7 +318,7 @@
 			);
 			name = "Game-of-Thrones-VIPER-SwiftUI";
 			packageProductDependencies = (
-				B90357632305911E00AE47BD /* ListPagination */,
+				B91CAD652306B5F300EB67B1 /* AdvancedList */,
 			);
 			productName = "Game-of-Thrones-VIPER-SwiftUI";
 			productReference = B9E03A9923032E4000E2B3F5 /* Game-of-Thrones-VIPER-SwiftUI.app */;
@@ -341,7 +349,7 @@
 			);
 			mainGroup = B9E03A9023032E4000E2B3F5;
 			packageReferences = (
-				B90357622305911E00AE47BD /* XCRemoteSwiftPackageReference "ListPagination" */,
+				B91CAD642306B5F300EB67B1 /* XCRemoteSwiftPackageReference "AdvancedList" */,
 			);
 			productRefGroup = B9E03A9A23032E4000E2B3F5 /* Products */;
 			projectDirPath = "";
@@ -602,21 +610,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B90357622305911E00AE47BD /* XCRemoteSwiftPackageReference "ListPagination" */ = {
+		B91CAD642306B5F300EB67B1 /* XCRemoteSwiftPackageReference "AdvancedList" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/crelies/ListPagination";
+			repositoryURL = "https://github.com/crelies/AdvancedList.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B90357632305911E00AE47BD /* ListPagination */ = {
+		B91CAD652306B5F300EB67B1 /* AdvancedList */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B90357622305911E00AE47BD /* XCRemoteSwiftPackageReference "ListPagination" */;
-			productName = ListPagination;
+			package = B91CAD642306B5F300EB67B1 /* XCRemoteSwiftPackageReference "AdvancedList" */;
+			productName = AdvancedList;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

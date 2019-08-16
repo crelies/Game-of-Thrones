@@ -1,4 +1,4 @@
-import ListPagination
+import AdvancedList
 import SwiftUI
 
 protocol HouseListViewProtocol: HouseListProtocol {
@@ -11,22 +11,14 @@ struct HouseListView: View {
     
     var body: some View {
         NavigationView {
-            List(presenter.viewModel.houses) { house in
-                VStack {
-                    NavigationLink(destination: HouseDetailView(url: house.url)) {
-                        Text(house.name)
-                    }
-                    
-                    if self.presenter.isLoading && self.presenter.viewModel.houses.isLastItem(house) {
-                        Divider()
-                        Text("Loading...")
-                    }
-                }.onAppear {
-                    if self.presenter.viewModel.houses.isThresholdItem(offset: 5, item: house) {
-                        self.presenter.didReachThresholdItem()
-                    }
-                }
-            }.navigationBarTitle("Houses")
+            AdvancedList(listService: presenter.listService, emptyStateView: {
+                Text("No houses")
+            }, errorStateView: { error in
+                Text(error.localizedDescription)
+            }, loadingStateView: {
+                Text("Loading...")
+            }, pagination: presenter.pagination)
+            .navigationBarTitle("Houses")
         }
         .onAppear {
             self.presenter.didReceiveEvent(.viewAppears)

@@ -1,9 +1,13 @@
+import AdvancedList
 import Combine
-import Foundation
+import SwiftUI
 
 protocol HouseListPresenterProtocol: class {
+    associatedtype PaginationLoadingView: View
+    
+    var listService: ListService { get }
+    var pagination: AdvancedListPagination<PaginationLoadingView> { get }
     var viewModel: HouseListViewModel { get }
-    var isLoading: Bool { get }
     func didReceiveEvent(_ event: HouseListEvent)
     func didTriggerAction(_ action: HouseListAction)
     func didReachThresholdItem()
@@ -15,13 +19,21 @@ final class HouseListPresenter: ObservableObject {
     private var getCurrentHousesCancellable: AnyCancellable?
     private var getNextHousesCancellable: AnyCancellable?
     
+    let listService: ListService
+    private(set) lazy var pagination: AdvancedListPagination<TupleView<(Divider, Text)>> = {
+        AdvancedListPagination(loadingView: {
+            Divider()
+            Text("Loading...")
+        }, type: .thresholdItem(offset: interactor.pageSize - 1), shouldLoadNextPage: {
+            self.didReachThresholdItem()
+        }, isLoading: false)
+    }()
+    
     private(set) var viewModel: HouseListViewModel {
         didSet {
             objectWillChange.send()
         }
     }
-    
-    private(set) var isLoading: Bool = false
     
     let objectWillChange = PassthroughSubject<Void, Never>()
     
@@ -29,7 +41,7 @@ final class HouseListPresenter: ObservableObject {
          interactor: HouseListInteractorProtocol) {
         self.dependencies = dependencies
         self.interactor = interactor
-        
+        listService = ListService()
         viewModel = HouseListViewModel()
     }
 }
@@ -38,6 +50,8 @@ extension HouseListPresenter: HouseListPresenterProtocol {
     func didReceiveEvent(_ event: HouseListEvent) {
         switch event {
             case .viewAppears:
+                listService.listState = .loading
+                
                 getCurrentHousesCancellable = interactor.getCurrentHouses()
                     .receive(on: RunLoop.main)
                     .sink(receiveCompletion: { completion in
@@ -48,6 +62,8 @@ extension HouseListPresenter: HouseListPresenterProtocol {
                                                   name: houseDataModel.name)
                         }
                         self.viewModel.houses.append(contentsOf: houseViewModels)
+                        self.listService.appendItems(houseViewModels)
+                        self.listService.listState = .items
                     }
         }
     }
@@ -57,7 +73,7 @@ extension HouseListPresenter: HouseListPresenterProtocol {
     }
     
     func didReachThresholdItem() {
-        isLoading = true
+        pagination.isLoading = true
         
         getNextHousesCancellable = interactor.getNextHouses()
             .receive(on: RunLoop.main)
@@ -69,8 +85,8 @@ extension HouseListPresenter: HouseListPresenterProtocol {
                                           name: houseDataModel.name)
                 }
                 self.viewModel.houses.append(contentsOf: houseViewModels)
-                
-                self.isLoading = false
+                self.listService.appendItems(houseViewModels)
+                self.pagination.isLoading = false
             }
     }
 }

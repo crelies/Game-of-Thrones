@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AdvancedList",
+        "repositoryURL": "https://github.com/crelies/AdvancedList.git",
+        "state": {
+          "branch": "master",
+          "revision": "988b8e907b317163138b466b017d3cce5a97ead4",
+          "version": null
+        }
+      },
+      {
         "package": "ListPagination",
         "repositoryURL": "https://github.com/crelies/ListPagination",
         "state": {

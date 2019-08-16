@@ -6,7 +6,7 @@
 //  Copyright © 2019 Christian Elies. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 struct HouseViewModel {
     let url: URL
@@ -15,6 +15,14 @@ struct HouseViewModel {
 
 extension HouseViewModel: Identifiable {
     var id: String {
-        return name
+        return url.absoluteString
+    }
+}
+
+extension HouseViewModel: View {
+    var body: some View {
+        NavigationLink(destination: HouseDetailView(url: url)) {
+            Text(name)
+        }
     }
 }
