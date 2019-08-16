@@ -21,10 +21,10 @@ final class HouseListPresenter: ObservableObject {
     
     let listService: ListService
     private(set) lazy var pagination: AdvancedListPagination<TupleView<(Divider, Text)>> = {
-        AdvancedListPagination(loadingView: {
+        .thresholdItemPagination(loadingView: {
             Divider()
             Text("Loading...")
-        }, type: .thresholdItem(offset: interactor.pageSize - 1), shouldLoadNextPage: {
+        }, offset: interactor.pageSize - 1, shouldLoadNextPage: {
             self.didReachThresholdItem()
         }, isLoading: false)
     }()
