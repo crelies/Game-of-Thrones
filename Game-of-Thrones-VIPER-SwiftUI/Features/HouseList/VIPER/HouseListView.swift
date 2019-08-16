@@ -23,6 +23,9 @@ struct HouseListView: View {
         .onAppear {
             self.presenter.didReceiveEvent(.viewAppears)
         }
+        .onDisappear {
+            self.presenter.didReceiveEvent(.viewDisappears)
+        }
     }
 }
 

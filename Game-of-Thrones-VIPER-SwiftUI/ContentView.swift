@@ -18,6 +18,22 @@ struct ContentView: View {
                     Text("Houses")
                 }
             }
+            
+            Text("Characters coming soon")
+            .tabItem {
+                VStack {
+                    Image(systemName: "list.bullet")
+                    Text("Characters")
+                }
+            }
+            
+            Text("Books coming soon")
+            .tabItem {
+                VStack {
+                    Image(systemName: "list.bullet")
+                    Text("Books")
+                }
+            }
         }
     }
 }

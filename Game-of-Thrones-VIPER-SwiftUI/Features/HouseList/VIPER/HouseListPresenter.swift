@@ -65,6 +65,9 @@ extension HouseListPresenter: HouseListPresenterProtocol {
                         self.listService.appendItems(houseViewModels)
                         self.listService.listState = .items
                     }
+            case .viewDisappears:
+                getCurrentHousesCancellable?.cancel()
+                getNextHousesCancellable?.cancel()
         }
     }
 
