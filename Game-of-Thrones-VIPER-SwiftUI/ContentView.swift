@@ -10,7 +10,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HouseListView()
+        TabView {
+            HouseListView()
+            .tabItem {
+                VStack {
+                    Image(systemName: "list.bullet")
+                    Text("Houses")
+                }
+            }
+        }
     }
 }
 
