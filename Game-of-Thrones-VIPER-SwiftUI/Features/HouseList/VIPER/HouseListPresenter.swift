@@ -7,7 +7,6 @@ protocol HouseListPresenterProtocol: class {
     
     var listService: ListService { get }
     var pagination: AdvancedListPagination<PaginationLoadingView> { get }
-    var viewModel: HouseListViewModel { get }
     func didReceiveEvent(_ event: HouseListEvent)
     func didTriggerAction(_ action: HouseListAction)
     func didReachThresholdItem()
@@ -29,12 +28,6 @@ final class HouseListPresenter: ObservableObject {
         }, isLoading: false)
     }()
     
-    private(set) var viewModel: HouseListViewModel {
-        didSet {
-            objectWillChange.send()
-        }
-    }
-    
     let objectWillChange = PassthroughSubject<Void, Never>()
     
     init(dependencies: HouseListPresenterDependenciesProtocol,
@@ -42,7 +35,6 @@ final class HouseListPresenter: ObservableObject {
         self.dependencies = dependencies
         self.interactor = interactor
         listService = ListService()
-        viewModel = HouseListViewModel()
     }
 }
 
@@ -55,19 +47,24 @@ extension HouseListPresenter: HouseListPresenterProtocol {
                 getCurrentHousesCancellable = interactor.getCurrentHouses()
                     .receive(on: RunLoop.main)
                     .sink(receiveCompletion: { completion in
-                        debugPrint(completion)
+                        switch completion {
+                            case .failure(let error):
+                                self.listService.listState = .error(error)
+                            case .finished:
+                                self.listService.listState = .items
+                        }
                     }) { houseDataModels in
                         let houseViewModels: [HouseViewModel] = houseDataModels.compactMap { houseDataModel in
                             return HouseViewModel(url: houseDataModel.url,
                                                   name: houseDataModel.name)
                         }
-                        self.viewModel.houses.append(contentsOf: houseViewModels)
                         self.listService.appendItems(houseViewModels)
-                        self.listService.listState = .items
                     }
             case .viewDisappears:
                 getCurrentHousesCancellable?.cancel()
                 getNextHousesCancellable?.cancel()
+                listService.listState = .items
+                pagination.isLoading = false
         }
     }
 
@@ -82,14 +79,13 @@ extension HouseListPresenter: HouseListPresenterProtocol {
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 debugPrint(completion)
+                self.pagination.isLoading = false
             }) { houseDataModels in
                 let houseViewModels: [HouseViewModel] = houseDataModels.compactMap { houseDataModel in
                     return HouseViewModel(url: houseDataModel.url,
                                           name: houseDataModel.name)
                 }
-                self.viewModel.houses.append(contentsOf: houseViewModels)
                 self.listService.appendItems(houseViewModels)
-                self.pagination.isLoading = false
             }
     }
 }

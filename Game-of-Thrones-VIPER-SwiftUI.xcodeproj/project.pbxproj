@@ -39,7 +39,6 @@
 		B9E03AEC2303343A00E2B3F5 /* HouseDetailPresenterDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AE22303343A00E2B3F5 /* HouseDetailPresenterDependencies.swift */; };
 		B9E03AED2303343A00E2B3F5 /* HouseDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AE32303343A00E2B3F5 /* HouseDetailProtocol.swift */; };
 		B9E03AEE2303343A00E2B3F5 /* HouseDetailEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AE42303343A00E2B3F5 /* HouseDetailEvent.swift */; };
-		B9E03AF02303345200E2B3F5 /* HouseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AEF2303345200E2B3F5 /* HouseListViewModel.swift */; };
 		B9E03AFB2303345B00E2B3F5 /* HouseListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AF12303345B00E2B3F5 /* HouseListPresenter.swift */; };
 		B9E03AFC2303345B00E2B3F5 /* HouseListDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AF22303345B00E2B3F5 /* HouseListDelegateProtocol.swift */; };
 		B9E03AFD2303345B00E2B3F5 /* HouseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AF32303345B00E2B3F5 /* HouseListView.swift */; };
@@ -89,7 +88,6 @@
 		B9E03AE22303343A00E2B3F5 /* HouseDetailPresenterDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDetailPresenterDependencies.swift; sourceTree = "<group>"; };
 		B9E03AE32303343A00E2B3F5 /* HouseDetailProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDetailProtocol.swift; sourceTree = "<group>"; };
 		B9E03AE42303343A00E2B3F5 /* HouseDetailEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDetailEvent.swift; sourceTree = "<group>"; };
-		B9E03AEF2303345200E2B3F5 /* HouseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseListViewModel.swift; sourceTree = "<group>"; };
 		B9E03AF12303345B00E2B3F5 /* HouseListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseListPresenter.swift; sourceTree = "<group>"; };
 		B9E03AF22303345B00E2B3F5 /* HouseListDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseListDelegateProtocol.swift; sourceTree = "<group>"; };
 		B9E03AF32303345B00E2B3F5 /* HouseListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseListView.swift; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 		B9E03AB323032E7D00E2B3F5 /* HouseList */ = {
 			isa = PBXGroup;
 			children = (
-				B9E03ABB23032EC000E2B3F5 /* ViewModels */,
 				B9E03ABC23032EC800E2B3F5 /* VIPER */,
 			);
 			path = HouseList;
@@ -276,14 +273,6 @@
 				B9E03ADE2303343A00E2B3F5 /* HouseDetailWireframe.swift */,
 			);
 			path = VIPER;
-			sourceTree = "<group>";
-		};
-		B9E03ABB23032EC000E2B3F5 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				B9E03AEF2303345200E2B3F5 /* HouseListViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B9E03ABC23032EC800E2B3F5 /* VIPER */ = {
@@ -410,7 +399,6 @@
 				B9E03ACA23032FE300E2B3F5 /* APIService.swift in Sources */,
 				B9E03AC423032FD600E2B3F5 /* HouseDataModelConvertibleError.swift in Sources */,
 				B9E03AEA2303343A00E2B3F5 /* HouseDetailPresenter.swift in Sources */,
-				B9E03AF02303345200E2B3F5 /* HouseListViewModel.swift in Sources */,
 				B9E03B012303345B00E2B3F5 /* HouseListAction.swift in Sources */,
 				B9E03AC223032FD600E2B3F5 /* HouseDataModel.swift in Sources */,
 				B9E03AA123032E4000E2B3F5 /* ContentView.swift in Sources */,
