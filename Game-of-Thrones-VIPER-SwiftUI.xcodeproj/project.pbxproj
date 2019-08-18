@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B91CAD662306B5F300EB67B1 /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B91CAD652306B5F300EB67B1 /* AdvancedList */; };
+		B9BA37A123096E3300D3CCA8 /* HouseListInteractorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListInteractorError.swift */; };
 		B9E03A9D23032E4000E2B3F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03A9C23032E4000E2B3F5 /* AppDelegate.swift */; };
 		B9E03A9F23032E4000E2B3F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03A9E23032E4000E2B3F5 /* SceneDelegate.swift */; };
 		B9E03AA123032E4000E2B3F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AA023032E4000E2B3F5 /* ContentView.swift */; };
@@ -55,6 +56,7 @@
 		B91CAD68230743E900EB67B1 /* Game-of-Thrones-VIPER-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Game-of-Thrones-VIPER-SwiftUI.entitlements"; sourceTree = "<group>"; };
 		B943C44A230336DF00E1BBA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B943C44B23033EF100E1BBA0 /* Game-of-Thrones-VIPER-SwiftUI.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Game-of-Thrones-VIPER-SwiftUI.gif"; sourceTree = "<group>"; };
+		B9BA37A023096E3300D3CCA8 /* HouseListInteractorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListInteractorError.swift; sourceTree = "<group>"; };
 		B9E03A9923032E4000E2B3F5 /* Game-of-Thrones-VIPER-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game-of-Thrones-VIPER-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E03A9C23032E4000E2B3F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9E03A9E23032E4000E2B3F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				B9E03AF62303345B00E2B3F5 /* HouseListEvent.swift */,
 				B9E03AF52303345B00E2B3F5 /* HouseListInteractor.swift */,
 				B9E03AFA2303345B00E2B3F5 /* HouseListInteractorDependencies.swift */,
+				B9BA37A023096E3300D3CCA8 /* HouseListInteractorError.swift */,
 				B9E03AF12303345B00E2B3F5 /* HouseListPresenter.swift */,
 				B9E03AF82303345B00E2B3F5 /* HouseListPresenterDependencies.swift */,
 				B9E03AF92303345B00E2B3F5 /* HouseListProtocol.swift */,
@@ -402,6 +405,7 @@
 				B9E03B012303345B00E2B3F5 /* HouseListAction.swift in Sources */,
 				B9E03AC223032FD600E2B3F5 /* HouseDataModel.swift in Sources */,
 				B9E03AA123032E4000E2B3F5 /* ContentView.swift in Sources */,
+				B9BA37A123096E3300D3CCA8 /* HouseListInteractorError.swift in Sources */,
 				B9E03AEE2303343A00E2B3F5 /* HouseDetailEvent.swift in Sources */,
 				B9E03B022303345B00E2B3F5 /* HouseListPresenterDependencies.swift in Sources */,
 				B9E03AD82303343100E2B3F5 /* HouseFactsView.swift in Sources */,
@@ -620,8 +624,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/crelies/AdvancedList.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

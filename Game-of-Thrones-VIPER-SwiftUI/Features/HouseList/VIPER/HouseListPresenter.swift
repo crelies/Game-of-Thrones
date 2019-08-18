@@ -3,29 +3,43 @@ import Combine
 import SwiftUI
 
 protocol HouseListPresenterProtocol: class {
+    associatedtype PaginationErrorView: View
     associatedtype PaginationLoadingView: View
     
     var listService: ListService { get }
-    var pagination: AdvancedListPagination<PaginationLoadingView> { get }
+    var pagination: AdvancedListPagination<PaginationErrorView, PaginationLoadingView> { get }
     func didReceiveEvent(_ event: HouseListEvent)
     func didTriggerAction(_ action: HouseListAction)
-    func didReachThresholdItem()
 }
 
 final class HouseListPresenter: ObservableObject {
     private let dependencies: HouseListPresenterDependenciesProtocol
-    private let interactor: HouseListInteractorProtocol
+    private var interactor: HouseListInteractorProtocol
     private var getCurrentHousesCancellable: AnyCancellable?
     private var getNextHousesCancellable: AnyCancellable?
     
     let listService: ListService
-    private(set) lazy var pagination: AdvancedListPagination<TupleView<(Divider, Text)>> = {
-        .thresholdItemPagination(loadingView: {
+    private(set) lazy var pagination: AdvancedListPagination<AnyView, TupleView<(Divider, Text)>> = {
+        .thresholdItemPagination(errorView: { error in
+            AnyView(
+                VStack {
+                    Text(error.localizedDescription)
+                    .lineLimit(nil)
+                    .multilineTextAlignment(.center)
+                    
+                    Button(action: {
+                        self.getCurrentHouses(isInitialLoading: false)
+                    }) {
+                        Text("Retry")
+                    }.padding()
+                }
+            )
+        }, loadingView: {
             Divider()
             Text("Loading...")
         }, offset: interactor.pageSize - 1, shouldLoadNextPage: {
-            self.didReachThresholdItem()
-        }, isLoading: false)
+            self.getNextHouses()
+        }, state: .idle)
     }()
     
     let objectWillChange = PassthroughSubject<Void, Never>()
@@ -42,45 +56,80 @@ extension HouseListPresenter: HouseListPresenterProtocol {
     func didReceiveEvent(_ event: HouseListEvent) {
         switch event {
             case .viewAppears:
-                listService.listState = .loading
-                
-                getCurrentHousesCancellable = interactor.getCurrentHouses()
-                    .receive(on: RunLoop.main)
-                    .sink(receiveCompletion: { completion in
-                        switch completion {
-                            case .failure(let error):
-                                self.listService.listState = .error(error)
-                            case .finished:
-                                self.listService.listState = .items
-                        }
-                    }) { houseDataModels in
-                        let houseViewModels: [HouseViewModel] = houseDataModels.compactMap { houseDataModel in
-                            return HouseViewModel(url: houseDataModel.url,
-                                                  name: houseDataModel.name)
-                        }
-                        self.listService.appendItems(houseViewModels)
-                    }
+                getCurrentHouses(isInitialLoading: true)
             case .viewDisappears:
                 getCurrentHousesCancellable?.cancel()
                 getNextHousesCancellable?.cancel()
                 listService.listState = .items
-                pagination.isLoading = false
+                pagination.state = .idle
         }
     }
 
     func didTriggerAction(_ action: HouseListAction) {
+        switch action {
+            case .retry:
+                getCurrentHouses(isInitialLoading: true)
+        }
+    }
+}
 
+extension HouseListPresenter {
+    private func getCurrentHouses(isInitialLoading: Bool) {
+        if isInitialLoading {
+            listService.listState = .loading
+        } else {
+            pagination.state = .loading
+        }
+        
+        getCurrentHousesCancellable = interactor.getCurrentHouses()
+        .receive(on: RunLoop.main)
+        .sink(receiveCompletion: { completion in
+            switch completion {
+                case .failure(let error):
+                    if isInitialLoading {
+                        self.listService.listState = .error(error)
+                    } else {
+                        self.pagination.state = .error(error)
+                    }
+                case .finished:
+                    if isInitialLoading {
+                        self.listService.listState = .items
+                    } else {
+                        self.pagination.state = .idle
+                    }
+            }
+        }) { houseDataModels in
+            let houseViewModels: [HouseViewModel] = houseDataModels.compactMap { houseDataModel in
+                return HouseViewModel(url: houseDataModel.url,
+                                      name: houseDataModel.name)
+            }
+            self.listService.appendItems(houseViewModels)
+        }
     }
     
-    func didReachThresholdItem() {
-        pagination.isLoading = true
+    private func getNextHouses() {
+        guard !interactor.allHousesLoaded, pagination.state == .idle else {
+            return
+        }
+        
+        pagination.state = .loading
         
         getNextHousesCancellable = interactor.getNextHouses()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
-                debugPrint(completion)
-                self.pagination.isLoading = false
+                switch completion {
+                    case .failure(let error):
+                        if let interactorError = error as? HouseListInteractorError, interactorError == .allHousesLoaded {
+                            self.pagination.state = .idle
+                        } else {
+                            self.pagination.state = .error(error)
+                        }
+                    case .finished:
+                        self.pagination.state = .idle
+                }
             }) { houseDataModels in
+                self.interactor.allHousesLoaded = houseDataModels.count < self.interactor.pageSize
+                
                 let houseViewModels: [HouseViewModel] = houseDataModels.compactMap { houseDataModel in
                     return HouseViewModel(url: houseDataModel.url,
                                           name: houseDataModel.name)
