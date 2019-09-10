@@ -5,7 +5,11 @@ protocol HouseDetailViewProtocol: HouseDetailProtocol {
 }
 
 struct HouseDetailView: View {
-    @ObservedObject private var presenter = HouseDetailWireframe.makePresenter()
+    #if !targetEnvironment(macCatalyst)
+        @ObservedObject private var presenter = HouseDetailWireframe.makePresenter()
+    #else
+        @EnvironmentObject var presenter: HouseDetailPresenter
+    #endif
     
     weak var delegate: HouseDetailDelegateProtocol?
     let url: URL

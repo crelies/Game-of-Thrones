@@ -8,7 +8,7 @@ protocol HouseDetailPresenterProtocol: class {
     func didTriggerAction(_ action: HouseDetailAction)
 }
 
-final class HouseDetailPresenter: ObservableObject {
+final class HouseDetailPresenter: NSObject, ObservableObject {
     private let dependencies: HouseDetailPresenterDependenciesProtocol
     private let interactor: HouseDetailInteractorProtocol
     private var getHouseCancellable: AnyCancellable?

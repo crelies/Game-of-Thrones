@@ -21,7 +21,13 @@ extension HouseViewModel: Identifiable {
 
 extension HouseViewModel: View {
     var body: some View {
-        NavigationLink(destination: HouseDetailView(url: url)) {
+        #if !targetEnvironment(macCatalyst)
+            let destination = HouseDetailView(url: url)
+        #else
+            let destination = HouseDetailView(url: url).environmentObject(HouseDetailWireframe.makePresenter())
+        #endif
+        
+        return NavigationLink(destination: destination) {
             Text(name)
         }
     }

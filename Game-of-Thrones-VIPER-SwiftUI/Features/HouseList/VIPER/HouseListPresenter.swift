@@ -12,14 +12,14 @@ protocol HouseListPresenterProtocol: class {
     func didTriggerAction(_ action: HouseListAction)
 }
 
-final class HouseListPresenter: ObservableObject {
+final class HouseListPresenter: NSObject, ObservableObject {
     private let dependencies: HouseListPresenterDependenciesProtocol
     private var interactor: HouseListInteractorProtocol
     private var getCurrentHousesCancellable: AnyCancellable?
     private var getNextHousesCancellable: AnyCancellable?
     
     let listService: ListService
-    private(set) lazy var pagination: AdvancedListPagination<AnyView, TupleView<(Divider, Text)>> = {
+    private(set) lazy var pagination: AdvancedListPagination<AnyView, AnyView> = {
         .thresholdItemPagination(errorView: { error in
             AnyView(
                 VStack {
@@ -35,8 +35,12 @@ final class HouseListPresenter: ObservableObject {
                 }
             )
         }, loadingView: {
-            Divider()
-            Text("Loading...")
+            AnyView(
+                VStack {
+                    Divider()
+                    Text("Loading...")
+                }
+            )
         }, offset: interactor.pageSize - 1, shouldLoadNextPage: {
             self.getNextHouses()
         }, state: .idle)
