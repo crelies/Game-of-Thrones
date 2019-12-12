@@ -5,15 +5,11 @@ protocol HouseDetailViewProtocol: HouseDetailProtocol {
 }
 
 struct HouseDetailView: View {
-    #if !targetEnvironment(macCatalyst)
-        @ObservedObject private var presenter = HouseDetailWireframe.makePresenter()
-    #else
-        @EnvironmentObject var presenter: HouseDetailPresenter
-    #endif
-    
+    @ObservedObject private var presenter = HouseDetailWireframe.makePresenter()
+
     weak var delegate: HouseDetailDelegateProtocol?
     let url: URL
-    
+
     var body: some View {
         Group {
             if presenter.isLoading {

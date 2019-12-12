@@ -14,21 +14,5 @@ struct HouseViewModel {
 }
 
 extension HouseViewModel: Identifiable {
-    var id: String {
-        return url.absoluteString
-    }
-}
-
-extension HouseViewModel: View {
-    var body: some View {
-        #if !targetEnvironment(macCatalyst)
-            let destination = HouseDetailView(url: url)
-        #else
-            let destination = HouseDetailView(url: url).environmentObject(HouseDetailWireframe.makePresenter())
-        #endif
-        
-        return NavigationLink(destination: destination) {
-            Text(name)
-        }
-    }
+    var id: String { url.absoluteString }
 }

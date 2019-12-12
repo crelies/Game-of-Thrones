@@ -5,8 +5,7 @@ import SwiftUI
 protocol HouseListPresenterProtocol: class {
     associatedtype PaginationErrorView: View
     associatedtype PaginationLoadingView: View
-    
-    var listService: ListService { get }
+
     var pagination: AdvancedListPagination<PaginationErrorView, PaginationLoadingView> { get }
     func didReceiveEvent(_ event: HouseListEvent)
     func didTriggerAction(_ action: HouseListAction)
@@ -17,15 +16,16 @@ final class HouseListPresenter: NSObject, ObservableObject {
     private var interactor: HouseListInteractorProtocol
     private var getCurrentHousesCancellable: AnyCancellable?
     private var getNextHousesCancellable: AnyCancellable?
-    
-    let listService: ListService
+
+    @Published private(set) var houseViewModels: [HouseViewModel] = []
+    @Published var listState: ListState = .items
     private(set) lazy var pagination: AdvancedListPagination<AnyView, AnyView> = {
         .thresholdItemPagination(errorView: { error in
             AnyView(
                 VStack {
                     Text(error.localizedDescription)
-                    .lineLimit(nil)
-                    .multilineTextAlignment(.center)
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.center)
                     
                     Button(action: {
                         self.getCurrentHouses(isInitialLoading: false)
@@ -45,14 +45,11 @@ final class HouseListPresenter: NSObject, ObservableObject {
             self.getNextHouses()
         }, state: .idle)
     }()
-    
-    let objectWillChange = PassthroughSubject<Void, Never>()
-    
+
     init(dependencies: HouseListPresenterDependenciesProtocol,
          interactor: HouseListInteractorProtocol) {
         self.dependencies = dependencies
         self.interactor = interactor
-        listService = ListService()
     }
 }
 
@@ -64,7 +61,7 @@ extension HouseListPresenter: HouseListPresenterProtocol {
             case .viewDisappears:
                 getCurrentHousesCancellable?.cancel()
                 getNextHousesCancellable?.cancel()
-                listService.listState = .items
+                listState = .items
                 pagination.state = .idle
         }
     }
@@ -80,7 +77,7 @@ extension HouseListPresenter: HouseListPresenterProtocol {
 extension HouseListPresenter {
     private func getCurrentHouses(isInitialLoading: Bool) {
         if isInitialLoading {
-            listService.listState = .loading
+            listState = .loading
         } else {
             pagination.state = .loading
         }
@@ -91,13 +88,13 @@ extension HouseListPresenter {
             switch completion {
                 case .failure(let error):
                     if isInitialLoading {
-                        self.listService.listState = .error(error)
+                        self.listState = .error(error)
                     } else {
                         self.pagination.state = .error(error)
                     }
                 case .finished:
                     if isInitialLoading {
-                        self.listService.listState = .items
+                        self.listState = .items
                     } else {
                         self.pagination.state = .idle
                     }
@@ -107,7 +104,7 @@ extension HouseListPresenter {
                 return HouseViewModel(url: houseDataModel.url,
                                       name: houseDataModel.name)
             }
-            self.listService.appendItems(houseViewModels)
+            self.houseViewModels.append(contentsOf: houseViewModels)
         }
     }
     
@@ -138,7 +135,7 @@ extension HouseListPresenter {
                     return HouseViewModel(url: houseDataModel.url,
                                           name: houseDataModel.name)
                 }
-                self.listService.appendItems(houseViewModels)
+                self.houseViewModels.append(contentsOf: houseViewModels)
             }
     }
 }
