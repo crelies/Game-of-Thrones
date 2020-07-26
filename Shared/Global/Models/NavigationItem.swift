@@ -1,6 +1,6 @@
 //
 //  NavigationItem.swift
-//  Game-of-Thrones-VIPER-SwiftUI
+//  Game-of-Thrones-SwiftUI
 //
 //  Created by Christian Elies on 22.07.20.
 //  Copyright © 2020 Christian Elies. All rights reserved.

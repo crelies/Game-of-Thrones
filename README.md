@@ -1,12 +1,11 @@
-# Game-of-Thrones-VIPER-SwiftUI
+# Game-of-Thrones-SwiftUI
 
-Adaption example of the VIPER architecture pattern to SwiftUI for Game of Thrones fans
+SwiftUI prototype for Game of Thrones fans
 
 ## Motivation
 
-I loved using the VIPER architecture pattern over the past few years.
-Now I want to adapt this pattern to SwiftUI through a simple Game of Thrones information app.
+I learn and improve my skills by implementing different prototypes in SwiftUI.
 
 ## Preview
 
-![Animated preview image](https://github.com/crelies/Game-of-Thrones-VIPER-SwiftUI/blob/master/Game-of-Thrones-VIPER-SwiftUI.gif)
+![Animated preview image](https://github.com/crelies/Game-of-Thrones-SwiftUI/blob/master/Game-of-Thrones-SwiftUI.gif)

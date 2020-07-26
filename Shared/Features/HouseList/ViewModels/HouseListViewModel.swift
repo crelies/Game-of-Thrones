@@ -3,9 +3,13 @@ import Combine
 import SwiftUI
 
 final class HouseListViewModel: ObservableObject {
-    private var interactor: HouseListInteractorProtocol
+    private let apiService: APIService
     private var getCurrentHousesCancellable: AnyCancellable?
     private var getNextHousesCancellable: AnyCancellable?
+
+    private var currentPage: Int
+    private let pageSize: Int
+    @Published private(set) var allHousesLoaded: Bool
 
     @Published private(set) var houseModels: [HouseMetadataModel] = []
     @Published var listState: ListState = .items
@@ -31,14 +35,16 @@ final class HouseListViewModel: ObservableObject {
                     Text("Loading...")
                 }
             )
-        }, offset: interactor.pageSize - 1, shouldLoadNextPage: {
+        }, offset: pageSize - 1, shouldLoadNextPage: {
             self.getNextHouses()
         }, state: .idle)
     }()
 
     init() {
-        let interactorDependencies = HouseListInteractorDependencies()
-        self.interactor = HouseListInteractor(dependencies: interactorDependencies)
+        apiService = APIService()
+        currentPage = 1
+        pageSize = 50
+        allHousesLoaded = false
     }
 }
 
@@ -60,7 +66,7 @@ private extension HouseListViewModel {
             pagination.state = .loading
         }
         
-        getCurrentHousesCancellable = interactor.getCurrentHouses()
+        getCurrentHousesCancellable = getCurrentHouses()
         .receive(on: RunLoop.main)
         .sink(receiveCompletion: { completion in
             switch completion {
@@ -89,18 +95,18 @@ private extension HouseListViewModel {
     }
     
     func getNextHouses() {
-        guard !interactor.allHousesLoaded, pagination.state == .idle else {
+        guard !allHousesLoaded, pagination.state == .idle else {
             return
         }
         
         pagination.state = .loading
         
-        getNextHousesCancellable = interactor.getNextHouses()
+        getNextHousesCancellable = getNextHouses()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .failure(let error):
-                        if let interactorError = error as? HouseListInteractorError, interactorError == .allHousesLoaded {
+                        if let viewModelError = error as? HouseListViewModelError, viewModelError == .allHousesLoaded {
                             self.pagination.state = .idle
                         } else {
                             self.pagination.state = .error(error)
@@ -109,7 +115,7 @@ private extension HouseListViewModel {
                         self.pagination.state = .idle
                 }
             }) { houseDataModels in
-                self.interactor.allHousesLoaded = houseDataModels.count < self.interactor.pageSize
+                self.allHousesLoaded = houseDataModels.count < self.pageSize
                 
                 let houseModels: [HouseMetadataModel] = houseDataModels.compactMap { houseDataModel in
                     return HouseMetadataModel(
@@ -119,5 +125,21 @@ private extension HouseListViewModel {
                 }
                 self.houseModels.append(contentsOf: houseModels)
             }
+    }
+
+    func getNextHouses() -> AnyPublisher<[HouseDataModel], Error> {
+        currentPage += 1
+
+        return apiService.getHouses(page: currentPage, pageSize: pageSize)
+            .tryCompactMap { houseResponseModels in
+                return try houseResponseModels.compactMap { try $0.houseDataModel() }
+            }.eraseToAnyPublisher()
+    }
+
+    func getCurrentHouses() -> AnyPublisher<[HouseDataModel], Error> {
+        return apiService.getHouses(page: currentPage, pageSize: pageSize)
+            .tryCompactMap { houseResponseModels in
+                return try houseResponseModels.compactMap { try $0.houseDataModel() }
+            }.eraseToAnyPublisher()
     }
 }

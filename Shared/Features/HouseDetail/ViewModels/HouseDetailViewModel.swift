@@ -2,7 +2,7 @@ import Combine
 import Foundation
 
 final class HouseDetailViewModel: ObservableObject {
-    private let interactor: HouseDetailInteractorProtocol
+    private let apiService: APIService
     private var getHouseCancellable: AnyCancellable?
     private var loaded = false
     private var currentHouseURL: URL?
@@ -11,8 +11,7 @@ final class HouseDetailViewModel: ObservableObject {
     @Published private(set) var isLoading = false
 
     init() {
-        let interactorDependencies = HouseDetailInteractorDependencies()
-        self.interactor = HouseDetailInteractor(dependencies: interactorDependencies)
+        apiService = APIService()
         model = HouseModel()
     }
 }
@@ -25,7 +24,7 @@ extension HouseDetailViewModel {
 
         isLoading = true
 
-        getHouseCancellable = interactor.getHouse(atURL: url)
+        getHouseCancellable = getHouse(atURL: url)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 debugPrint(completion)
@@ -50,5 +49,14 @@ extension HouseDetailViewModel {
                 self.isLoading = false
                 self.loaded = true
             }
+    }
+}
+
+private extension HouseDetailViewModel {
+    func getHouse(atURL url: URL) -> AnyPublisher<HouseDataModel, Error> {
+        return apiService.getHouse(atURL: url)
+            .tryMap { houseResponseModel in
+                return try houseResponseModel.houseDataModel()
+            }.eraseToAnyPublisher()
     }
 }
