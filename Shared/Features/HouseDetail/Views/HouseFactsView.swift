@@ -22,95 +22,121 @@ struct HouseFactsView: View {
     
     var body: some View {
         Section(header: Text("Facts")) {
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Name")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 Text(name)
                     .lineLimit(nil)
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Region")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 Text(region)
                     .lineLimit(nil)
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Coat of arms")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 Text(coatOfArms)
                     .lineLimit(nil)
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Words")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 Text(words)
                     .lineLimit(nil)
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Founded")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 Text(founded)
                     .lineLimit(nil)
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Died out")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 Text(diedOut)
                     .lineLimit(nil)
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Current lord")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 currentLord.map { currentLord in
                     Link(destination: currentLord) {
                         Text(currentLord.absoluteString)
                     }
                 }
+
+                if currentLord == nil {
+                    Text("-")
+                }
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Heir")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 heir.map { heir in
                     Link(destination: heir) {
                         Text(heir.absoluteString)
                     }
                 }
+
+                if heir == nil {
+                    Text("-")
+                }
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Overlord")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
                 overlord.map { overlord in
                     Link(destination: overlord) {
                         Text(overlord.absoluteString)
                     }
                 }
+
+                if overlord == nil {
+                    Text("-")
+                }
             }
 
-            HStack {
+            VStack(alignment: .leading) {
                 Text("Founder")
-                    .font(.headline)
-                Spacer()
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
                 founder.map { founder in
                     Link(destination: founder) {
                         Text(founder.absoluteString)
                     }
+                }
+
+                if founder == nil {
+                    Text("-")
                 }
             }
         }
@@ -121,17 +147,20 @@ struct HouseFactsView: View {
 struct HouseFactsView_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            HouseFactsView(name: "House name",
-                           region: "House region",
-                           coatOfArms: "House Code of Arms",
-                           words: "House of Words",
-                           currentLord: nil,
-                           heir: nil,
-                           overlord: nil,
-                           founded: "1990",
-                           founder: nil,
-                           diedOut: "Unknown")
+            HouseFactsView(
+                name: "House name",
+                region: "House region",
+                coatOfArms: "House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms",
+                words: "House of Words",
+                currentLord: nil,
+                heir: nil,
+                overlord: nil,
+                founded: "1990",
+                founder: nil,
+                diedOut: "Unknown"
+            )
         }
+        .listStyle(SidebarListStyle())
     }
 }
 #endif

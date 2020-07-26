@@ -29,23 +29,23 @@ struct HouseDetailScreen: View {
                     diedOut: model.diedOut
                 )
 
-                Section(header: Text("Titles")) {
+                Section(header: Text("\(model.titles.count) Titles")) {
                     HouseTitlesView(titles: model.titles)
                 }
 
-                Section(header: Text("Seats")) {
+                Section(header: Text("\(model.seats.count) Seats")) {
                     HouseSeatsView(seats: model.seats)
                 }
 
-                Section(header: Text("Ancestral Weapons")) {
+                Section(header: Text("\(model.ancestralWeapons.count) Ancestral Weapons")) {
                     HouseAncestralWeaponsView(ancestralWeapons: model.ancestralWeapons)
                 }
 
-                Section(header: Text("Cadet Branches")) {
+                Section(header: Text("\(model.cadetBranches.count) Cadet Branches")) {
                     HouseCadetBranchesView(cadetBranches: model.cadetBranches)
                 }
 
-                Section(header: Text("Sworn Members")) {
+                Section(header: Text("\(model.swornMembers.count) Sworn Members")) {
                     HouseSwornMembersView(swornMembers: model.swornMembers)
                 }
             }
