@@ -9,10 +9,11 @@ final class HouseListViewModel: ObservableObject {
 
     private var currentPage: Int
     private let pageSize: Int
-    @Published private(set) var allHousesLoaded: Bool
 
+    @Published private(set) var allHousesLoaded: Bool
     @Published private(set) var houseModels: [HouseMetadataModel] = []
-    @Published var listState: ListState = .items
+    @Published private(set) var listState: ListState = .items
+
     private(set) lazy var pagination: AdvancedListPagination<AnyView, AnyView> = {
         .thresholdItemPagination(errorView: { error in
             AnyView(
@@ -45,6 +46,8 @@ final class HouseListViewModel: ObservableObject {
         currentPage = 1
         pageSize = 50
         allHousesLoaded = false
+
+        loadHouses()
     }
 }
 

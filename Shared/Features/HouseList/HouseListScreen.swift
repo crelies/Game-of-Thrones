@@ -1,26 +1,27 @@
 import SwiftUI
 
 struct HouseListScreen: View {
-    @ObservedObject var viewModel: HouseListViewModel
+    @StateObject private var viewModel = HouseListViewModel()
     @Binding var selectedHouse: HouseMetadataModel?
 
     var body: some View {
-        NavigationView {
-            List(selection: $selectedHouse) {
+        List(selection: $selectedHouse) {
+            if viewModel.listState == .loading {
+                ProgressView()
+            } else {
                 ForEach(viewModel.houseModels) { houseModel in
-                    Label(houseModel.name, systemImage: "house").tag(houseModel)
+                    HouseRow(model: houseModel)
                 }
             }
-            .navigationTitle("Houses")
         }
-        .onAppear(perform: viewModel.loadHouses)
+        .navigationTitle("Houses")
     }
 }
 
 #if DEBUG
 struct HouseListScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HouseListScreen(viewModel: .init(), selectedHouse: .constant(nil))
+        HouseListScreen(selectedHouse: .constant(nil))
     }
 }
 #endif

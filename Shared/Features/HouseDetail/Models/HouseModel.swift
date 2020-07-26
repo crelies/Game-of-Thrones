@@ -1,22 +1,22 @@
 import Foundation
 
-struct HouseModel {
-    let name: String
-    let region: String
-    let coatOfArms: String
-    let words: String
-    let titles: [String]
-    let seats: [String]
-    let currentLord: URL?
-    let heir: URL?
-    let overlord: URL?
-    let founded: String
-    let founder: URL?
-    let diedOut: String
-    let ancestralWeapons: [String]
-    let cadetBranches: [URL]
-    let swornMembers: [URL]
-    
+struct HouseModel: Equatable {
+    var name: String = ""
+    var region: String = ""
+    var coatOfArms: String = ""
+    var words: String = ""
+    var titles: [String] = []
+    var seats: [String] = []
+    var currentLord: URL? = nil
+    var heir: URL? = nil
+    var overlord: URL? = nil
+    var founded: String = ""
+    var founder: URL? = nil
+    var diedOut: String = ""
+    var ancestralWeapons: [String] = []
+    var cadetBranches: [URL] = []
+    var swornMembers: [URL] = []
+
     init(name: String,
          region: String,
          coatOfArms: String,
@@ -47,25 +47,5 @@ struct HouseModel {
         self.ancestralWeapons = ancestralWeapons
         self.cadetBranches = cadetBranches
         self.swornMembers = swornMembers
-    }
-}
-
-extension HouseModel {
-    init() {
-        name = ""
-        region = ""
-        coatOfArms = ""
-        words = ""
-        titles = []
-        seats = []
-        currentLord = nil
-        heir = nil
-        overlord = nil
-        founded = ""
-        founder = nil
-        diedOut = ""
-        ancestralWeapons = []
-        cadetBranches = []
-        swornMembers = []
     }
 }

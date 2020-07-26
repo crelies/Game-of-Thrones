@@ -53,12 +53,18 @@
 		B956171D24C8C81C003A3ACF /* HouseListViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListViewModelError.swift */; };
 		B956171F24C8C82F003A3ACF /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B956171E24C8C82F003A3ACF /* AdvancedList */; };
 		B956172124C8C836003A3ACF /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B956172024C8C836003A3ACF /* AdvancedList */; };
-		B956172424C8EB70003A3ACF /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172324C8EB70003A3ACF /* Sidebar.swift */; };
-		B956172524C8EB70003A3ACF /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172324C8EB70003A3ACF /* Sidebar.swift */; };
-		B956172724C8EBC3003A3ACF /* NavigationPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172624C8EBC3003A3ACF /* NavigationPrimary.swift */; };
-		B956172824C8EBC3003A3ACF /* NavigationPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172624C8EBC3003A3ACF /* NavigationPrimary.swift */; };
+		B956172724C8EBC3003A3ACF /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172624C8EBC3003A3ACF /* PrimaryView.swift */; };
+		B956172824C8EBC3003A3ACF /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172624C8EBC3003A3ACF /* PrimaryView.swift */; };
 		B956172D24C8ED08003A3ACF /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172C24C8ED08003A3ACF /* NavigationItem.swift */; };
 		B956172E24C8ED08003A3ACF /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172C24C8ED08003A3ACF /* NavigationItem.swift */; };
+		B9DD1A4224CDD7FC00E3C35F /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172324C8EB70003A3ACF /* Sidebar.swift */; };
+		B9DD1A4724CDDA6300E3C35F /* HouseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4624CDDA6300E3C35F /* HouseRow.swift */; };
+		B9DD1A4824CDDA6300E3C35F /* HouseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4624CDDA6300E3C35F /* HouseRow.swift */; };
+		B9DD1A4924CE240D00E3C35F /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172324C8EB70003A3ACF /* Sidebar.swift */; };
+		B9DD1A4B24CE270500E3C35F /* HouseDetailViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4A24CE270500E3C35F /* HouseDetailViewModelState.swift */; };
+		B9DD1A4C24CE270500E3C35F /* HouseDetailViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4A24CE270500E3C35F /* HouseDetailViewModelState.swift */; };
+		B9DD1A4E24CE275100E3C35F /* HouseModel+initWithDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4D24CE275100E3C35F /* HouseModel+initWithDataModel.swift */; };
+		B9DD1A4F24CE275100E3C35F /* HouseModel+initWithDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4D24CE275100E3C35F /* HouseModel+initWithDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,9 +78,12 @@
 		B95616E024C8BF0F003A3ACF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B95616E124C8BF0F003A3ACF /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		B956172324C8EB70003A3ACF /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
-		B956172624C8EBC3003A3ACF /* NavigationPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPrimary.swift; sourceTree = "<group>"; };
+		B956172624C8EBC3003A3ACF /* PrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryView.swift; sourceTree = "<group>"; };
 		B956172C24C8ED08003A3ACF /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
 		B9BA37A023096E3300D3CCA8 /* HouseListViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListViewModelError.swift; sourceTree = "<group>"; };
+		B9DD1A4624CDDA6300E3C35F /* HouseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseRow.swift; sourceTree = "<group>"; };
+		B9DD1A4A24CE270500E3C35F /* HouseDetailViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDetailViewModelState.swift; sourceTree = "<group>"; };
+		B9DD1A4D24CE275100E3C35F /* HouseModel+initWithDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseModel+initWithDataModel.swift"; sourceTree = "<group>"; };
 		B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModel.swift; sourceTree = "<group>"; };
 		B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseResponseModel.swift; sourceTree = "<group>"; };
 		B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModelConvertibleError.swift; sourceTree = "<group>"; };
@@ -120,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E03ACD2303342900E2B3F5 /* HouseModel.swift */,
+				B9DD1A4D24CE275100E3C35F /* HouseModel+initWithDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				B956172324C8EB70003A3ACF /* Sidebar.swift */,
-				B956172624C8EBC3003A3ACF /* NavigationPrimary.swift */,
+				B956172624C8EBC3003A3ACF /* PrimaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E03AF32303345B00E2B3F5 /* HouseListScreen.swift */,
+				B9DD1A4624CDDA6300E3C35F /* HouseRow.swift */,
 				B918F92A24CDC7A8003721C6 /* ViewModels */,
 			);
 			path = HouseList;
@@ -273,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E03AE02303343A00E2B3F5 /* HouseDetailViewModel.swift */,
+				B9DD1A4A24CE270500E3C35F /* HouseDetailViewModelState.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -351,7 +363,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B9E03A9423032E4000E2B3F5 /* Build configuration list for PBXProject "Game-of-Thrones-VIPER-SwiftUI" */;
+			buildConfigurationList = B9E03A9423032E4000E2B3F5 /* Build configuration list for PBXProject "Game-of-Thrones-SwiftUI" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -399,6 +411,7 @@
 			files = (
 				B95616FE24C8C80E003A3ACF /* HouseModel.swift in Sources */,
 				B95616F024C8C7FD003A3ACF /* HouseResponseModel.swift in Sources */,
+				B9DD1A4B24CE270500E3C35F /* HouseDetailViewModelState.swift in Sources */,
 				B956170224C8C812003A3ACF /* HouseCadetBranchesView.swift in Sources */,
 				B956170E24C8C817003A3ACF /* HouseDetailViewModel.swift in Sources */,
 				B956170424C8C812003A3ACF /* HouseTitlesView.swift in Sources */,
@@ -406,21 +419,23 @@
 				B956171624C8C81B003A3ACF /* HouseListViewModel.swift in Sources */,
 				B95616F124C8C7FD003A3ACF /* HouseDataModelConvertibleError.swift in Sources */,
 				B956170024C8C812003A3ACF /* HouseSwornMembersView.swift in Sources */,
-				B956172724C8EBC3003A3ACF /* NavigationPrimary.swift in Sources */,
+				B956172724C8EBC3003A3ACF /* PrimaryView.swift in Sources */,
 				B956170324C8C812003A3ACF /* HouseFactsView.swift in Sources */,
 				B956170124C8C812003A3ACF /* HouseAncestralWeaponsView.swift in Sources */,
 				B95616F224C8C7FD003A3ACF /* HouseResponseModel+HouseDataModelConvertible.swift in Sources */,
 				B956170524C8C812003A3ACF /* HouseSeatsView.swift in Sources */,
-				B956172424C8EB70003A3ACF /* Sidebar.swift in Sources */,
 				B95616E224C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */,
 				B956170F24C8C817003A3ACF /* HouseDetailScreen.swift in Sources */,
 				B956172D24C8ED08003A3ACF /* NavigationItem.swift in Sources */,
 				B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
 				B956171824C8C81B003A3ACF /* HouseListViewModelError.swift in Sources */,
+				B9DD1A4724CDDA6300E3C35F /* HouseRow.swift in Sources */,
 				B95616FA24C8C805003A3ACF /* APIService.swift in Sources */,
 				B95616EE24C8C7FD003A3ACF /* HouseDataModel.swift in Sources */,
 				B95616FC24C8C808003A3ACF /* HouseMetadataModel.swift in Sources */,
+				B9DD1A4924CE240D00E3C35F /* Sidebar.swift in Sources */,
 				B956171724C8C81B003A3ACF /* HouseListScreen.swift in Sources */,
+				B9DD1A4E24CE275100E3C35F /* HouseModel+initWithDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +445,7 @@
 			files = (
 				B95616FF24C8C80E003A3ACF /* HouseModel.swift in Sources */,
 				B95616F524C8C7FD003A3ACF /* HouseResponseModel.swift in Sources */,
+				B9DD1A4C24CE270500E3C35F /* HouseDetailViewModelState.swift in Sources */,
 				B956170824C8C813003A3ACF /* HouseCadetBranchesView.swift in Sources */,
 				B956171224C8C818003A3ACF /* HouseDetailViewModel.swift in Sources */,
 				B956170A24C8C813003A3ACF /* HouseTitlesView.swift in Sources */,
@@ -437,13 +453,13 @@
 				B956171B24C8C81C003A3ACF /* HouseListViewModel.swift in Sources */,
 				B95616F624C8C7FD003A3ACF /* HouseDataModelConvertibleError.swift in Sources */,
 				B956170624C8C813003A3ACF /* HouseSwornMembersView.swift in Sources */,
-				B956172824C8EBC3003A3ACF /* NavigationPrimary.swift in Sources */,
+				B956172824C8EBC3003A3ACF /* PrimaryView.swift in Sources */,
 				B956170924C8C813003A3ACF /* HouseFactsView.swift in Sources */,
 				B956170724C8C813003A3ACF /* HouseAncestralWeaponsView.swift in Sources */,
 				B95616F724C8C7FD003A3ACF /* HouseResponseModel+HouseDataModelConvertible.swift in Sources */,
 				B956170B24C8C813003A3ACF /* HouseSeatsView.swift in Sources */,
-				B956172524C8EB70003A3ACF /* Sidebar.swift in Sources */,
 				B95616E324C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */,
+				B9DD1A4224CDD7FC00E3C35F /* Sidebar.swift in Sources */,
 				B956171324C8C818003A3ACF /* HouseDetailScreen.swift in Sources */,
 				B956172E24C8ED08003A3ACF /* NavigationItem.swift in Sources */,
 				B95616F924C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
@@ -451,7 +467,9 @@
 				B95616FB24C8C805003A3ACF /* APIService.swift in Sources */,
 				B95616F324C8C7FD003A3ACF /* HouseDataModel.swift in Sources */,
 				B95616FD24C8C808003A3ACF /* HouseMetadataModel.swift in Sources */,
+				B9DD1A4824CDDA6300E3C35F /* HouseRow.swift in Sources */,
 				B956171C24C8C81C003A3ACF /* HouseListScreen.swift in Sources */,
+				B9DD1A4F24CE275100E3C35F /* HouseModel+initWithDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,7 +704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B9E03A9423032E4000E2B3F5 /* Build configuration list for PBXProject "Game-of-Thrones-VIPER-SwiftUI" */ = {
+		B9E03A9423032E4000E2B3F5 /* Build configuration list for PBXProject "Game-of-Thrones-SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B9E03AAB23032E4100E2B3F5 /* Debug */,

@@ -10,28 +10,22 @@ import SwiftUI
 
 @main
 struct GameOfThronesApp: App {
-    @StateObject private var houseListViewModel = HouseListViewModel()
-    @StateObject private var houseDetailViewModel = HouseDetailViewModel()
     @State private var selectedNavigationItem: NavigationItem?
     @State private var selectedHouse: HouseMetadataModel?
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                Sidebar(selection: $selectedNavigationItem)
+                Sidebar(selection: $selectedNavigationItem, selectedHouse: $selectedHouse)
                     .frame(minWidth: 200, minHeight: 700)
 
-                NavigationPrimary(navigationItem: $selectedNavigationItem, selectedHouse: $selectedHouse)
-                    .environmentObject(houseListViewModel)
+                PrimaryView(navigationItem: $selectedNavigationItem, selectedHouse: $selectedHouse)
                     .frame(minWidth: 300, minHeight: 700)
 
-
-                #if os(macOS)
                 if let selectedHouse = selectedHouse {
-                    HouseDetailScreen(viewModel: houseDetailViewModel, url: selectedHouse.url)
+                    HouseDetailScreen(url: selectedHouse.url)
                         .frame(minWidth: 400, minHeight: 700)
                 }
-                #endif
             }
         }
     }
