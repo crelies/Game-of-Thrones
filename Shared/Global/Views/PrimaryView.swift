@@ -17,17 +17,17 @@ struct PrimaryView: View {
         case .houses:
             HouseListScreen(selectedHouse: $selectedHouse)
         case .characters:
-            Text("Characters: coming soon ...")
+            Text("Characters: Coming soon ...")
                 .onAppear {
                     selectedHouse = nil
                 }
         case .books:
-            Text("Books: coming soon ...")
+            Text("Books: Coming soon ...")
                 .onAppear {
                     selectedHouse = nil
                 }
         case .none:
-            Text("None")
+            Text("No category selected")
                 .onAppear {
                     selectedHouse = nil
                 }

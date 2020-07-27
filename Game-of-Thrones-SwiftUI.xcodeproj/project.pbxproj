@@ -65,6 +65,8 @@
 		B9DD1A4C24CE270500E3C35F /* HouseDetailViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4A24CE270500E3C35F /* HouseDetailViewModelState.swift */; };
 		B9DD1A4E24CE275100E3C35F /* HouseModel+initWithDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4D24CE275100E3C35F /* HouseModel+initWithDataModel.swift */; };
 		B9DD1A4F24CE275100E3C35F /* HouseModel+initWithDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A4D24CE275100E3C35F /* HouseModel+initWithDataModel.swift */; };
+		B9DD1A5424CE326500E3C35F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A5324CE326500E3C35F /* DetailView.swift */; };
+		B9DD1A5524CE326500E3C35F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD1A5324CE326500E3C35F /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,7 @@
 		B9DD1A4624CDDA6300E3C35F /* HouseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseRow.swift; sourceTree = "<group>"; };
 		B9DD1A4A24CE270500E3C35F /* HouseDetailViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDetailViewModelState.swift; sourceTree = "<group>"; };
 		B9DD1A4D24CE275100E3C35F /* HouseModel+initWithDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseModel+initWithDataModel.swift"; sourceTree = "<group>"; };
+		B9DD1A5324CE326500E3C35F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModel.swift; sourceTree = "<group>"; };
 		B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseResponseModel.swift; sourceTree = "<group>"; };
 		B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModelConvertibleError.swift; sourceTree = "<group>"; };
@@ -183,6 +186,7 @@
 			children = (
 				B956172324C8EB70003A3ACF /* Sidebar.swift */,
 				B956172624C8EBC3003A3ACF /* PrimaryView.swift */,
+				B9DD1A5324CE326500E3C35F /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -426,6 +430,7 @@
 				B956170524C8C812003A3ACF /* HouseSeatsView.swift in Sources */,
 				B95616E224C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */,
 				B956170F24C8C817003A3ACF /* HouseDetailScreen.swift in Sources */,
+				B9DD1A5424CE326500E3C35F /* DetailView.swift in Sources */,
 				B956172D24C8ED08003A3ACF /* NavigationItem.swift in Sources */,
 				B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
 				B956171824C8C81B003A3ACF /* HouseListViewModelError.swift in Sources */,
@@ -460,6 +465,7 @@
 				B956170B24C8C813003A3ACF /* HouseSeatsView.swift in Sources */,
 				B95616E324C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */,
 				B9DD1A4224CDD7FC00E3C35F /* Sidebar.swift in Sources */,
+				B9DD1A5524CE326500E3C35F /* DetailView.swift in Sources */,
 				B956171324C8C818003A3ACF /* HouseDetailScreen.swift in Sources */,
 				B956172E24C8ED08003A3ACF /* NavigationItem.swift in Sources */,
 				B95616F924C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,

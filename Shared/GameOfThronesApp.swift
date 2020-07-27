@@ -22,10 +22,11 @@ struct GameOfThronesApp: App {
                 PrimaryView(navigationItem: $selectedNavigationItem, selectedHouse: $selectedHouse)
                     .frame(minWidth: 300, minHeight: 700)
 
-                if let selectedHouse = selectedHouse {
-                    HouseDetailScreen(url: selectedHouse.url)
-                        .frame(minWidth: 400, minHeight: 700)
-                }
+                #if os(macOS)
+                DetailView(navigationItem: $selectedNavigationItem, selectedHouse: $selectedHouse)
+                #else
+                Text("Nothing selected")
+                #endif
             }
         }
     }
