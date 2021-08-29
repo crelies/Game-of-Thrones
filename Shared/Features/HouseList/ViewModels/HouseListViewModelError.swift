@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: remove this
 enum HouseListViewModelError: Error {
     case allHousesLoaded
 }

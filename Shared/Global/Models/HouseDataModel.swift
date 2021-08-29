@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct HouseDataModel {
+struct HouseDataModel: Equatable, Identifiable {
+    let id: UUID
     let url: URL
     let name: String
     let region: String

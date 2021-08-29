@@ -10,14 +10,14 @@ import SwiftUI
 
 struct Sidebar: View {
     @Binding var selection: NavigationItem?
-    @Binding var selectedHouse: HouseMetadataModel?
+    @Binding var selectedHouse: HouseDataModel?
 
     var body: some View {
         List(selection: $selection) {
             #if os(macOS)
             Label("Houses", systemImage: "house").tag(NavigationItem.houses)
             #else
-            NavigationLink(destination: HouseListScreen(selectedHouse: $selectedHouse)) {
+            NavigationLink(destination: HouseListView(store: store)) {
                 Label("Houses", systemImage: "house")
             }
             #endif

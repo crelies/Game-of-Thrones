@@ -10,14 +10,20 @@ import SwiftUI
 
 struct DetailView: View {
     @Binding var navigationItem: NavigationItem?
-    @Binding var selectedHouse: HouseMetadataModel?
+    @Binding var selectedHouse: HouseDataModel?
 
     var body: some View {
         switch navigationItem {
         case .houses:
             if let selectedHouse = selectedHouse {
-                HouseDetailScreen(url: selectedHouse.url)
-                    .frame(minWidth: 400, minHeight: 700)
+                HouseDetailView(
+                    store: .init(
+                        initialState: .init(dataModel: selectedHouse),
+                        reducer: HouseDetailModule.reducer,
+                        environment: .init()
+                    )
+                )
+                .frame(minWidth: 400, minHeight: 700)
             }
         case .characters:
             EmptyView()

@@ -10,12 +10,12 @@ import SwiftUI
 
 struct PrimaryView: View {
     @Binding var navigationItem: NavigationItem?
-    @Binding var selectedHouse: HouseMetadataModel?
+    @Binding var selectedHouse: HouseDataModel?
 
     var body: some View {
         switch navigationItem {
         case .houses:
-            HouseListScreen(selectedHouse: $selectedHouse)
+            HouseListView(store: store)
         case .characters:
             Text("Characters: Coming soon ...")
                 .onAppear {

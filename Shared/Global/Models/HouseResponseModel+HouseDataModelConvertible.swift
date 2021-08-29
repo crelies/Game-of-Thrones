@@ -9,7 +9,7 @@
 import Foundation
 
 extension HouseResponseModel: HouseDataModelConvertible {
-    func houseDataModel() throws -> HouseDataModel {
+    func houseDataModel(id: UUID) throws -> HouseDataModel {
         guard let url = url else {
             throw HouseDataModelConvertibleError.missingURL
         }
@@ -62,21 +62,24 @@ extension HouseResponseModel: HouseDataModelConvertible {
             founderURL = URL(string: founder)
         }
         
-        return HouseDataModel(url: url,
-                              name: name,
-                              region: region,
-                              coatOfArms: arms,
-                              words: word,
-                              titles: titles?.filter { !$0.isEmpty } ?? [],
-                              seats: seats?.filter { !$0.isEmpty } ?? [],
-                              currentLord: currentLordURL,
-                              heir: heirURL,
-                              overlord: overlordURL,
-                              founded: found,
-                              founder: founderURL,
-                              diedOut: died,
-                              ancestralWeapons: ancestralWeapons?.filter { !$0.isEmpty } ?? [],
-                              cadetBranches: cadetBranches ?? [],
-                              swornMembers: swornMembers ?? [])
+        return HouseDataModel(
+            id: id,
+            url: url,
+            name: name,
+            region: region,
+            coatOfArms: arms,
+            words: word,
+            titles: titles?.filter { !$0.isEmpty } ?? [],
+            seats: seats?.filter { !$0.isEmpty } ?? [],
+            currentLord: currentLordURL,
+            heir: heirURL,
+            overlord: overlordURL,
+            founded: found,
+            founder: founderURL,
+            diedOut: died,
+            ancestralWeapons: ancestralWeapons?.filter { !$0.isEmpty } ?? [],
+            cadetBranches: cadetBranches ?? [],
+            swornMembers: swornMembers ?? []
+        )
     }
 }
