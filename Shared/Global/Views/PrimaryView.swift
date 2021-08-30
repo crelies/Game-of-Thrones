@@ -14,7 +14,7 @@ struct PrimaryView: View {
     var body: some View {
         switch navigationItem {
         case .houses:
-            HouseListView(store: store)
+            Text("Houses")
         case .characters:
             Text("Characters: Coming soon ...")
         case .books:
