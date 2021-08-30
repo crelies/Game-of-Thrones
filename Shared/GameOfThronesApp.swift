@@ -43,21 +43,20 @@ let store = Store<HouseListState, HouseListAction>(
 @main
 struct GameOfThronesApp: App {
     @State private var selectedNavigationItem: NavigationItem?
-    @State private var selectedHouse: HouseDataModel?
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 // Sidebar (first column)
-                Sidebar(selection: $selectedNavigationItem, selectedHouse: $selectedHouse)
+                Sidebar(selection: $selectedNavigationItem)
                     .frame(minWidth: 200, minHeight: 700)
 
                 // Primary view (second column)
-                PrimaryView(navigationItem: $selectedNavigationItem, selectedHouse: $selectedHouse)
+                PrimaryView(navigationItem: $selectedNavigationItem)
                     .frame(minWidth: 300, minHeight: 700)
 
                 // Detail view (third column)
-                Text("Nothing selected")
+                Text("No item selected")
             }
         }
     }

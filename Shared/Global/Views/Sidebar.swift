@@ -10,7 +10,6 @@ import SwiftUI
 
 struct Sidebar: View {
     @Binding var selection: NavigationItem?
-    @Binding var selectedHouse: HouseDataModel?
 
     var body: some View {
         List(selection: $selection) {
@@ -31,6 +30,6 @@ struct Sidebar: View {
 
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
-        Sidebar(selection: .constant(nil), selectedHouse: .constant(nil))
+        Sidebar(selection: .constant(nil))
     }
 }
