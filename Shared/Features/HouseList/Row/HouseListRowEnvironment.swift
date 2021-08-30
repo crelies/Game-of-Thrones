@@ -14,5 +14,5 @@ import Foundation
 
 struct HouseListRowEnvironment {
     var mainQueue: () -> AnySchedulerOf<DispatchQueue>
-    var fetchHouse: (_ id: UUID, _ url: URL) -> Effect<HouseDataModel, HouseListViewModelError>
+    var fetchHouse: (_ id: UUID, _ url: URL) -> Effect<HouseDataModel, HouseListError>
 }

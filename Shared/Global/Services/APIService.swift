@@ -23,30 +23,28 @@ final class APIService {
         return JSONDecoder()
     }()
     
-    func getHouses(page: Int, pageSize: Int) -> AnyPublisher<[HouseResponseModel], Error> {
+    func getHouses(page: Int, pageSize: Int) async throws -> [HouseResponseModel] {
         let queryItemPage = URLQueryItem(name: "page", value: "\(page)")
         let queryItemPageSize = URLQueryItem(name: "pageSize", value: "\(pageSize)")
         
-        var urlComponents = URLComponents(url: housesURL,
-                                          resolvingAgainstBaseURL: false)
+        var urlComponents = URLComponents(
+            url: housesURL,
+            resolvingAgainstBaseURL: false
+        )
         urlComponents?.queryItems = [queryItemPage, queryItemPageSize]
         
         guard let url = urlComponents?.url else {
-            return Fail(error: APIServiceError.couldNotCreateURL).eraseToAnyPublisher()
+            throw APIServiceError.couldNotCreateURL
         }
         
         let housesUrlRequest = URLRequest(url: url)
-        return urlSession.dataTaskPublisher(for: housesUrlRequest)
-            .map { $0.data }
-            .decode(type: [HouseResponseModel].self, decoder: jsonDecoder)
-            .eraseToAnyPublisher()
+        let (data, _) = try await urlSession.data(for: housesUrlRequest)
+        return try jsonDecoder.decode([HouseResponseModel].self, from: data)
     }
     
-    func getHouse(atURL url: URL) -> AnyPublisher<HouseResponseModel, Error> {
+    func getHouse(atURL url: URL) async throws -> HouseResponseModel {
         let houseURLRequest = URLRequest(url: url)
-        return urlSession.dataTaskPublisher(for: houseURLRequest)
-            .map { $0.data }
-            .decode(type: HouseResponseModel.self, decoder: jsonDecoder)
-            .eraseToAnyPublisher()
+        let (data, _) = try await urlSession.data(for: houseURLRequest)
+        return try jsonDecoder.decode(HouseResponseModel.self, from: data)
     }
 }

@@ -14,7 +14,7 @@ import Foundation
 enum HouseListRowAction: Equatable {
     case onAppear
     case fetchHouse(id: UUID)
-    case houseResponse(id: UUID, Result<HouseDataModel, HouseListViewModelError>)
+    case houseResponse(id: UUID, Result<HouseDataModel, HouseListError>)
     case setNavigation(selection: UUID?)
     case house(HouseDetailAction)
 }

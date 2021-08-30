@@ -15,11 +15,9 @@ let store = Store<HouseListState, HouseListAction>(
     environment: HouseListEnvironment(
         mainQueue: { DispatchQueue.main.eraseToAnyScheduler() },
         fetchHouses: { page, pageSize in
-            APIService()
-                .getHouses(page: page, pageSize: pageSize)
-                .mapError { _ in HouseListViewModelError.allHousesLoaded }
-                .map { houses -> [HouseMetadataModel] in
-                    houses.compactMap { house in
+            Effect.task {
+                try await APIService().getHouses(page: page, pageSize: pageSize)
+                    .compactMap { house -> HouseMetadataModel? in
                         guard let url = house.url else {
                             return nil
                         }
@@ -28,14 +26,16 @@ let store = Store<HouseListState, HouseListAction>(
                         }
                         return HouseMetadataModel(url: url, name: name)
                     }
-                }
-                .eraseToEffect()
+            }
+            .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
+            .eraseToEffect()
         }, fetchHouse: { id, url in
-            APIService()
-                .getHouse(atURL: url)
-                .tryMap { try $0.houseDataModel(id: id) }
-                .mapError { _ in HouseListViewModelError.allHousesLoaded }
-                .eraseToEffect()
+            Effect.task {
+                let houseResponseModel = try await APIService().getHouse(atURL: url)
+                return try houseResponseModel.houseDataModel(id: id)
+            }
+            .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
+            .eraseToEffect()
         }
     )
 )

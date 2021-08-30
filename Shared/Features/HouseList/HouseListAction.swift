@@ -15,8 +15,8 @@ enum HouseListAction: Equatable {
     case onAppear
     case refresh
     case fetchHouses
-    case housesResponse(Result<[HouseMetadataModel], HouseListViewModelError>)
+    case housesResponse(Result<[HouseMetadataModel], HouseListError>)
     case fetchNextHouses
-    case nextHousesResponse(Result<[HouseMetadataModel], HouseListViewModelError>)
+    case nextHousesResponse(Result<[HouseMetadataModel], HouseListError>)
     case row(index: UUID, action: HouseListRowAction)
 }

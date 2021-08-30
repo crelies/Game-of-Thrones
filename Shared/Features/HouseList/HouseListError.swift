@@ -1,5 +1,5 @@
 //
-//  HouseListViewModelError.swift
+//  HouseListError.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created by Christian Elies on 18.08.19.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: remove this
-enum HouseListViewModelError: Error {
-    case allHousesLoaded
+enum HouseListError: Error, Equatable {
+    case fetchError(underlying: NSError)
 }

@@ -95,8 +95,8 @@
 		B956170924C8C813003A3ACF /* HouseFactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AD22303343100E2B3F5 /* HouseFactsView.swift */; };
 		B956170A24C8C813003A3ACF /* HouseTitlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03ACF2303343100E2B3F5 /* HouseTitlesView.swift */; };
 		B956170B24C8C813003A3ACF /* HouseSeatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AD12303343100E2B3F5 /* HouseSeatsView.swift */; };
-		B956171824C8C81B003A3ACF /* HouseListViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListViewModelError.swift */; };
-		B956171D24C8C81C003A3ACF /* HouseListViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListViewModelError.swift */; };
+		B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListError.swift */; };
+		B956171D24C8C81C003A3ACF /* HouseListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListError.swift */; };
 		B956171F24C8C82F003A3ACF /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B956171E24C8C82F003A3ACF /* AdvancedList */; };
 		B956172124C8C836003A3ACF /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B956172024C8C836003A3ACF /* AdvancedList */; };
 		B956172724C8EBC3003A3ACF /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172624C8EBC3003A3ACF /* PrimaryView.swift */; };
@@ -149,7 +149,7 @@
 		B956172324C8EB70003A3ACF /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		B956172624C8EBC3003A3ACF /* PrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryView.swift; sourceTree = "<group>"; };
 		B956172C24C8ED08003A3ACF /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
-		B9BA37A023096E3300D3CCA8 /* HouseListViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListViewModelError.swift; sourceTree = "<group>"; };
+		B9BA37A023096E3300D3CCA8 /* HouseListError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListError.swift; sourceTree = "<group>"; };
 		B9DD1A5324CE326500E3C35F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModel.swift; sourceTree = "<group>"; };
 		B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseResponseModel.swift; sourceTree = "<group>"; };
@@ -189,14 +189,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B918F92A24CDC7A8003721C6 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				B9BA37A023096E3300D3CCA8 /* HouseListViewModelError.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		B91CAD612305AB6400EB67B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +315,7 @@
 				B92B650526DB962A004EB679 /* Row */,
 				B92B64EA26DB92E1004EB679 /* HouseListAction.swift */,
 				B92B64EF26DB92E1004EB679 /* HouseListEnvironment.swift */,
+				B9BA37A023096E3300D3CCA8 /* HouseListError.swift */,
 				B92B64F126DB92E1004EB679 /* HouseListReducer.swift */,
 				B92B64F226DB92E1004EB679 /* HouseListState.swift */,
 				B92B64EB26DB92E1004EB679 /* HouseListState+view.swift */,
@@ -330,7 +323,6 @@
 				B92B64EE26DB92E1004EB679 /* HouseListView.swift */,
 				B92B64ED26DB92E1004EB679 /* HouseListView+Action.swift */,
 				B92B64F026DB92E1004EB679 /* HouseListView+State.swift */,
-				B918F92A24CDC7A8003721C6 /* ViewModels */,
 			);
 			path = HouseList;
 			sourceTree = "<group>";
@@ -523,7 +515,7 @@
 				B92B652526DC24FD004EB679 /* HouseDetailView+Action.swift in Sources */,
 				B956172D24C8ED08003A3ACF /* NavigationItem.swift in Sources */,
 				B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
-				B956171824C8C81B003A3ACF /* HouseListViewModelError.swift in Sources */,
+				B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */,
 				B95616FA24C8C805003A3ACF /* APIService.swift in Sources */,
 				B92B64FB26DB92E1004EB679 /* HouseListView.swift in Sources */,
 				B92B64F926DB92E1004EB679 /* HouseListView+Action.swift in Sources */,
@@ -578,7 +570,7 @@
 				B9DD1A5524CE326500E3C35F /* DetailView.swift in Sources */,
 				B956172E24C8ED08003A3ACF /* NavigationItem.swift in Sources */,
 				B95616F924C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
-				B956171D24C8C81C003A3ACF /* HouseListViewModelError.swift in Sources */,
+				B956171D24C8C81C003A3ACF /* HouseListError.swift in Sources */,
 				B92B653226DC3B2B004EB679 /* HouseDetailState+view.swift in Sources */,
 				B95616FB24C8C805003A3ACF /* APIService.swift in Sources */,
 				B92B64FC26DB92E1004EB679 /* HouseListView.swift in Sources */,
@@ -614,7 +606,6 @@
 				PRODUCT_NAME = GameOfThrones;
 				PROVISIONING_PROFILE_SPECIFIER = "match Development de.crelies.*";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -638,7 +629,6 @@
 				PRODUCT_NAME = GameOfThrones;
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc de.crelies.*";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -665,7 +655,6 @@
 				PRODUCT_NAME = GameOfThrones;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -690,7 +679,6 @@
 				PRODUCT_NAME = GameOfThrones;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -753,6 +741,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -808,6 +797,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
