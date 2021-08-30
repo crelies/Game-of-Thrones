@@ -13,13 +13,9 @@ struct Sidebar: View {
 
     var body: some View {
         List(selection: $selection) {
-            #if os(macOS)
-            Label("Houses", systemImage: "house").tag(NavigationItem.houses)
-            #else
             NavigationLink(destination: HouseListView(store: store)) {
                 Label("Houses", systemImage: "house")
             }
-            #endif
             Label("Characters", systemImage: "person").tag(NavigationItem.characters)
             Label("Books", systemImage: "book").tag(NavigationItem.books)
         }
