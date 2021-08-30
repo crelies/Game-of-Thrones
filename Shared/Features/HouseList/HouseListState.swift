@@ -19,5 +19,6 @@ struct HouseListState: Equatable {
     var rowStates: IdentifiedArray<UUID, HouseListRowState> = .init()
     var isLoading = false
     var allHousesLoaded = false
+    var alertState: AlertState<HouseListAction>?
     var selection: Identified<HouseListRowState.ID, HouseDetailState>?
 }

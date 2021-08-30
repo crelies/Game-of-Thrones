@@ -16,5 +16,6 @@ struct HouseListRowState: Equatable, Identifiable {
     let id: UUID
     let dataModel: HouseMetadataModel
     var isLoading = false
+    var alertState: AlertState<HouseListRowAction>?
     var selection: Identified<HouseListRowState.ID, HouseDetailState>?
 }

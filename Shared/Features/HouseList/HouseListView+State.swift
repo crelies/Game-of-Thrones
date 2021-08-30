@@ -16,6 +16,6 @@ extension HouseListView {
     struct State: Equatable {
         let isLoading: Bool
         let isInitialLoading: Bool
-        var selection: Identified<HouseListRowState.ID, HouseDetailState>?
+        let selection: Identified<HouseListRowState.ID, HouseDetailState>?
     }
 }

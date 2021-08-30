@@ -17,4 +17,5 @@ enum HouseListRowAction: Equatable {
     case houseResponse(id: UUID, Result<HouseDataModel, HouseListError>)
     case setNavigation(selection: UUID?)
     case house(HouseDetailAction)
+    case alertDismissed
 }

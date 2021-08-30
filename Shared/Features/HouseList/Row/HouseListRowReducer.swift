@@ -17,6 +17,7 @@ extension HouseListRowModule {
     static var reducer: Reducer<HouseListRowState, HouseListRowAction, HouseListRowEnvironment> {
         Reducer<HouseListRowState, HouseListRowAction, HouseListRowEnvironment> { state, action, environment in
             switch action {
+            case .onAppear: ()
             case let .setNavigation(selection):
                 guard let selection = selection else {
                     state.selection = nil
@@ -35,12 +36,14 @@ extension HouseListRowModule {
                 case let .success(dataModel):
                     let selection: Identified<UUID, HouseDetailState> = .init(.init(dataModel: dataModel), id: id)
                     state.selection = selection
-                case let .failure(error): ()
-                    // TODO:
+                case let .failure(error):
+                    state.alertState = .init(title: TextState("Error"), message: TextState(error.localizedDescription))
                 }
 
                 state.isLoading = false
-            default: ()
+            case .house: ()
+            case .alertDismissed:
+                state.alertState = nil
             }
             return .none
         }

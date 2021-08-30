@@ -47,6 +47,7 @@ struct HouseListRowView: View {
                     }
                 }
             }
+            .alert(self.store.scope(state: { $0.alertState }), dismiss: .alertDismissed)
         }
     }
 }

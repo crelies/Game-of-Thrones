@@ -46,6 +46,10 @@ struct HouseListView: View {
                         HouseListRowView(store: rowStore)
                     }
                 }
+                .alert(
+                    self.store.scope(state: { $0.alertState }),
+                    dismiss: .alertDismissed
+                )
                 .refreshable {
                     await viewStore.send(.refresh, while: \.isLoading)
                 }

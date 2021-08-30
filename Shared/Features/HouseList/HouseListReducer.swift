@@ -43,6 +43,7 @@ extension HouseListModule {
                     state.rowStates = .init(uniqueElements: houses.map { HouseListRowState(id: UUID(), dataModel: $0) })
                 case let .housesResponse(.failure(error)):
                     state.isLoading = false
+                    return .init(value: .presentAlert(error: error))
                 case .fetchNextHouses:
                     // TODO: reset page if failed?
                     guard !state.allHousesLoaded else {
@@ -57,12 +58,17 @@ extension HouseListModule {
                         .forEach { state.rowStates.append($0) }
                 case let .nextHousesResponse(.failure(error)):
                     state.isLoading = false
-                case let .row(id, action):
+                    return .init(value: .presentAlert(error: error))
+                case let .row(_, action):
                     switch action {
                     case let .houseResponse(id, .success(dataModel)):
                         state.selection = .init(.init(dataModel: dataModel), id: id)
                     default: ()
                     }
+                case let .presentAlert(error):
+                    state.alertState = AlertState(title: TextState("Error"), message: TextState(error.localizedDescription))
+                case .alertDismissed:
+                    state.alertState = nil
                 }
                 return .none
             }
