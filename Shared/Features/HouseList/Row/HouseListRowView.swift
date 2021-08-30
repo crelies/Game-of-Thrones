@@ -47,6 +47,9 @@ struct HouseListRowView: View {
                     }
                 }
             }
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
             .alert(self.store.scope(state: { $0.alertState }), dismiss: .alertDismissed)
         }
     }

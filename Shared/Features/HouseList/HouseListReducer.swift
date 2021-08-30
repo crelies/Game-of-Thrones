@@ -49,18 +49,47 @@ extension HouseListModule {
                     guard !state.allHousesLoaded else {
                         return .none
                     }
+
+                    if var lastRowState = state.rowStates.last {
+                        lastRowState.isLoading = true
+                        state.rowStates.updateOrAppend(lastRowState)
+                    }
+
                     state.page += 1
-                    return .init(value: .fetchHouses)
+                    return environment
+                        .fetchHouses(state.page, state.pageSize)
+                        .receive(on: environment.mainQueue())
+                        .catchToEffect()
+                        .map(HouseListAction.nextHousesResponse)
                 case let .nextHousesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
-                    state.isLoading = false
+
+                    if var lastRowState = state.rowStates.last {
+                        lastRowState.isLoading = false
+                        state.rowStates.updateOrAppend(lastRowState)
+                    }
+
                     houses.map { HouseListRowState(id: UUID(), dataModel: $0) }
                         .forEach { state.rowStates.append($0) }
                 case let .nextHousesResponse(.failure(error)):
-                    state.isLoading = false
+                    if var lastRowState = state.rowStates.last {
+                        lastRowState.isLoading = false
+                        state.rowStates.updateOrAppend(lastRowState)
+                    }
                     return .init(value: .presentAlert(error: error))
-                case let .row(_, action):
+                case let .row(id, action):
                     switch action {
+                    case .onAppear:
+                        guard let rowState = state.rowStates.first(where: { $0.id == id }) else {
+                            return .none
+                        }
+                        guard let index = state.rowStates.firstIndex(of: rowState) else {
+                            return .none
+                        }
+                        guard index == state.rowStates.endIndex - 1 else {
+                            return .none
+                        }
+                        return .init(value: .fetchNextHouses)
                     case let .houseResponse(id, .success(dataModel)):
                         state.selection = .init(.init(dataModel: dataModel), id: id)
                     default: ()
