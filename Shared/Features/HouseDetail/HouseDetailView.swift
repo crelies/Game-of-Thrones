@@ -58,7 +58,7 @@ struct HouseDetailView: View {
                     HouseSwornMembersView(swornMembers: viewStore.dataModel.swornMembers)
                 }
             }
-            .listStyle(SidebarListStyle())
+            .listStyle(.sidebar)
             .navigationTitle(Text(viewStore.dataModel.name))
 
         }

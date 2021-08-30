@@ -23,7 +23,7 @@ struct Sidebar: View {
             Label("Characters", systemImage: "person").tag(NavigationItem.characters)
             Label("Books", systemImage: "book").tag(NavigationItem.books)
         }
-        .listStyle(SidebarListStyle())
+        .listStyle(.sidebar)
         .navigationTitle("Overview")
     }
 }
