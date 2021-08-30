@@ -48,17 +48,16 @@ struct GameOfThronesApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
+                // Sidebar (first column)
                 Sidebar(selection: $selectedNavigationItem, selectedHouse: $selectedHouse)
                     .frame(minWidth: 200, minHeight: 700)
 
+                // Primary view (second column)
                 PrimaryView(navigationItem: $selectedNavigationItem, selectedHouse: $selectedHouse)
                     .frame(minWidth: 300, minHeight: 700)
 
-                #if os(macOS)
-                DetailView(navigationItem: $selectedNavigationItem, selectedHouse: $selectedHouse)
-                #else
+                // Detail view (third column)
                 Text("Nothing selected")
-                #endif
             }
         }
     }
