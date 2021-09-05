@@ -27,7 +27,20 @@ extension HouseListModule {
             Reducer<HouseListState, HouseListAction, HouseListEnvironment> { state, action, environment in
                 switch action {
                 case .onAppear:
-                    return .init(value: .fetchHouses)
+                    guard !state.isLoading else {
+                        return .none
+                    }
+
+                    guard let currentSelection = state.selection else {
+                        return .none
+                    }
+
+                    guard var rowState = state.rowStates.first(where: { $0.id == currentSelection.id }) else {
+                        return .none
+                    }
+
+                    rowState.selection = currentSelection
+                    state.rowStates.updateOrAppend(rowState)
                 case .refresh:
                     return .init(value: .fetchHouses)
                 case .fetchHouses:
@@ -98,6 +111,7 @@ extension HouseListModule {
                     state.alertState = AlertState(title: TextState("Error"), message: TextState(error.localizedDescription))
                 case .alertDismissed:
                     state.alertState = nil
+                case .setSelection: ()
                 }
                 return .none
             }

@@ -28,15 +28,14 @@ struct HouseListView: View {
                 Color.clear
                     .frame(height: 0)
                     .onAppear {
-                        viewStore.send(.onAppear)
+                        viewStore.send(.refresh)
                     }
             }
 
             if viewStore.isLoading {
                 ProgressView()
             } else {
-                // TODO: selection (selection: $selectedHouse (HouseMetadataModel))
-                List {
+                List(selection: viewStore.binding(get: { $0.selection?.id }, send: HouseListView.Action.setSelection)) {
                     ForEachStore(
                         store.scope(
                             state: \.rowStates,
@@ -45,6 +44,9 @@ struct HouseListView: View {
                     ) { rowStore in
                         HouseListRowView(store: rowStore)
                     }
+                }
+                .onAppear {
+                    viewStore.send(.onAppear)
                 }
                 .alert(
                     self.store.scope(state: { $0.alertState }),

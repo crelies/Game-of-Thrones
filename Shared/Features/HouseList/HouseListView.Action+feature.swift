@@ -14,6 +14,8 @@ extension HouseListView.Action {
         switch self {
         case HouseListView.Action.onAppear:
             return HouseListAction.onAppear
+        case let HouseListView.Action.setSelection(selection):
+            return HouseListAction.setSelection(selection: selection)
         case HouseListView.Action.refresh:
             return HouseListAction.refresh
         }

@@ -13,7 +13,7 @@ struct Sidebar: View {
 
     var body: some View {
         List(selection: $selection) {
-            NavigationLink(destination: HouseListView(store: store)) {
+            NavigationLink(destination: HouseListView(store: store.scope(state: \.houseListState, action: AppAction.houseList))) {
                 Label("Houses", systemImage: "house")
             }
             Label("Characters", systemImage: "person").tag(NavigationItem.characters)
@@ -24,8 +24,10 @@ struct Sidebar: View {
     }
 }
 
+#if DEBUG
 struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
         Sidebar(selection: .constant(nil))
     }
 }
+#endif

@@ -13,7 +13,8 @@ extension HouseListState {
     var view: HouseListView.State {
         .init(
             isLoading: isLoading,
-            isInitialLoading: rowStates.isEmpty
+            isInitialLoading: rowStates.isEmpty,
+            selection: selection
         )
     }
 }
