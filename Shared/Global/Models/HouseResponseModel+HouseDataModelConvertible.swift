@@ -9,7 +9,7 @@
 import Foundation
 
 extension HouseResponseModel: HouseDataModelConvertible {
-    func houseDataModel(id: UUID) throws -> HouseDataModel {
+    func houseDataModel(id: String) throws -> HouseDataModel {
         guard let url = url else {
             throw HouseDataModelConvertibleError.missingURL
         }

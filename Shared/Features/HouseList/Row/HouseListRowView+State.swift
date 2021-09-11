@@ -14,9 +14,9 @@ import Foundation
 
 extension HouseListRowView {
     struct State: Equatable, Identifiable {
-        let id: UUID
+        let id: String
         let dataModel: HouseMetadataModel
         let isLoading: Bool
-        var selection: Identified<HouseListRowState.ID, HouseDetailState>?
+        let selected: Bool
     }
 }

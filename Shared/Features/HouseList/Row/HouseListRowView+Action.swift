@@ -14,6 +14,6 @@ import Foundation
 extension HouseListRowView {
     enum Action: Equatable {
         case onAppear
-        case setNavigation(selection: UUID?)
+        case setSelected(selected: Bool?)
     }
 }

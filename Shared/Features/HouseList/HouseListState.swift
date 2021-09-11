@@ -16,9 +16,9 @@ import IdentifiedCollections
 struct HouseListState: Equatable {
     var page: Int = 1
     var pageSize: Int = 50
-    var rowStates: IdentifiedArray<UUID, HouseListRowState> = .init()
+    var rowStates: IdentifiedArray<String, HouseListRowState> = .init()
     var isLoading = false
     var allHousesLoaded = false
     var alertState: AlertState<HouseListAction>?
-    var selection: Identified<HouseListRowState.ID, HouseDetailState>?
+    var selection: HouseListRowState.ID?
 }

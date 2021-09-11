@@ -27,15 +27,14 @@ struct HouseListRowView: View {
             NavigationLink(
                 destination: IfLetStore(
                     self.store.scope(
-                        state: { $0.selection?.value },
+                        state: { $0.houseDetailState },
                         action: HouseListRowAction.house
                     ),
                     then: HouseDetailView.init(store:)
                 ),
-                tag: viewStore.id,
-                selection: viewStore.binding(
-                    get: { $0.selection?.id },
-                    send: HouseListRowView.Action.setNavigation(selection:)
+                isActive: viewStore.binding(
+                    get: { $0.selected },
+                    send: HouseListRowView.Action.setSelected(selected:)
                 )
             ) {
                 HStack {

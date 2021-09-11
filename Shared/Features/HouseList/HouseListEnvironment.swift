@@ -14,5 +14,5 @@ import ComposableArchitecture
 struct HouseListEnvironment {
     var mainQueue: () -> AnySchedulerOf<DispatchQueue>
     var fetchHouses: (_ page: Int, _ pageSize: Int) -> Effect<[HouseMetadataModel], HouseListError>
-    var fetchHouse: (_ id: UUID, _ at: URL) -> Effect<HouseDataModel, HouseListError>
+    var fetchHouse: (_ id: String, _ at: URL) -> Effect<HouseDataModel, HouseListError>
 }

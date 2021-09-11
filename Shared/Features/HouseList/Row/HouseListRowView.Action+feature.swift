@@ -14,8 +14,8 @@ extension HouseListRowView.Action {
         switch self {
         case HouseListRowView.Action.onAppear:
             return HouseListRowAction.onAppear
-        case let HouseListRowView.Action.setNavigation(selection):
-            return HouseListRowAction.setNavigation(selection: selection)
+        case let HouseListRowView.Action.setSelected(selected):
+            return HouseListRowAction.setSelected(selected: selected)
         }
     }
 }

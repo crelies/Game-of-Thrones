@@ -13,9 +13,10 @@ import ComposableArchitecture
 import Foundation
 
 struct HouseListRowState: Equatable, Identifiable {
-    let id: UUID
+    let id: String
     let dataModel: HouseMetadataModel
     var isLoading = false
     var alertState: AlertState<HouseListRowAction>?
-    var selection: Identified<HouseListRowState.ID, HouseDetailState>?
+    var houseDetailState: HouseDetailState?
+    var selected = false
 }

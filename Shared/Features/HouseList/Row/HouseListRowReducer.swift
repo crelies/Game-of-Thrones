@@ -18,12 +18,21 @@ extension HouseListRowModule {
         Reducer<HouseListRowState, HouseListRowAction, HouseListRowEnvironment> { state, action, environment in
             switch action {
             case .onAppear: ()
-            case let .setNavigation(selection):
-                guard let selection = selection else {
-                    state.selection = nil
+            case .setSelected(selected: .some(true)):
+                guard state.selected == false else {
                     return .none
                 }
-                return .init(value: .fetchHouse(id: selection))
+                guard state.houseDetailState == nil else {
+                    state.selected = true
+                    return .none
+                }
+                return .init(value: .fetchHouse(id: state.id))
+            case .setSelected(selected: .some(false)),
+                    .setSelected(selected: nil):
+                guard state.selected == true else {
+                    return .none
+                }
+                state.selected = false
             case let .fetchHouse(id):
                 state.isLoading = true
                 return environment
@@ -31,16 +40,17 @@ extension HouseListRowModule {
                     .receive(on: environment.mainQueue())
                     .catchToEffect()
                     .map { HouseListRowAction.houseResponse(id: id, $0) }
-            case let .houseResponse(id, result):
+            case let .houseResponse(_, result):
                 switch result {
                 case let .success(dataModel):
-                    let selection: Identified<UUID, HouseDetailState> = .init(.init(dataModel: dataModel), id: id)
-                    state.selection = selection
+                    let houseDetailState: HouseDetailState = .init(dataModel: dataModel)
+                    state.houseDetailState = houseDetailState
+                    state.isLoading = false
+                    return .init(value: .setSelected(selected: true))
                 case let .failure(error):
                     state.alertState = .init(title: TextState("Error"), message: TextState(error.localizedDescription))
+                    state.isLoading = false
                 }
-
-                state.isLoading = false
             case .house: ()
             case .alertDismissed:
                 state.alertState = nil

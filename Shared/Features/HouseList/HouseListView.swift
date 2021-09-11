@@ -35,7 +35,7 @@ struct HouseListView: View {
             if viewStore.isLoading {
                 ProgressView()
             } else {
-                List(selection: viewStore.binding(get: { $0.selection?.id }, send: HouseListView.Action.setSelection)) {
+                List(selection: viewStore.binding(get: { $0.selection }, send: HouseListView.Action.setSelection)) {
                     ForEachStore(
                         store.scope(
                             state: \.rowStates,

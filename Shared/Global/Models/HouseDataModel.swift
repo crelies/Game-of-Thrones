@@ -9,7 +9,7 @@
 import Foundation
 
 struct HouseDataModel: Equatable, Identifiable {
-    let id: UUID
+    let id: String
     let url: URL
     let name: String
     let region: String

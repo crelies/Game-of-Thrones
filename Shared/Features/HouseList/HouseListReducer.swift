@@ -35,12 +35,7 @@ extension HouseListModule {
                         return .none
                     }
 
-                    guard var rowState = state.rowStates.first(where: { $0.id == currentSelection.id }) else {
-                        return .none
-                    }
-
-                    rowState.selection = currentSelection
-                    state.rowStates.updateOrAppend(rowState)
+                    return .init(value: .selectHouse(selection: currentSelection))
                 case .refresh:
                     return .init(value: .fetchHouses)
                 case .fetchHouses:
@@ -53,7 +48,7 @@ extension HouseListModule {
                 case let .housesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
                     state.isLoading = false
-                    state.rowStates = .init(uniqueElements: houses.map { HouseListRowState(id: UUID(), dataModel: $0) })
+                    state.rowStates = .init(uniqueElements: houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) })
                 case let .housesResponse(.failure(error)):
                     state.isLoading = false
                     return .init(value: .presentAlert(error: error))
@@ -82,7 +77,7 @@ extension HouseListModule {
                         state.rowStates.updateOrAppend(lastRowState)
                     }
 
-                    houses.map { HouseListRowState(id: UUID(), dataModel: $0) }
+                    houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }
                         .forEach { state.rowStates.append($0) }
                 case let .nextHousesResponse(.failure(error)):
                     if var lastRowState = state.rowStates.last {
@@ -103,9 +98,38 @@ extension HouseListModule {
                             return .none
                         }
                         return .init(value: .fetchNextHouses)
-                    case let .houseResponse(id, .success(dataModel)):
-                        state.selection = .init(.init(dataModel: dataModel), id: id)
+                    case .setSelected(selected: .some(true)):
+                        return .init(value: .selectHouse(selection: id))
+                    case .setSelected(selected: .some(false)),
+                            .setSelected(selected: nil):
+                        let currentlySelected = state.rowStates.last(where: { $0.id == state.selection })
+                        for rowState in state.rowStates {
+                            guard rowState.id != (currentlySelected?.id ?? "") else {
+                                continue
+                            }
+                            var updatedRowState = rowState
+                            updatedRowState.selected = false
+                            state.rowStates.updateOrAppend(updatedRowState)
+                        }
                     default: ()
+                    }
+                case let .selectHouse(selectedHouse):
+                    guard let selectedRowState = state.rowStates.first(where: { $0.id == selectedHouse }), selectedRowState.houseDetailState != nil else {
+                        state.selection = selectedHouse
+                        return .none
+                    }
+                    var selection: HouseListRowState.ID?
+                    for rowState in state.rowStates {
+                        var updatedRowState = rowState
+                        updatedRowState.selected = rowState.id == selectedHouse
+                        state.rowStates.updateOrAppend(updatedRowState)
+
+                        if selection == nil, updatedRowState.selected, updatedRowState.houseDetailState != nil {
+                            selection = updatedRowState.id
+                        }
+                    }
+                    if let selection = selection {
+                        state.selection = selection
                     }
                 case let .presentAlert(error):
                     state.alertState = AlertState(title: TextState("Error"), message: TextState(error.localizedDescription))

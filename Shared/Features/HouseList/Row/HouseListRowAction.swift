@@ -13,9 +13,9 @@ import Foundation
 
 enum HouseListRowAction: Equatable {
     case onAppear
-    case fetchHouse(id: UUID)
-    case houseResponse(id: UUID, Result<HouseDataModel, HouseListError>)
-    case setNavigation(selection: UUID?)
+    case fetchHouse(id: String)
+    case houseResponse(id: String, Result<HouseDataModel, HouseListError>)
+    case setSelected(selected: Bool?)
     case house(HouseDetailAction)
     case alertDismissed
 }

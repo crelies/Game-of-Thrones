@@ -15,6 +15,6 @@ extension HouseListView {
     enum Action: Equatable {
         case onAppear
         case refresh
-        case setSelection(selection: UUID?)
+        case setSelection(selection: String?)
     }
 }
