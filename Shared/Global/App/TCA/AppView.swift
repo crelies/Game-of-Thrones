@@ -24,15 +24,14 @@ struct AppView: View {
                 }
             )
         ) { viewStore in
-            NavigationView {
-                // Sidebar (first column)
+            NavigationSplitView {
                 Sidebar(selection: viewStore.binding(get: { $0.selectedNavigationItem }, send: AppView.Action.setSelectedNavigationItem))
                     .frame(minWidth: 200, minHeight: 700)
-
+            } content: {
                 // Primary view (second column)
                 PrimaryView(navigationItem: viewStore.binding(get: { $0.selectedNavigationItem }, send: AppView.Action.setSelectedNavigationItem))
                     .frame(minWidth: 300, minHeight: 700)
-
+            } detail: {
                 // Detail view (third column)
                 Text("No item selected")
             }
