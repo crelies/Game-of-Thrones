@@ -20,3 +20,5 @@ struct HouseListRowState: Equatable, Identifiable {
     var houseDetailState: HouseDetailState?
     var selected = false
 }
+
+extension HouseListRowState: Hashable {}

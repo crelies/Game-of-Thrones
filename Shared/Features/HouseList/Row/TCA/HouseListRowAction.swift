@@ -19,3 +19,5 @@ enum HouseListRowAction: Equatable {
     case house(HouseDetailAction)
     case alertDismissed
 }
+
+extension HouseListRowAction: Hashable {}

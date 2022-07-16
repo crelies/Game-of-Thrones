@@ -27,3 +27,5 @@ struct HouseDataModel: Equatable, Identifiable {
     let cadetBranches: [URL]
     let swornMembers: [URL]
 }
+
+extension HouseDataModel: Hashable {}

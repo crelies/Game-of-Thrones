@@ -24,3 +24,5 @@ enum HouseListAction: Equatable {
     case presentAlert(error: HouseListError)
     case alertDismissed
 }
+
+extension HouseListAction: Hashable {}

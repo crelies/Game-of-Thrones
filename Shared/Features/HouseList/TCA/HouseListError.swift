@@ -11,3 +11,5 @@ import Foundation
 enum HouseListError: Error, Equatable {
     case fetchError(underlying: NSError)
 }
+
+extension HouseListError: Hashable {}

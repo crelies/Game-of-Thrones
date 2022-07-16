@@ -12,3 +12,5 @@
 struct HouseDetailState: Equatable {
     let dataModel: HouseDataModel
 }
+
+extension HouseDetailState: Hashable {}

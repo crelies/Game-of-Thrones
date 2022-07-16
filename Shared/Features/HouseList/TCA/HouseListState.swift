@@ -22,3 +22,5 @@ struct HouseListState: Equatable {
     var alertState: AlertState<HouseListAction>?
     var selection: HouseListRowState.ID?
 }
+
+extension HouseListState: Hashable {}
