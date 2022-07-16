@@ -16,11 +16,10 @@ import IdentifiedCollections
 struct HouseListState: Equatable {
     var page: Int = 1
     var pageSize: Int = 50
-    var rowStates: IdentifiedArray<String, HouseListRowState> = .init()
-    var isLoading = false
+    var viewState: ViewState<IdentifiedArrayOf<HouseListRowState>, HouseListError> = .loading()
     var allHousesLoaded = false
+    var selection: HouseDetailState?
     var alertState: AlertState<HouseListAction>?
-    var selection: HouseListRowState.ID?
 }
 
 extension HouseListState: Hashable {}

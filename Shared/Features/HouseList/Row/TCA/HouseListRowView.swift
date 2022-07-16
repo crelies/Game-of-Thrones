@@ -24,32 +24,7 @@ struct HouseListRowView: View {
                 }
             )
         ) { viewStore in
-            NavigationLink(
-                destination: IfLetStore(
-                    self.store.scope(
-                        state: { $0.houseDetailState },
-                        action: HouseListRowAction.house
-                    ),
-                    then: HouseDetailView.init(store:)
-                ),
-                isActive: viewStore.binding(
-                    get: { $0.selected },
-                    send: HouseListRowView.Action.setSelected(selected:)
-                )
-            ) {
-                HStack {
-                    Label(viewStore.dataModel.name, systemImage: "house")
-                    
-                    if viewStore.isLoading {
-                        Spacer()
-                        ProgressView()
-                    }
-                }
-            }
-            .onAppear {
-                viewStore.send(.onAppear)
-            }
-            .alert(self.store.scope(state: { $0.alertState }), dismiss: .alertDismissed)
+            Label(viewStore.dataModel.name, systemImage: "house")
         }
     }
 }

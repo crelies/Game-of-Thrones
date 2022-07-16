@@ -16,7 +16,5 @@ extension HouseListRowView {
     struct State: Equatable, Identifiable {
         let id: String
         let dataModel: HouseMetadataModel
-        let isLoading: Bool
-        let selected: Bool
     }
 }

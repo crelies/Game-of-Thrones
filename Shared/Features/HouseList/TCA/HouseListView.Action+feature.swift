@@ -12,12 +12,12 @@
 extension HouseListView.Action {
     var feature: HouseListAction {
         switch self {
-        case HouseListView.Action.onAppear:
-            return HouseListAction.onAppear
-        case let HouseListView.Action.setSelection(selection):
-            return HouseListAction.setSelection(selection: selection)
-        case HouseListView.Action.refresh:
-            return HouseListAction.refresh
+        case .onAppear:
+            return .onAppear
+        case let .setSelection(selection):
+            return .setSelection(selection: selection)
+        case .refresh:
+            return .refresh
         }
     }
 }

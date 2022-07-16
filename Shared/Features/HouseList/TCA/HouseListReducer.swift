@@ -15,128 +15,145 @@ enum HouseListModule {}
 
 extension HouseListModule {
     static var reducer: Reducer<HouseListState, HouseListAction, HouseListEnvironment> {
-        Reducer.combine(
+        .combine(
             HouseListRowModule.reducer
-            .forEach(
-                state: \.rowStates,
-                action: /HouseListAction.row,
-                environment: {
-                    .init(mainQueue: $0.mainQueue, fetchHouse: $0.fetchHouse)
-                }
-            ),
-            Reducer<HouseListState, HouseListAction, HouseListEnvironment> { state, action, environment in
+                .forEach(
+                    state: \.self,
+                    action: /.self,
+                    environment: {
+                        $0
+                    }
+                )
+                .optional()
+                .pullback(
+                    state: \.viewState.value,
+                    action: /HouseListAction.row,
+                    environment: {
+                        .init(mainQueue: $0.mainQueue, fetchHouse: $0.fetchHouse)
+                    }
+                ),
+            .init { state, action, environment in
                 switch action {
                 case .onAppear:
-                    guard !state.isLoading else {
+                    guard state.viewState == .loading() else {
                         return .none
                     }
 
-                    guard let currentSelection = state.selection else {
-                        return .none
-                    }
+                    return .init(value: .refresh)
 
-                    return .init(value: .selectHouse(selection: currentSelection))
                 case .refresh:
                     return .init(value: .fetchHouses)
+
                 case .fetchHouses:
-                    state.isLoading = true
+                    state.viewState = .loading()
+
                     return environment
                         .fetchHouses(state.page, state.pageSize)
                         .receive(on: environment.mainQueue())
-                        .catchToEffect()
-                        .map(HouseListAction.housesResponse)
+                        .catchToEffect(HouseListAction.housesResponse)
+
                 case let .housesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
-                    state.isLoading = false
-                    state.rowStates = .init(uniqueElements: houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) })
+                    state.viewState = .loaded(.init(uniqueElements: houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }))
+
                 case let .housesResponse(.failure(error)):
-                    state.isLoading = false
-                    return .init(value: .presentAlert(error: error))
+                    state.viewState = .failure(error)
+
                 case .fetchNextHouses:
                     // TODO: reset page if failed?
                     guard !state.allHousesLoaded else {
                         return .none
                     }
 
-                    if var lastRowState = state.rowStates.last {
-                        lastRowState.isLoading = true
-                        state.rowStates.updateOrAppend(lastRowState)
-                    }
+                    // TODO:
+//                    if var lastRowState = state.rowStates.last {
+//                        lastRowState.isLoading = true
+//                        state.rowStates.updateOrAppend(lastRowState)
+//                    }
 
                     state.page += 1
+
                     return environment
                         .fetchHouses(state.page, state.pageSize)
                         .receive(on: environment.mainQueue())
-                        .catchToEffect()
-                        .map(HouseListAction.nextHousesResponse)
+                        .catchToEffect(HouseListAction.nextHousesResponse)
+
                 case let .nextHousesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
 
-                    if var lastRowState = state.rowStates.last {
-                        lastRowState.isLoading = false
-                        state.rowStates.updateOrAppend(lastRowState)
-                    }
+                    // TODO:
+//                    if var lastRowState = state.rowStates.last {
+//                        lastRowState.isLoading = false
+//                        state.rowStates.updateOrAppend(lastRowState)
+//                    }
 
-                    houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }
-                        .forEach { state.rowStates.append($0) }
+                    let newRows = houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }
+                    state.viewState.value?.append(contentsOf: newRows)
+
                 case let .nextHousesResponse(.failure(error)):
-                    if var lastRowState = state.rowStates.last {
-                        lastRowState.isLoading = false
-                        state.rowStates.updateOrAppend(lastRowState)
-                    }
+                    // TODO:
+//                    if var lastRowState = state.rowStates.last {
+//                        lastRowState.isLoading = false
+//                        state.rowStates.updateOrAppend(lastRowState)
+//                    }
                     return .init(value: .presentAlert(error: error))
+
                 case let .row(id, action):
                     switch action {
                     case .onAppear:
-                        guard let rowState = state.rowStates.first(where: { $0.id == id }) else {
+                        guard let value = state.viewState.value else {
                             return .none
                         }
-                        guard let index = state.rowStates.firstIndex(of: rowState) else {
+                        guard let rowState = value.first(where: { $0.id == id }) else {
                             return .none
                         }
-                        guard index == state.rowStates.endIndex - 1 else {
+                        guard let index = value.firstIndex(of: rowState) else {
+                            return .none
+                        }
+                        guard index == value.endIndex - 1 else {
                             return .none
                         }
                         return .init(value: .fetchNextHouses)
-                    case .setSelected(selected: .some(true)):
-                        return .init(value: .selectHouse(selection: id))
-                    case .setSelected(selected: .some(false)),
-                            .setSelected(selected: nil):
-                        let currentlySelected = state.rowStates.last(where: { $0.id == state.selection })
-                        for rowState in state.rowStates {
-                            guard rowState.id != (currentlySelected?.id ?? "") else {
-                                continue
-                            }
-                            var updatedRowState = rowState
-                            updatedRowState.selected = false
-                            state.rowStates.updateOrAppend(updatedRowState)
-                        }
+
                     default: ()
                     }
-                case let .selectHouse(selectedHouse):
-                    guard let selectedRowState = state.rowStates.first(where: { $0.id == selectedHouse }), selectedRowState.houseDetailState != nil else {
-                        state.selection = selectedHouse
-                        return .none
-                    }
-                    var selection: HouseListRowState.ID?
-                    for rowState in state.rowStates {
-                        var updatedRowState = rowState
-                        updatedRowState.selected = rowState.id == selectedHouse
-                        state.rowStates.updateOrAppend(updatedRowState)
 
-                        if selection == nil, updatedRowState.selected, updatedRowState.houseDetailState != nil {
-                            selection = updatedRowState.id
-                        }
-                    }
-                    if let selection = selection {
-                        state.selection = selection
-                    }
+                case let .selectHouse(selectedHouse): ()
+                    // TODO:
+//                    guard let selectedRowState = state.rowStates.first(where: { $0.id == selectedHouse }), selectedRowState.houseDetailState != nil else {
+//                        state.selection = selectedHouse
+//                        return .none
+//                    }
+//                    var selection: HouseListRowState.ID?
+//                    for rowState in state.rowStates {
+//                        var updatedRowState = rowState
+//                        updatedRowState.selected = rowState.id == selectedHouse
+//                        state.rowStates.updateOrAppend(updatedRowState)
+//
+//                        if selection == nil, updatedRowState.selected, updatedRowState.houseDetailState != nil {
+//                            selection = updatedRowState.id
+//                        }
+//                    }
+//                    if let selection = selection {
+//                        state.selection = selection
+//                    }
+
                 case let .presentAlert(error):
                     state.alertState = AlertState(title: TextState("Error"), message: TextState(error.localizedDescription))
+
                 case .alertDismissed:
                     state.alertState = nil
-                case .setSelection: ()
+
+                case let .setSelection(selection: .some(id)):
+                    guard let rowState = state.viewState.value?.first(where: { $0.id == id }) else {
+                        return .none
+                    }
+                    state.selection = .init(id: id, url: rowState.dataModel.url)
+
+                case .setSelection(selection: .none):
+                    state.selection = nil
                 }
+
                 return .none
             }
         )

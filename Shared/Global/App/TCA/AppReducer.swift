@@ -15,46 +15,57 @@ enum AppModule {}
 
 extension AppModule {
     static var reducer: Reducer<AppState, AppAction, AppEnvironment> {
-        Reducer.combine(
-            HouseListModule.reducer
+        .combine(
+            HouseDetailModule.reducer
+                .optional()
                 .pullback(
-                    state: \.houseListState,
-                    action: /AppAction.houseList,
-                    environment: { _ in
-                        HouseListEnvironment(
-                            mainQueue: { DispatchQueue.main.eraseToAnyScheduler() },
-                            fetchHouses: { page, pageSize in
-                                Effect.task {
-                                    try await APIService().getHouses(page: page, pageSize: pageSize)
-                                        .compactMap { house -> HouseMetadataModel? in
-                                            guard let url = house.url else {
-                                                return nil
-                                            }
-                                            guard let name = house.name else {
-                                                return nil
-                                            }
-                                            return HouseMetadataModel(url: url, name: name)
-                                        }
-                                }
-                                .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
-                                .eraseToEffect()
-                            }, fetchHouse: { id, url in
-                                Effect.task {
-                                    let houseResponseModel = try await APIService().getHouse(atURL: url)
-                                    return try houseResponseModel.houseDataModel(id: id)
-                                }
-                                .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
-                                .eraseToEffect()
-                            }
+                    state: \.selectedHouse,
+                    action: /AppAction.houseDetail,
+                    environment: {
+                        .init(mainQueue: $0.mainQueue, fetchHouse: $0.fetchHouse)
+                    }
+                )
+            ,
+            CategoryListModule.reducer
+                .optional()
+                .pullback(
+                    state: \.categoryList,
+                    action: /AppAction.categoryList,
+                    environment: {
+                        .init(
+                            mainQueue: $0.mainQueue,
+                            fetchHouses: $0.fetchHouses,
+                            fetchHouse: $0.fetchHouse
                         )
                     }
                 )
             ,
             Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
                 switch action {
-                case .onAppear: ()
-                case let .setSelectedNavigationItem(navigationItem):
-                    state.selectedNavigationItem = navigationItem
+                case let .setSelectedNavigationItem(.some(category)):
+                    state.category = category
+                    switch category {
+                    case .houses:
+                        state.categoryList = .houseList(.init())
+                    default:
+                        state.categoryList = nil
+                        state.selectedHouse = nil
+                    }
+
+                case .setSelectedNavigationItem(.none):
+                    state.category = nil
+                    state.categoryList = nil
+
+                case .categoryList(.houseList(.setSelection(selection: .some))):
+                    switch state.categoryList {
+                    case let .houseList(houseListState):
+                        state.selectedHouse = houseListState.selection
+                    default: ()
+                    }
+
+                case .categoryList(.houseList(.setSelection(selection: .none))):
+                    state.selectedHouse = nil
+
                 default: ()
                 }
                 return .none

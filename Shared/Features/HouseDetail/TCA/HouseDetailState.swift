@@ -9,8 +9,16 @@
 //  https://www.christianelies.de
 //
 
+import ComposableArchitecture
+import Foundation
+
 struct HouseDetailState: Equatable {
-    let dataModel: HouseDataModel
+    var id: String
+    let url: URL
+    var viewState: ViewState<HouseDataModel, HouseListError> = .loading()
+    var alertState: AlertState<HouseDetailAction>?
 }
+
+extension HouseDetailState: Identifiable {}
 
 extension HouseDetailState: Hashable {}

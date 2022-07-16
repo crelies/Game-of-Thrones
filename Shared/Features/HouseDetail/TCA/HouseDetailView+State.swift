@@ -11,6 +11,6 @@
 
 extension HouseDetailView {
     struct State: Equatable {
-        let dataModel: HouseDataModel
+        let viewState: ViewState<HouseDataModel, HouseListError>
     }
 }

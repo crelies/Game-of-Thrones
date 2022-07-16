@@ -12,6 +12,7 @@
 import ComposableArchitecture
 
 struct AppState: Equatable {
-    var houseListState = HouseListState()
-    var selectedNavigationItem: NavigationItem? = .houses
+    var category: NavigationItem?
+    var categoryList: CategoryListState?
+    var selectedHouse: HouseDetailState?
 }

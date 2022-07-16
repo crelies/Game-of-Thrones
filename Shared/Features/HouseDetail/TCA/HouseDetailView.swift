@@ -24,43 +24,62 @@ struct HouseDetailView: View {
                 }
             )
         ) { viewStore in
-            List {
-                HouseFactsView(
-                    name: viewStore.dataModel.name,
-                    region: viewStore.dataModel.region,
-                    coatOfArms: viewStore.dataModel.coatOfArms,
-                    words: viewStore.dataModel.words,
-                    currentLord: viewStore.dataModel.currentLord,
-                    heir: viewStore.dataModel.heir,
-                    overlord: viewStore.dataModel.overlord,
-                    founded: viewStore.dataModel.founded,
-                    founder: viewStore.dataModel.founder,
-                    diedOut: viewStore.dataModel.diedOut
-                )
-
-                Section(header: Text("\(viewStore.dataModel.titles.count) Titles")) {
-                    HouseTitlesView(titles: viewStore.dataModel.titles)
-                }
-
-                Section(header: Text("\(viewStore.dataModel.seats.count) Seats")) {
-                    HouseSeatsView(seats: viewStore.dataModel.seats)
-                }
-
-                Section(header: Text("\(viewStore.dataModel.ancestralWeapons.count) Ancestral Weapons")) {
-                    HouseAncestralWeaponsView(ancestralWeapons: viewStore.dataModel.ancestralWeapons)
-                }
-
-                Section(header: Text("\(viewStore.dataModel.cadetBranches.count) Cadet Branches")) {
-                    HouseCadetBranchesView(cadetBranches: viewStore.dataModel.cadetBranches)
-                }
-
-                Section(header: Text("\(viewStore.dataModel.swornMembers.count) Sworn Members")) {
-                    HouseSwornMembersView(swornMembers: viewStore.dataModel.swornMembers)
-                }
+            switch viewStore.viewState {
+            case let .loaded(dataModel):
+                loaded(viewStore: viewStore, dataModel: dataModel)
+            case .loading:
+                ProgressView()
+                    .onAppear {
+                        viewStore.send(.onAppear)
+                    }
+            case let .failure(error):
+                Text(error.localizedDescription)
             }
-            .listStyle(.sidebar)
-            .navigationTitle(Text(viewStore.dataModel.name))
-
         }
+    }
+}
+
+extension HouseDetailView {
+    func loaded(
+        viewStore: ViewStore<HouseDetailView.State, Action>,
+        dataModel: HouseDataModel
+    ) -> some View {
+        List {
+            HouseFactsView(
+                name: dataModel.name,
+                region: dataModel.region,
+                coatOfArms: dataModel.coatOfArms,
+                words: dataModel.words,
+                currentLord: dataModel.currentLord,
+                heir: dataModel.heir,
+                overlord: dataModel.overlord,
+                founded: dataModel.founded,
+                founder: dataModel.founder,
+                diedOut: dataModel.diedOut
+            )
+
+            Section(header: Text("\(dataModel.titles.count) Titles")) {
+                HouseTitlesView(titles: dataModel.titles)
+            }
+
+            Section(header: Text("\(dataModel.seats.count) Seats")) {
+                HouseSeatsView(seats: dataModel.seats)
+            }
+
+            Section(header: Text("\(dataModel.ancestralWeapons.count) Ancestral Weapons")) {
+                HouseAncestralWeaponsView(ancestralWeapons: dataModel.ancestralWeapons)
+            }
+
+            Section(header: Text("\(dataModel.cadetBranches.count) Cadet Branches")) {
+                HouseCadetBranchesView(cadetBranches: dataModel.cadetBranches)
+            }
+
+            Section(header: Text("\(dataModel.swornMembers.count) Sworn Members")) {
+                HouseSwornMembersView(swornMembers: dataModel.swornMembers)
+            }
+        }
+        .listStyle(.sidebar)
+        .navigationTitle(dataModel.name)
+        .alert(self.store.scope(state: \.alertState), dismiss: .alertDismissed)
     }
 }

@@ -10,12 +10,11 @@
 //
 
 import ComposableArchitecture
-import Foundation
+import IdentifiedCollections
 
 extension HouseListView {
     struct State: Equatable {
-        let isLoading: Bool
-        let isInitialLoading: Bool
-        let selection: HouseListRowState.ID?
+        let viewState: ViewState<IdentifiedArrayOf<HouseListRowState>, HouseListError>
+        let selection: String?
     }
 }

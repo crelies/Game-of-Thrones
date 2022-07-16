@@ -25,15 +25,28 @@ struct AppView: View {
             )
         ) { viewStore in
             NavigationSplitView {
-                Sidebar(selection: viewStore.binding(get: { $0.selectedNavigationItem }, send: AppView.Action.setSelectedNavigationItem))
+                // Sidebar
+                CategorySelection(category: viewStore.binding(get: \.category, send: AppView.Action.setSelectedNavigationItem))
                     .frame(minWidth: 200, minHeight: 700)
             } content: {
-                // Primary view (second column)
-                PrimaryView(navigationItem: viewStore.binding(get: { $0.selectedNavigationItem }, send: AppView.Action.setSelectedNavigationItem))
-                    .frame(minWidth: 300, minHeight: 700)
+                // Content view / second column
+                IfLetStore(
+                    store.scope(state: \.categoryList, action: AppAction.categoryList),
+                    then: CategoryListView.init,
+                    else: {
+                        Text("No category selected")
+                    }
+                )
+                .frame(minWidth: 300, minHeight: 700)
             } detail: {
-                // Detail view (third column)
-                Text("No item selected")
+                IfLetStore(
+                    store.scope(state: \.selectedHouse, action: AppAction.houseDetail),
+                    then: HouseDetailView.init,
+                    else: {
+                        Text("No item selected")
+                    }
+                )
+                .frame(minWidth: 300, minHeight: 700)
             }
         }
     }

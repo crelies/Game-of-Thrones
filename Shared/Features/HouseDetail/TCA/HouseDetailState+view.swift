@@ -11,6 +11,6 @@
 
 extension HouseDetailState {
     var view: HouseDetailView.State {
-        .init(dataModel: dataModel)
+        .init(viewState: viewState)
     }
 }

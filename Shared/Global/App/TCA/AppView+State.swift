@@ -11,6 +11,6 @@
 
 extension AppView {
     struct State: Equatable {
-        let selectedNavigationItem: NavigationItem?
+        let category: NavigationItem?
     }
 }

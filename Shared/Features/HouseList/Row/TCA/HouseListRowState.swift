@@ -15,10 +15,6 @@ import Foundation
 struct HouseListRowState: Equatable, Identifiable {
     let id: String
     let dataModel: HouseMetadataModel
-    var isLoading = false
-    var alertState: AlertState<HouseListRowAction>?
-    var houseDetailState: HouseDetailState?
-    var selected = false
 }
 
 extension HouseListRowState: Hashable {}

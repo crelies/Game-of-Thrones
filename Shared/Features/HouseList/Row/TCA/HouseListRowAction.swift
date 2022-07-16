@@ -15,7 +15,6 @@ enum HouseListRowAction: Equatable {
     case onAppear
     case fetchHouse(id: String)
     case houseResponse(id: String, Result<HouseDataModel, HouseListError>)
-    case setSelected(selected: Bool?)
     case house(HouseDetailAction)
     case alertDismissed
 }

@@ -11,4 +11,9 @@
 
 enum HouseDetailAction: Equatable {
     case onAppear
+    case fetchHouse
+    case houseResponse(Result<HouseDataModel, HouseListError>)
+    case alertDismissed
 }
+
+extension HouseDetailAction: Hashable {}

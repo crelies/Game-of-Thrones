@@ -16,6 +16,38 @@ enum HouseDetailModule {}
 extension HouseDetailModule {
     static var reducer: Reducer<HouseDetailState, HouseDetailAction, HouseDetailEnvironment> {
         Reducer<HouseDetailState, HouseDetailAction, HouseDetailEnvironment> { state, action, environment in
+            switch action {
+            case .onAppear:
+                switch state.viewState {
+                case .loaded:
+                    return .none
+                default: ()
+                }
+                return .init(value: .fetchHouse)
+
+            case .fetchHouse:
+                state.viewState = .loading()
+
+                return environment
+                    .fetchHouse(state.id, state.url)
+                    .receive(on: environment.mainQueue())
+                    .catchToEffect(HouseDetailAction.houseResponse)
+
+            case let .houseResponse(result):
+                switch result {
+                case let .success(dataModel):
+                    state.viewState = .loaded(dataModel)
+
+                case let .failure(error):
+                    state.viewState = .failure(error)
+                    // TODO:
+//                    state.alertState = .init(title: TextState("Error"), message: TextState(error.localizedDescription))
+                }
+
+            case .alertDismissed:
+                state.alertState = nil
+
+            }
             return .none
         }
     }

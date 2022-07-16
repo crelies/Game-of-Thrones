@@ -24,39 +24,33 @@ struct HouseListView: View {
                 }
             )
         ) { viewStore in
-            if viewStore.isInitialLoading {
-                Color.clear
-                    .frame(height: 0)
-                    .onAppear {
-                        viewStore.send(.refresh)
+            VStack {
+                switch viewStore.viewState {
+                case .loading:
+                    ProgressView()
+                        .onAppear {
+                            viewStore.send(.onAppear)
+                        }
+                case let .loaded(value):
+                    List(selection: viewStore.binding(get: \.selection, send: HouseListView.Action.setSelection)) {
+                        ForEachStore(
+                            store.scope(state: { _ in value }, action: HouseListAction.row)
+                        ) { rowStore in
+                            HouseListRowView(store: rowStore)
+                        }
                     }
-            }
-
-            if viewStore.isLoading {
-                ProgressView()
-            } else {
-                List(selection: viewStore.binding(get: { $0.selection }, send: HouseListView.Action.setSelection)) {
-                    ForEachStore(
-                        store.scope(
-                            state: \.rowStates,
-                            action: HouseListAction.row
-                        )
-                    ) { rowStore in
-                        HouseListRowView(store: rowStore)
+                    .alert(
+                        store.scope(state: \.alertState),
+                        dismiss: .alertDismissed
+                    )
+                    .refreshable {
+                        await viewStore.send(.refresh, while: \.viewState.isLoading)
                     }
+                case let .failure(error):
+                    Text(error.localizedDescription)
                 }
-                .onAppear {
-                    viewStore.send(.onAppear)
-                }
-                .alert(
-                    self.store.scope(state: { $0.alertState }),
-                    dismiss: .alertDismissed
-                )
-                .refreshable {
-                    await viewStore.send(.refresh, while: \.isLoading)
-                }
-                .navigationTitle("Houses")
             }
+            .navigationTitle("Houses")
         }
     }
 }

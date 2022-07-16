@@ -12,5 +12,6 @@
 enum AppAction: Equatable {
     case onAppear
     case setSelectedNavigationItem(navigationItem: NavigationItem?)
-    case houseList(HouseListAction)
+    case categoryList(CategoryListAction)
+    case houseDetail(HouseDetailAction)
 }
