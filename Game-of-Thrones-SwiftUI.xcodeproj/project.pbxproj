@@ -173,6 +173,30 @@
 		B92B650526DB962A004EB679 /* Row */ = {
 			isa = PBXGroup;
 			children = (
+				B93630402883493E00D48437 /* TCA */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
+		B936303F2883493400D48437 /* TCA */ = {
+			isa = PBXGroup;
+			children = (
+				B92B651926DC24FD004EB679 /* HouseDetailAction.swift */,
+				B92B651E26DC24FD004EB679 /* HouseDetailEnvironment.swift */,
+				B92B652026DC24FD004EB679 /* HouseDetailReducer.swift */,
+				B92B652126DC24FD004EB679 /* HouseDetailState.swift */,
+				B92B651A26DC24FD004EB679 /* HouseDetailState+view.swift */,
+				B92B651B26DC24FD004EB679 /* HouseDetailView.Action+feature.swift */,
+				B92B651D26DC24FD004EB679 /* HouseDetailView.swift */,
+				B92B651C26DC24FD004EB679 /* HouseDetailView+Action.swift */,
+				B92B651F26DC24FD004EB679 /* HouseDetailView+State.swift */,
+			);
+			path = TCA;
+			sourceTree = "<group>";
+		};
+		B93630402883493E00D48437 /* TCA */ = {
+			isa = PBXGroup;
+			children = (
 				B92B650626DB963C004EB679 /* HouseListRowAction.swift */,
 				B92B650B26DB963C004EB679 /* HouseListRowEnvironment.swift */,
 				B92B650D26DB963C004EB679 /* HouseListRowReducer.swift */,
@@ -183,7 +207,40 @@
 				B92B650926DB963C004EB679 /* HouseListRowView+Action.swift */,
 				B92B650C26DB963C004EB679 /* HouseListRowView+State.swift */,
 			);
-			path = Row;
+			path = TCA;
+			sourceTree = "<group>";
+		};
+		B93630412883494900D48437 /* TCA */ = {
+			isa = PBXGroup;
+			children = (
+				B92B64EA26DB92E1004EB679 /* HouseListAction.swift */,
+				B92B64EF26DB92E1004EB679 /* HouseListEnvironment.swift */,
+				B9BA37A023096E3300D3CCA8 /* HouseListError.swift */,
+				B92B64F126DB92E1004EB679 /* HouseListReducer.swift */,
+				B92B64F226DB92E1004EB679 /* HouseListState.swift */,
+				B92B64EB26DB92E1004EB679 /* HouseListState+view.swift */,
+				B92B64EC26DB92E1004EB679 /* HouseListView.Action+feature.swift */,
+				B92B64EE26DB92E1004EB679 /* HouseListView.swift */,
+				B92B64ED26DB92E1004EB679 /* HouseListView+Action.swift */,
+				B92B64F026DB92E1004EB679 /* HouseListView+State.swift */,
+			);
+			path = TCA;
+			sourceTree = "<group>";
+		};
+		B93630422883495700D48437 /* TCA */ = {
+			isa = PBXGroup;
+			children = (
+				B98956B926DD8FF900FE3277 /* AppAction.swift */,
+				B98956BE26DD8FF900FE3277 /* AppEnvironment.swift */,
+				B98956C026DD8FF900FE3277 /* AppReducer.swift */,
+				B98956C126DD8FF900FE3277 /* AppState.swift */,
+				B98956BA26DD8FF900FE3277 /* AppState+view.swift */,
+				B98956BB26DD8FF900FE3277 /* AppView.Action+feature.swift */,
+				B98956BD26DD8FF900FE3277 /* AppView.swift */,
+				B98956BC26DD8FF900FE3277 /* AppView+Action.swift */,
+				B98956BF26DD8FF900FE3277 /* AppView+State.swift */,
+			);
+			path = TCA;
 			sourceTree = "<group>";
 		};
 		B95616CF24C8BF0D003A3ACF /* Shared */ = {
@@ -223,15 +280,7 @@
 		B98956B826DD8FEC00FE3277 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				B98956B926DD8FF900FE3277 /* AppAction.swift */,
-				B98956BE26DD8FF900FE3277 /* AppEnvironment.swift */,
-				B98956C026DD8FF900FE3277 /* AppReducer.swift */,
-				B98956C126DD8FF900FE3277 /* AppState.swift */,
-				B98956BA26DD8FF900FE3277 /* AppState+view.swift */,
-				B98956BB26DD8FF900FE3277 /* AppView.Action+feature.swift */,
-				B98956BD26DD8FF900FE3277 /* AppView.swift */,
-				B98956BC26DD8FF900FE3277 /* AppView+Action.swift */,
-				B98956BF26DD8FF900FE3277 /* AppView+State.swift */,
+				B93630422883495700D48437 /* TCA */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -292,16 +341,8 @@
 		B9E03AB223032E7700E2B3F5 /* HouseDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B936303F2883493400D48437 /* TCA */,
 				B9E03AB923032EB300E2B3F5 /* Views */,
-				B92B651926DC24FD004EB679 /* HouseDetailAction.swift */,
-				B92B651E26DC24FD004EB679 /* HouseDetailEnvironment.swift */,
-				B92B652026DC24FD004EB679 /* HouseDetailReducer.swift */,
-				B92B652126DC24FD004EB679 /* HouseDetailState.swift */,
-				B92B651A26DC24FD004EB679 /* HouseDetailState+view.swift */,
-				B92B651B26DC24FD004EB679 /* HouseDetailView.Action+feature.swift */,
-				B92B651D26DC24FD004EB679 /* HouseDetailView.swift */,
-				B92B651C26DC24FD004EB679 /* HouseDetailView+Action.swift */,
-				B92B651F26DC24FD004EB679 /* HouseDetailView+State.swift */,
 			);
 			path = HouseDetail;
 			sourceTree = "<group>";
@@ -309,17 +350,8 @@
 		B9E03AB323032E7D00E2B3F5 /* HouseList */ = {
 			isa = PBXGroup;
 			children = (
+				B93630412883494900D48437 /* TCA */,
 				B92B650526DB962A004EB679 /* Row */,
-				B92B64EA26DB92E1004EB679 /* HouseListAction.swift */,
-				B92B64EF26DB92E1004EB679 /* HouseListEnvironment.swift */,
-				B9BA37A023096E3300D3CCA8 /* HouseListError.swift */,
-				B92B64F126DB92E1004EB679 /* HouseListReducer.swift */,
-				B92B64F226DB92E1004EB679 /* HouseListState.swift */,
-				B92B64EB26DB92E1004EB679 /* HouseListState+view.swift */,
-				B92B64EC26DB92E1004EB679 /* HouseListView.Action+feature.swift */,
-				B92B64EE26DB92E1004EB679 /* HouseListView.swift */,
-				B92B64ED26DB92E1004EB679 /* HouseListView+Action.swift */,
-				B92B64F026DB92E1004EB679 /* HouseListView+State.swift */,
 			);
 			path = HouseList;
 			sourceTree = "<group>";
