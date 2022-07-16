@@ -1,10 +1,10 @@
 # Game-of-Thrones-SwiftUI
 
-SwiftUI prototype for Game of Thrones fans
+SwiftUI App for Game of Thrones fans
 
 ## Motivation
 
-I learn and improve my skills by implementing different prototypes in SwiftUI.
+I learn and improve my skills by implementing different apps in SwiftUI.
 
 ## Preview
 

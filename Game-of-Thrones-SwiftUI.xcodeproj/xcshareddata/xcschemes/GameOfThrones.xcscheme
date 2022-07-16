@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B95616D624C8BF0F003A3ACF"
                BuildableName = "GameOfThrones.app"
-               BlueprintName = "GameOfThrones (iOS)"
+               BlueprintName = "GameOfThrones"
                ReferencedContainer = "container:Game-of-Thrones-SwiftUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -70,7 +70,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B95616D624C8BF0F003A3ACF"
             BuildableName = "GameOfThrones.app"
-            BlueprintName = "GameOfThrones (iOS)"
+            BlueprintName = "GameOfThrones"
             ReferencedContainer = "container:Game-of-Thrones-SwiftUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -87,7 +87,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B95616D624C8BF0F003A3ACF"
             BuildableName = "GameOfThrones.app"
-            BlueprintName = "GameOfThrones (iOS)"
+            BlueprintName = "GameOfThrones"
             ReferencedContainer = "container:Game-of-Thrones-SwiftUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
