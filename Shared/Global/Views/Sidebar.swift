@@ -15,7 +15,8 @@ struct Sidebar: View {
         List(selection: $selection) {
             NavigationLink(destination: HouseListView(store: store.scope(state: \.houseListState, action: AppAction.houseList))) {
                 Label("Houses", systemImage: "house")
-            }
+            }.tag(NavigationItem.houses)
+
             Label("Characters", systemImage: "person").tag(NavigationItem.characters)
             Label("Books", systemImage: "book").tag(NavigationItem.books)
         }
