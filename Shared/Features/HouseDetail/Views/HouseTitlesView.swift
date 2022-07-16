@@ -18,10 +18,8 @@ struct HouseTitlesView: View {
     }
 }
 
-#if DEBUG
 struct HouseTitlesView_Previews: PreviewProvider {
     static var previews: some View {
         HouseTitlesView(titles: [])
     }
 }
-#endif

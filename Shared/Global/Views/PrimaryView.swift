@@ -25,10 +25,8 @@ struct PrimaryView: View {
     }
 }
 
-#if DEBUG
 struct PrimaryView_Previews: PreviewProvider {
     static var previews: some View {
         PrimaryView(navigationItem: .constant(nil))
     }
 }
-#endif

@@ -20,10 +20,8 @@ struct HouseCadetBranchesView: View {
     }
 }
 
-#if DEBUG
 struct HouseCadetBranchesView_Previews: PreviewProvider {
     static var previews: some View {
         HouseCadetBranchesView(cadetBranches: [])
     }
 }
-#endif

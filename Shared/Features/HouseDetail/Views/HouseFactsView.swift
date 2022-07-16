@@ -143,7 +143,6 @@ struct HouseFactsView: View {
     }
 }
 
-#if DEBUG
 struct HouseFactsView_Previews: PreviewProvider {
     static var previews: some View {
         List {
@@ -163,4 +162,3 @@ struct HouseFactsView_Previews: PreviewProvider {
         .listStyle(.sidebar)
     }
 }
-#endif
