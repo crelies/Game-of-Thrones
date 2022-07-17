@@ -10,6 +10,6 @@ struct Dependencies {
     let apiService: APIService
 
     init() {
-        apiService = APIService()
+        apiService = DefaultAPIService()
     }
 }
