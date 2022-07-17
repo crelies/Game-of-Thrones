@@ -15,6 +15,9 @@ final class DefaultAPIService {
     private lazy var housesURL: URL = {
         return baseURL.appendingPathComponent("/houses")
     }()
+    private lazy var charactersURL: URL = {
+        return baseURL.appendingPathComponent("/characters")
+    }()
     private lazy var jsonDecoder: JSONDecoder = {
         return JSONDecoder()
     }()
@@ -49,8 +52,9 @@ extension DefaultAPIService: HousesAPIService {
 
 extension DefaultAPIService: CharactersAPIService {
     func getCharacters() async throws -> [CharacterResponseModel] {
-        // TODO:
-        []
+        let urlRequest = URLRequest(url: charactersURL)
+        let (data, _) = try await urlSession.data(for: urlRequest)
+        return try jsonDecoder.decode([CharacterResponseModel].self, from: data)
     }
 
     func getCharacter(atURL url: URL) async throws -> CharacterResponseModel {
