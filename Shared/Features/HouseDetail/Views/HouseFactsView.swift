@@ -159,6 +159,5 @@ struct HouseFactsView_Previews: PreviewProvider {
                 diedOut: "Unknown"
             )
         }
-        .listStyle(.sidebar)
     }
 }

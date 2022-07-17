@@ -24,17 +24,20 @@ struct HouseDetailView: View {
                 }
             )
         ) { viewStore in
-            switch viewStore.viewState {
-            case let .loaded(dataModel):
-                loaded(viewStore: viewStore, dataModel: dataModel)
-            case .loading:
-                ProgressView()
-                    .onAppear {
-                        viewStore.send(.onAppear)
-                    }
-            case let .failure(error):
-                Text(error.localizedDescription)
+            VStack {
+                switch viewStore.viewState {
+                case let .loaded(dataModel):
+                    loaded(viewStore: viewStore, dataModel: dataModel)
+                case .loading:
+                    ProgressView()
+                        .onAppear {
+                            viewStore.send(.onAppear)
+                        }
+                case let .failure(error):
+                    Text(error.localizedDescription)
+                }
             }
+            .navigationTitle(viewStore.viewState.value?.name ?? "House Details")
         }
     }
 }
@@ -78,6 +81,29 @@ extension HouseDetailView {
                 HouseSwornMembersView(swornMembers: dataModel.swornMembers)
             }
         }
-        .navigationTitle(dataModel.name)
+    }
+}
+
+struct HouseDetailView_Preview: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            HouseDetailView(
+                store: .init(
+                    initialState: .init(
+                        id: "123",
+                        url: URL(string: "https://duckduckgo.com")!
+                    ),
+                    reducer: HouseDetailModule.reducer,
+                    environment: .init(
+                        mainQueue: { .main.eraseToAnyScheduler() },
+                        fetchHouse: { _, _ in
+                            let houseDataModel: HouseDataModel = .mock()
+                            return Effect(value: houseDataModel)
+                        }
+                    )
+                )
+            )
+            .frame(minWidth: 400, minHeight: 700)
+        }
     }
 }
