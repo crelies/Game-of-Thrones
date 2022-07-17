@@ -38,7 +38,7 @@ extension CharacterListModule {
                 state.viewState = .failure(error)
 
             case let .setSelection(selection: .some(id)):
-                state.selection = .init(id: id)
+                state.selection = .init(url: id)
 
             case .setSelection(selection: .none):
                 state.selection = nil

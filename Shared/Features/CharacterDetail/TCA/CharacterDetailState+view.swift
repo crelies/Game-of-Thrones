@@ -11,6 +11,6 @@
 
 extension CharacterDetailState {
     var view: CharacterDetailView.State {
-        .init()
+        .init(viewState: viewState)
     }
 }

@@ -9,10 +9,15 @@
 //  https://www.christianelies.de
 //
 
+import Foundation
+
 struct CharacterDetailState: Equatable {
-    let id: String
+    let url: URL
+    var viewState: ViewState<CharacterDataModel, CharacterClientError> = .loading()
 }
 
-extension CharacterDetailState: Identifiable {}
+extension CharacterDetailState: Identifiable {
+    var id: URL { url }
+}
 
 extension CharacterDetailState: Hashable {}

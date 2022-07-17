@@ -14,7 +14,7 @@ enum CharacterListAction: Equatable {
     case refresh
     case fetchCharacters
     case charactersResponse(Result<[CharacterMetadataModel], CharacterClientError>)
-    case setSelection(selection: String?)
+    case setSelection(selection: CharacterMetadataModel.ID?)
     case alertDismissed
 }
 

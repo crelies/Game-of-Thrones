@@ -21,8 +21,8 @@ extension AppModule {
                 .pullback(
                     state: \.selectedCharacter,
                     action: /AppAction.characterDetail,
-                    environment: { _ in
-                        .init()
+                    environment: {
+                        .init(mainQueue: $0.mainQueue, fetchCharacter: $0.characterClient.fetchCharacter)
                     }
                 )
             ,

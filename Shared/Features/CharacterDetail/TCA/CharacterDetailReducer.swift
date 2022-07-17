@@ -16,6 +16,28 @@ enum CharacterDetailModule {}
 extension CharacterDetailModule {
     static var reducer: Reducer<CharacterDetailState, CharacterDetailAction, CharacterDetailEnvironment> {
         .init { state, action, environment in
+            switch action {
+            case .onAppear:
+                switch state.viewState {
+                case .loaded:
+                    return .none
+                default: ()
+                }
+                return .init(value: .fetchCharacter)
+
+            case .fetchCharacter:
+                return environment.fetchCharacter(state.url)
+                    .receive(on: environment.mainQueue())
+                    .catchToEffect(CharacterDetailAction.characterResponse)
+
+            case let .characterResponse(.success(character)):
+                state.viewState = .loaded(character)
+
+            case let .characterResponse(.failure(error)):
+                state.viewState = .failure(error)
+
+            default: ()
+            }
             return .none
         }
     }

@@ -24,7 +24,20 @@ struct CharacterDetailView: View {
                 }
             )
         ) { viewStore in
-            Text("Character details here ...")
+            VStack {
+                switch viewStore.viewState {
+                case .loading:
+                    ProgressView()
+                        .onAppear {
+                            viewStore.send(.onAppear)
+                        }
+                case let .loaded(character):
+                    Text(String(describing: character))
+                case let .failure(error):
+                    Text(error.localizedDescription)
+                }
+            }
+            .navigationTitle(viewStore.viewState.value?.name ?? "Character details")
         }
     }
 }

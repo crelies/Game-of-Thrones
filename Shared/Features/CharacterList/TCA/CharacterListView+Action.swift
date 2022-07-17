@@ -13,6 +13,6 @@ extension CharacterListView {
     enum Action: Equatable {
         case onAppear
         case refresh
-        case setSelection(selection: String?)
+        case setSelection(selection: CharacterMetadataModel.ID?)
     }
 }

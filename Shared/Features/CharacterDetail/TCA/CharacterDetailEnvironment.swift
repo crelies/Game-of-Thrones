@@ -10,7 +10,9 @@
 //
 
 import ComposableArchitecture
+import Foundation
 
 struct CharacterDetailEnvironment {
-
+    var mainQueue: () -> AnySchedulerOf<DispatchQueue>
+    var fetchCharacter: (URL) -> Effect<CharacterDataModel, CharacterClientError>
 }

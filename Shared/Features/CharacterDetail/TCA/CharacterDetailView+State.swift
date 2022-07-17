@@ -11,6 +11,6 @@
 
 extension CharacterDetailView {
     struct State: Equatable {
-
+        let viewState: ViewState<CharacterDataModel, CharacterClientError>
     }
 }

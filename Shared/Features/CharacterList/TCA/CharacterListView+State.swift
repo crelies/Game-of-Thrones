@@ -14,6 +14,6 @@ import IdentifiedCollections
 extension CharacterListView {
     struct State: Equatable {
         let viewState: ViewState<IdentifiedArrayOf<CharacterMetadataModel>, CharacterClientError>
-        let selection: String?
+        let selection: CharacterMetadataModel.ID?
     }
 }

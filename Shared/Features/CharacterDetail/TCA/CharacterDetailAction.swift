@@ -11,4 +11,6 @@
 
 enum CharacterDetailAction: Equatable {
     case onAppear
+    case fetchCharacter
+    case characterResponse(Result<CharacterDataModel, CharacterClientError>)
 }

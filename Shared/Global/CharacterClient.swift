@@ -11,6 +11,7 @@ import Foundation
 
 struct CharacterClient {
     var fetchCharacters: (_ page: Int, _ pageSize: Int) -> Effect<[CharacterMetadataModel], CharacterClientError>
+    var fetchCharacter: (URL) -> Effect<CharacterDataModel, CharacterClientError>
 }
 
 extension CharacterClient {
@@ -30,6 +31,13 @@ extension CharacterClient {
                 }
                 .mapError { CharacterClientError.fetchError(underlying: $0 as NSError) }
                 .eraseToEffect()
+            },
+            fetchCharacter: { url in
+                Effect.task {
+                    try await dependencies.apiService.getCharacter(atURL: url).characterDataModel(id: url.absoluteString)
+                }
+                .mapError { CharacterClientError.fetchError(underlying: $0 as NSError) }
+                .eraseToEffect()
             }
         )
     }
@@ -39,7 +47,8 @@ extension CharacterClient {
 extension CharacterClient {
     static func mock() -> Self {
         .init(
-            fetchCharacters: { _, _ in .none }
+            fetchCharacters: { _, _ in .none },
+            fetchCharacter: { _ in .none }
         )
     }
 }

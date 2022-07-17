@@ -10,7 +10,22 @@ import Foundation
 
 extension CharacterResponseModel: CharacterDataModelConvertible {
     func characterDataModel(id: String) throws -> CharacterDataModel {
-        CharacterDataModel(
+        var fatherURL: URL?
+        if let father, !father.isEmpty {
+            fatherURL = URL(string: father)!
+        }
+
+        var motherURL: URL?
+        if let mother, !mother.isEmpty {
+            motherURL = URL(string: mother)!
+        }
+
+        var spouseURL: URL?
+        if let spouse, !spouse.isEmpty {
+            spouseURL = URL(string: spouse)!
+        }
+
+        return CharacterDataModel(
             id: id,
             url: url,
             name: name ?? "",
@@ -20,9 +35,9 @@ extension CharacterResponseModel: CharacterDataModelConvertible {
             died: died ?? "",
             titles: titles?.filter { !$0.isEmpty } ?? [],
             aliases: aliases?.filter { !$0.isEmpty } ?? [],
-            father: father.map { $0 }.map { URL(string: $0)! },
-            mother: mother.map { $0 }.map { URL(string: $0)! },
-            spouse: spouse.map { $0 }.map { URL(string: $0)! },
+            father: fatherURL,
+            mother: motherURL,
+            spouse: spouseURL,
             allegiances: allegiances ?? [],
             books: books ?? [],
             povBooks: povBooks ?? [],

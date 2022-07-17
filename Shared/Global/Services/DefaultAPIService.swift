@@ -71,7 +71,8 @@ extension DefaultAPIService: CharactersAPIService {
     }
 
     func getCharacter(atURL url: URL) async throws -> CharacterResponseModel {
-        // TODO:
-        throw APIServiceError.couldNotCreateURL
+        let urlRequest = URLRequest(url: url)
+        let (data, _) = try await urlSession.data(for: urlRequest)
+        return try jsonDecoder.decode(CharacterResponseModel.self, from: data)
     }
 }
