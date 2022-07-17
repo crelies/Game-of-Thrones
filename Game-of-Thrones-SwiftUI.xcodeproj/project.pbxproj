@@ -67,6 +67,7 @@
 		B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListError.swift */; };
 		B956172124C8C836003A3ACF /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B956172024C8C836003A3ACF /* AdvancedList */; };
 		B956172D24C8ED08003A3ACF /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172C24C8ED08003A3ACF /* NavigationItem.swift */; };
+		B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAD128843B3600D5028B /* StyleConstants.swift */; };
 		B98956C226DD8FF900FE3277 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956B926DD8FF900FE3277 /* AppAction.swift */; };
 		B98956C426DD8FF900FE3277 /* AppState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956BA26DD8FF900FE3277 /* AppState+view.swift */; };
 		B98956C626DD8FF900FE3277 /* AppView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956BB26DD8FF900FE3277 /* AppView.Action+feature.swift */; };
@@ -136,6 +137,7 @@
 		B95616D724C8BF0F003A3ACF /* GameOfThrones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfThrones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B956172C24C8ED08003A3ACF /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
 		B95E9F062883472D006BEB6E /* GameOfThrones.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameOfThrones.entitlements; sourceTree = "<group>"; };
+		B972EAD128843B3600D5028B /* StyleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
 		B98956B726DD80EC00FE3277 /* Game-of-Thrones-SwiftUI.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Game-of-Thrones-SwiftUI.gif"; sourceTree = "<group>"; };
 		B98956B926DD8FF900FE3277 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		B98956BA26DD8FF900FE3277 /* AppState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+view.swift"; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */,
 				B9E03AC123032FD600E2B3F5 /* HouseResponseModel+HouseDataModelConvertible.swift */,
 				B956172C24C8ED08003A3ACF /* NavigationItem.swift */,
+				B972EAD128843B3600D5028B /* StyleConstants.swift */,
 				B93630482883628400D48437 /* ViewState.swift */,
 			);
 			path = Models;
@@ -624,6 +627,7 @@
 				B95616EE24C8C7FD003A3ACF /* HouseDataModel.swift in Sources */,
 				B936306028836FB500D48437 /* CategorySelection.swift in Sources */,
 				B92B652426DC24FD004EB679 /* HouseDetailView.Action+feature.swift in Sources */,
+				B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */,
 				B92B652A26DC24FD004EB679 /* HouseDetailState.swift in Sources */,
 				B92B64F526DB92E1004EB679 /* HouseListState+view.swift in Sources */,
 				B95616FC24C8C808003A3ACF /* HouseMetadataModel.swift in Sources */,

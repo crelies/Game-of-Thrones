@@ -40,6 +40,7 @@ struct HouseListView: View {
                                 HouseListRowView(store: rowStore)
                             }
                         }
+                        .listStyle(StyleConstants.houseListStyle)
                         .alert(
                             store.scope(state: \.alertState),
                             dismiss: .alertDismissed
