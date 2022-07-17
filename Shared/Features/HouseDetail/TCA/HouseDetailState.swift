@@ -13,10 +13,9 @@ import ComposableArchitecture
 import Foundation
 
 struct HouseDetailState: Equatable {
-    var id: String
+    let id: String
     let url: URL
     var viewState: ViewState<HouseDataModel, HouseListError> = .loading()
-    var alertState: AlertState<HouseDetailAction>?
 }
 
 extension HouseDetailState: Identifiable {}

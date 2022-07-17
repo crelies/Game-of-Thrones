@@ -40,13 +40,7 @@ extension HouseDetailModule {
 
                 case let .failure(error):
                     state.viewState = .failure(error)
-                    // TODO:
-//                    state.alertState = .init(title: TextState("Error"), message: TextState(error.localizedDescription))
                 }
-
-            case .alertDismissed:
-                state.alertState = nil
-
             }
             return .none
         }

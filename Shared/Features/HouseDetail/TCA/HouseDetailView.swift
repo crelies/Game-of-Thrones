@@ -78,8 +78,6 @@ extension HouseDetailView {
                 HouseSwornMembersView(swornMembers: dataModel.swornMembers)
             }
         }
-        .listStyle(.sidebar)
         .navigationTitle(dataModel.name)
-        .alert(self.store.scope(state: \.alertState), dismiss: .alertDismissed)
     }
 }
