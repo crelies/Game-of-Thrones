@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct CategorySelection: View {
-    @Binding var category: NavigationItem?
+    @Binding var category: Category?
 
     var body: some View {
         List(selection: $category) {
-            Label("Houses", systemImage: "house").tag(NavigationItem.houses)
-            Label("Characters", systemImage: "person").tag(NavigationItem.characters)
-            Label("Books", systemImage: "book").tag(NavigationItem.books)
+            Label("Houses", systemImage: "house").tag(Category.houses)
+            Label("Characters", systemImage: "person").tag(Category.characters)
+            Label("Books", systemImage: "book").tag(Category.books)
         }
         .listStyle(.sidebar)
 //        .navigationTitle("Categories")

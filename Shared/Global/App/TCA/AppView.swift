@@ -26,7 +26,7 @@ struct AppView: View {
         ) { viewStore in
             NavigationSplitView {
                 // Sidebar
-                CategorySelection(category: viewStore.binding(get: \.category, send: AppView.Action.setSelectedNavigationItem))
+                CategorySelection(category: viewStore.binding(get: \.category, send: AppView.Action.setSelectedCategory))
                     .frame(minWidth: 200, minHeight: 700)
             } content: {
                 // Content view / second column

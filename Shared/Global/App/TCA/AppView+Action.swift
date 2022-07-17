@@ -12,6 +12,6 @@
 extension AppView {
     enum Action: Equatable {
         case onAppear
-        case setSelectedNavigationItem(navigationItem: NavigationItem?)
+        case setSelectedCategory(category: Category?)
     }
 }

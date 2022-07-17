@@ -14,8 +14,8 @@ extension AppView.Action {
         switch self {
         case AppView.Action.onAppear:
             return AppAction.onAppear
-        case let AppView.Action.setSelectedNavigationItem(navigationItem):
-            return AppAction.setSelectedNavigationItem(navigationItem: navigationItem)
+        case let AppView.Action.setSelectedCategory(category):
+            return AppAction.setSelectedCategory(category: category)
         }
     }
 }

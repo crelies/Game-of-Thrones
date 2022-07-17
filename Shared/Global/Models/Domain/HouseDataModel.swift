@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HouseDataModel: Equatable, Identifiable {
+struct HouseDataModel {
     let id: String
     let url: URL
     let name: String
@@ -27,5 +27,9 @@ struct HouseDataModel: Equatable, Identifiable {
     let cadetBranches: [URL]
     let swornMembers: [URL]
 }
+
+extension HouseDataModel: Identifiable {}
+
+extension HouseDataModel: Equatable {}
 
 extension HouseDataModel: Hashable {}

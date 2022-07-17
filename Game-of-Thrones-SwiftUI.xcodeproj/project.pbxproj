@@ -66,7 +66,7 @@
 		B956170524C8C812003A3ACF /* HouseSeatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AD12303343100E2B3F5 /* HouseSeatsView.swift */; };
 		B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListError.swift */; };
 		B956172124C8C836003A3ACF /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B956172024C8C836003A3ACF /* AdvancedList */; };
-		B956172D24C8ED08003A3ACF /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172C24C8ED08003A3ACF /* NavigationItem.swift */; };
+		B956172D24C8ED08003A3ACF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172C24C8ED08003A3ACF /* Category.swift */; };
 		B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAD128843B3600D5028B /* StyleConstants.swift */; };
 		B972EAD428843C9300D5028B /* HouseDataModel+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */; };
 		B98956C226DD8FF900FE3277 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956B926DD8FF900FE3277 /* AppAction.swift */; };
@@ -136,7 +136,7 @@
 		B95616D024C8BF0D003A3ACF /* GameOfThronesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfThronesApp.swift; sourceTree = "<group>"; };
 		B95616D224C8BF0F003A3ACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B95616D724C8BF0F003A3ACF /* GameOfThrones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfThrones.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B956172C24C8ED08003A3ACF /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
+		B956172C24C8ED08003A3ACF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B95E9F062883472D006BEB6E /* GameOfThrones.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameOfThrones.entitlements; sourceTree = "<group>"; };
 		B972EAD128843B3600D5028B /* StyleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
 		B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseDataModel+mock.swift"; sourceTree = "<group>"; };
@@ -334,6 +334,33 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		B972EAD5288449AC00D5028B /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		B972EAD6288449BF00D5028B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */,
+				B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */,
+				B9E03ACB23032FEA00E2B3F5 /* HouseMetadataModel.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B972EAD7288449CB00D5028B /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				B9E03AC023032FD600E2B3F5 /* APIServiceError.swift */,
+				B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		B98956B826DD8FEC00FE3277 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,15 +445,12 @@
 		B9E03AB423032E8800E2B3F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9E03AC023032FD600E2B3F5 /* APIServiceError.swift */,
+				B972EAD6288449BF00D5028B /* Domain */,
+				B972EAD7288449CB00D5028B /* Errors */,
+				B972EAD5288449AC00D5028B /* Response */,
+				B956172C24C8ED08003A3ACF /* Category.swift */,
 				B93630612883752700D48437 /* Dependencies.swift */,
-				B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */,
-				B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */,
-				B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */,
-				B9E03ACB23032FEA00E2B3F5 /* HouseMetadataModel.swift */,
-				B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */,
 				B9E03AC123032FD600E2B3F5 /* HouseResponseModel+HouseDataModelConvertible.swift */,
-				B956172C24C8ED08003A3ACF /* NavigationItem.swift */,
 				B972EAD128843B3600D5028B /* StyleConstants.swift */,
 				B93630482883628400D48437 /* ViewState.swift */,
 			);
@@ -620,7 +644,7 @@
 				B95616E224C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */,
 				B972EAD428843C9300D5028B /* HouseDataModel+mock.swift in Sources */,
 				B92B652526DC24FD004EB679 /* HouseDetailView+Action.swift in Sources */,
-				B956172D24C8ED08003A3ACF /* NavigationItem.swift in Sources */,
+				B956172D24C8ED08003A3ACF /* Category.swift in Sources */,
 				B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
 				B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */,
 				B93630592883698E00D48437 /* CategoryListView.swift in Sources */,
