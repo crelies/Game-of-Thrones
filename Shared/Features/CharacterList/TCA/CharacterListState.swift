@@ -9,6 +9,13 @@
 //  https://www.christianelies.de
 //
 
+import ComposableArchitecture
+import IdentifiedCollections
+
 struct CharacterListState: Equatable {
-    
+    var viewState: ViewState<IdentifiedArrayOf<CharacterMetadataModel>, CharacterClientError> = .loading()
+    var selection: CharacterDetailState?
+    var alertState: AlertState<CharacterListAction>?
 }
+
+extension CharacterListState: Hashable {}

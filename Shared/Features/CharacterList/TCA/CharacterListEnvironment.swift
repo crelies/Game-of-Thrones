@@ -13,4 +13,5 @@ import ComposableArchitecture
 
 struct CharacterListEnvironment {
     var mainQueue: () -> AnySchedulerOf<DispatchQueue>
+    var characterClient: CharacterClient
 }

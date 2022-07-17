@@ -14,6 +14,33 @@ struct HouseClient {
     var fetchHouse: (_ id: String, _ at: URL) -> Effect<HouseDataModel, HouseListError>
 }
 
+extension HouseClient {
+    static func live() -> Self {
+        .init(
+            fetchHouses: { page, pageSize in
+                Effect.task {
+                    try await dependencies.apiService.getHouses(page: page, pageSize: pageSize)
+                        .compactMap { house -> HouseMetadataModel? in
+                            guard let name = house.name else {
+                                return nil
+                            }
+                            return HouseMetadataModel(url: house.url, name: name)
+                        }
+                }
+                .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
+                .eraseToEffect()
+            }, fetchHouse: { id, url in
+                Effect.task {
+                    let houseResponseModel = try await dependencies.apiService.getHouse(atURL: url)
+                    return try houseResponseModel.houseDataModel(id: id)
+                }
+                .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
+                .eraseToEffect()
+            }
+        )
+    }
+}
+
 #if DEBUG
 extension HouseClient {
     static func mock() -> Self {

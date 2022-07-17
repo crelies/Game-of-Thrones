@@ -15,4 +15,5 @@ import Foundation
 struct AppEnvironment {
     var mainQueue: () -> AnySchedulerOf<DispatchQueue>
     var houseClient: HouseClient
+    var characterClient: CharacterClient
 }

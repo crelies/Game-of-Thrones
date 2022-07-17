@@ -24,7 +24,38 @@ struct CharacterListView: View {
                 }
             )
         ) { viewStore in
-            Text("Character list here")
+            VStack {
+                switch viewStore.viewState {
+                case .loading(.none):
+                    ProgressView()
+                        .onAppear {
+                            viewStore.send(.onAppear)
+                        }
+                case let .loaded(value), let .loading(.some(value)):
+                    VStack {
+                        List(selection: viewStore.binding(get: \.selection, send: CharacterListView.Action.setSelection)) {
+                            ForEach(value) { character in
+                                Label(character.name, systemImage: "person")
+                            }
+                        }
+                        .listStyle(StyleConstants.houseListStyle)
+                        .alert(
+                            store.scope(state: \.alertState),
+                            dismiss: .alertDismissed
+                        )
+                        .refreshable {
+                            await viewStore.send(.refresh, while: \.viewState.isLoading)
+                        }
+
+                        if case ViewState.loading = viewStore.viewState {
+                            ProgressView()
+                        }
+                    }
+                case let .failure(error):
+                    Text(error.localizedDescription)
+                }
+            }
+            .navigationTitle("Characters")
         }
     }
 }

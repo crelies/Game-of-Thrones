@@ -11,6 +11,9 @@
 
 extension CharacterListState {
     var view: CharacterListView.State {
-        .init()
+        .init(
+            viewState: viewState,
+            selection: selection?.id
+        )
     }
 }

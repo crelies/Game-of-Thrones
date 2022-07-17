@@ -11,4 +11,11 @@
 
 enum CharacterListAction: Equatable {
     case onAppear
+    case refresh
+    case fetchCharacters
+    case charactersResponse(Result<[CharacterMetadataModel], CharacterClientError>)
+    case setSelection(selection: String?)
+    case alertDismissed
 }
+
+extension CharacterListAction: Hashable {}

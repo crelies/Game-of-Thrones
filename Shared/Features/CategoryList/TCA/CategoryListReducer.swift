@@ -22,7 +22,10 @@ extension CategoryListModule {
                     state: /CategoryListState.characters,
                     action: /CategoryListAction.characters,
                     environment: {
-                        .init(mainQueue: $0.mainQueue)
+                        .init(
+                            mainQueue: $0.mainQueue,
+                            characterClient: $0.characterClient
+                        )
                     }
                 )
             ,

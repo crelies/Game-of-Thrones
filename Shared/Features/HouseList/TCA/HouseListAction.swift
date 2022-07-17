@@ -20,7 +20,6 @@ enum HouseListAction: Equatable {
     case nextHousesResponse(Result<[HouseMetadataModel], HouseListError>)
     case row(index: String, action: HouseListRowAction)
     case setSelection(selection: String?)
-    case selectHouse(selection: String?)
     case presentAlert(error: HouseListError)
     case alertDismissed
 }

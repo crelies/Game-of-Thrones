@@ -10,5 +10,9 @@
 //
 
 struct CharacterDetailState: Equatable {
-    
+    let id: String
 }
+
+extension CharacterDetailState: Identifiable {}
+
+extension CharacterDetailState: Hashable {}

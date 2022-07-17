@@ -17,12 +17,12 @@ struct CharacterResponseModel: Decodable {
     let died: String?
     let titles: [String]?
     let aliases: [String]?
-    // character
-    let father: URL?
-    // character
-    let mother: URL?
-    // character
-    let spouse: URL?
+    // character URL
+    let father: String?
+    // character URL
+    let mother: String?
+    // character URL
+    let spouse: String?
     // house URLs
     let allegiances: [URL]?
     let books: [URL]?

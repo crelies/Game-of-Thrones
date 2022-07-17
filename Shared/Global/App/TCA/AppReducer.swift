@@ -34,7 +34,8 @@ extension AppModule {
                     environment: {
                         .init(
                             mainQueue: $0.mainQueue,
-                            houseClient: $0.houseClient
+                            houseClient: $0.houseClient,
+                            characterClient: $0.characterClient
                         )
                     }
                 )
