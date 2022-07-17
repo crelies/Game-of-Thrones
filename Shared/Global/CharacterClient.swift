@@ -10,15 +10,18 @@ import ComposableArchitecture
 import Foundation
 
 struct CharacterClient {
-    var fetchCharacters: () -> Effect<[CharacterMetadataModel], CharacterClientError>
+    var fetchCharacters: (_ page: Int, _ pageSize: Int) -> Effect<[CharacterMetadataModel], CharacterClientError>
 }
 
 extension CharacterClient {
     static func live() -> Self {
         .init(
-            fetchCharacters: {
+            fetchCharacters: { page, pageSize in
                 Effect.task {
-                    try await dependencies.apiService.getCharacters()
+                    try await dependencies.apiService.getCharacters(
+                        page: page,
+                        pageSize: pageSize
+                    )
                         .compactMap { character in
                             var name = character.name ?? ""
                             name = name.isEmpty ? "id: \(character.url.pathComponents.last ?? "-")" : name
@@ -36,7 +39,7 @@ extension CharacterClient {
 extension CharacterClient {
     static func mock() -> Self {
         .init(
-            fetchCharacters: { .none }
+            fetchCharacters: { _, _ in .none }
         )
     }
 }

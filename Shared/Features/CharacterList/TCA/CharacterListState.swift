@@ -13,6 +13,8 @@ import ComposableArchitecture
 import IdentifiedCollections
 
 struct CharacterListState: Equatable {
+    var page: Int = 1
+    var pageSize: Int = 50
     var viewState: ViewState<IdentifiedArrayOf<CharacterMetadataModel>, CharacterClientError> = .loading()
     var selection: CharacterDetailState?
     var alertState: AlertState<CharacterListAction>?

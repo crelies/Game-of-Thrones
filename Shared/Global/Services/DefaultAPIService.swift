@@ -51,8 +51,21 @@ extension DefaultAPIService: HousesAPIService {
 }
 
 extension DefaultAPIService: CharactersAPIService {
-    func getCharacters() async throws -> [CharacterResponseModel] {
-        let urlRequest = URLRequest(url: charactersURL)
+    func getCharacters(page: Int, pageSize: Int) async throws -> [CharacterResponseModel] {
+        let queryItemPage = URLQueryItem(name: "page", value: "\(page)")
+        let queryItemPageSize = URLQueryItem(name: "pageSize", value: "\(pageSize)")
+
+        var urlComponents = URLComponents(
+            url: charactersURL,
+            resolvingAgainstBaseURL: false
+        )
+        urlComponents?.queryItems = [queryItemPage, queryItemPageSize]
+
+        guard let url = urlComponents?.url else {
+            throw APIServiceError.couldNotCreateURL
+        }
+
+        let urlRequest = URLRequest(url: url)
         let (data, _) = try await urlSession.data(for: urlRequest)
         return try jsonDecoder.decode([CharacterResponseModel].self, from: data)
     }

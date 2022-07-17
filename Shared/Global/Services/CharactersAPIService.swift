@@ -9,6 +9,6 @@
 import Foundation
 
 protocol CharactersAPIService {
-    func getCharacters() async throws -> [CharacterResponseModel]
+    func getCharacters(page: Int, pageSize: Int) async throws -> [CharacterResponseModel]
     func getCharacter(atURL url: URL) async throws -> CharacterResponseModel
 }

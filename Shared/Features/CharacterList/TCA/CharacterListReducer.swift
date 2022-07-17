@@ -27,7 +27,7 @@ extension CharacterListModule {
                 return .init(value: .fetchCharacters)
 
             case .fetchCharacters:
-                return environment.characterClient.fetchCharacters()
+                return environment.characterClient.fetchCharacters(state.page, state.pageSize)
                     .receive(on: environment.mainQueue())
                     .catchToEffect(CharacterListAction.charactersResponse)
 
