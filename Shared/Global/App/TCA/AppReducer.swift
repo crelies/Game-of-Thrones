@@ -16,6 +16,16 @@ enum AppModule {}
 extension AppModule {
     static var reducer: Reducer<AppState, AppAction, AppEnvironment> {
         .combine(
+            CharacterDetailModule.reducer
+                .optional()
+                .pullback(
+                    state: \.selectedCharacter,
+                    action: /AppAction.characterDetail,
+                    environment: { _ in
+                        .init()
+                    }
+                )
+            ,
             HouseDetailModule.reducer
                 .optional()
                 .pullback(
@@ -48,17 +58,21 @@ extension AppModule {
                     switch category {
                     case .houses:
                         state.categoryList = .houseList(.init())
+                        state.selectedCharacter = nil
                     case .characters:
                         state.categoryList = .characters(.init())
+                        state.selectedHouse = nil
                     default:
                         state.categoryList = nil
                         state.selectedHouse = nil
+                        state.selectedCharacter = nil
                     }
 
                 case .setSelectedCategory(.none):
                     state.category = nil
                     state.categoryList = nil
                     state.selectedHouse = nil
+                    state.selectedCharacter = nil
 
                 case .categoryList(.houseList(.setSelection(selection: .some))):
                     switch state.categoryList {
@@ -69,6 +83,16 @@ extension AppModule {
 
                 case .categoryList(.houseList(.setSelection(selection: .none))):
                     state.selectedHouse = nil
+
+                case .categoryList(.characters(.setSelection(selection: .some))):
+                    switch state.categoryList {
+                    case let .characters(characterListState):
+                        state.selectedCharacter = characterListState.selection
+                    default: ()
+                    }
+
+                case .categoryList(.characters(.setSelection(selection: .none))):
+                    state.selectedCharacter = nil
 
                 default: ()
                 }

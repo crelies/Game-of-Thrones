@@ -36,6 +36,7 @@ struct CharacterListView: View {
                         List(selection: viewStore.binding(get: \.selection, send: CharacterListView.Action.setSelection)) {
                             ForEach(value) { character in
                                 Label(character.name, systemImage: "person")
+                                    .tag(character.id.absoluteString)
                             }
                         }
                         .listStyle(StyleConstants.houseListStyle)

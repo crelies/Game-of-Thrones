@@ -40,14 +40,27 @@ struct AppView: View {
                 .frame(minWidth: 300, maxWidth: 700, minHeight: 700)
             } detail: {
                 NavigationStack {
-                    IfLetStore(
-                        store.scope(state: \.selectedHouse, action: AppAction.houseDetail),
-                        then: HouseDetailView.init,
-                        else: {
-                            Text("No item selected")
+                    WithViewStore(store) { viewStore in
+                        if viewStore.selectedHouse != nil {
+                            IfLetStore(
+                                store.scope(state: \.selectedHouse, action: AppAction.houseDetail),
+                                then: HouseDetailView.init,
+                                else: {
+                                    Text("No item selected")
+                                }
+                            )
+                            .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
+                        } else if viewStore.selectedCharacter != nil {
+                            IfLetStore(
+                                store.scope(state: \.selectedCharacter, action: AppAction.characterDetail),
+                                then: CharacterDetailView.init,
+                                else: {
+                                    Text("No item selected")
+                                }
+                            )
+                            .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
                         }
-                    )
-                    .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
+                    }
                 }
             }
         }
