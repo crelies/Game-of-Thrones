@@ -62,15 +62,15 @@ private extension HouseDetailView {
             )
 
             Section(header: Text("\(dataModel.titles.count) Titles")) {
-                HouseTitlesView(titles: dataModel.titles)
+                titles(titles: dataModel.titles)
             }
 
             Section(header: Text("\(dataModel.seats.count) Seats")) {
-                HouseSeatsView(seats: dataModel.seats)
+                seats(seats: dataModel.seats)
             }
 
             Section(header: Text("\(dataModel.ancestralWeapons.count) Ancestral Weapons")) {
-                HouseAncestralWeaponsView(ancestralWeapons: dataModel.ancestralWeapons)
+                ancestralWeapons(ancestralWeapons: dataModel.ancestralWeapons)
             }
 
             Section(header: Text("\(dataModel.cadetBranches.count) Cadet Branches")) {
@@ -83,6 +83,32 @@ private extension HouseDetailView {
         }
         .navigationDestination(for: URL.self) { url in
             Text(url.absoluteString)
+        }
+    }
+}
+
+private extension HouseDetailView {
+    func seats(
+        seats: [String]
+    ) -> some View {
+        ForEach(seats, id: \.self) { seat in
+            Text(seat)
+        }
+    }
+
+    func ancestralWeapons(
+        ancestralWeapons: [String]
+    ) -> some View {
+        ForEach(ancestralWeapons, id: \.self) { ancestralWeapon in
+            Text(ancestralWeapon)
+        }
+    }
+
+    func titles(
+        titles: [String]
+    ) -> some View {
+        ForEach(titles, id: \.self) { title in
+            Text(title)
         }
     }
 }

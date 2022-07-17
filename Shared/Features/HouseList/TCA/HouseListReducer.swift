@@ -105,7 +105,8 @@ extension HouseListModule {
                         guard index == value.endIndex - 1 else {
                             return .none
                         }
-                        return .init(value: .fetchNextHouses)
+                        // TODO: this is currently not working because the list view always renders all of its child views
+//                        return .init(value: .fetchNextHouses)
 
                     default: ()
                     }
