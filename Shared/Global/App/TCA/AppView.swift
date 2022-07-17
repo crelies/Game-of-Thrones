@@ -47,7 +47,7 @@ struct AppView: View {
                             Text("No item selected")
                         }
                     )
-                    .frame(minWidth: 300, minHeight: 700)
+                    .frame(minWidth: 500, minHeight: 700)
                 }
             }
         }

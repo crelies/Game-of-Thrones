@@ -36,8 +36,7 @@ struct HouseFactsView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                Text(region)
-                    .lineLimit(nil)
+                Label(region, systemImage: "mappin.and.ellipse")
             }
 
             VStack(alignment: .leading) {
