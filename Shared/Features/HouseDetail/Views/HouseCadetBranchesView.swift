@@ -13,8 +13,16 @@ struct HouseCadetBranchesView: View {
     
     var body: some View {
         ForEach(cadetBranches, id: \.self) { cadetBranch in
-            Link(destination: cadetBranch) {
-                Text(cadetBranch.absoluteString)
+            NavigationLink(value: cadetBranch) {
+                Label {
+                    Text("Branch (id: \(cadetBranch.pathComponents.last ?? ""))")
+                } icon: {
+                    if cadetBranch.absoluteString.contains("house") {
+                        Image(systemName: "house")
+                    } else if cadetBranch.absoluteString.contains("character") {
+                        Image(systemName: "person")
+                    }
+                }
             }
         }
     }
@@ -22,6 +30,10 @@ struct HouseCadetBranchesView: View {
 
 struct HouseCadetBranchesView_Previews: PreviewProvider {
     static var previews: some View {
-        HouseCadetBranchesView(cadetBranches: [])
+        List {
+            HouseCadetBranchesView(cadetBranches: [
+                URL(string: "https://duckduckgo.com")!
+            ])
+        }
     }
 }

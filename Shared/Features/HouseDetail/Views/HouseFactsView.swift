@@ -63,8 +63,7 @@ struct HouseFactsView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                Text(founded)
-                    .lineLimit(nil)
+                Label(founded, systemImage: "calendar")
             }
 
             VStack(alignment: .leading) {
@@ -72,70 +71,95 @@ struct HouseFactsView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                Text(diedOut)
-                    .lineLimit(nil)
+                Label(diedOut, systemImage: "calendar")
             }
+        }
 
+        Section(header: Text("Links")) {
             VStack(alignment: .leading) {
-                Text("Current lord")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                currentLord.map { currentLord in
-                    Link(destination: currentLord) {
-                        Text(currentLord.absoluteString)
+                if let currentLord {
+                    NavigationLink(value: currentLord) {
+                        Label {
+                            Text("Current lord (id: \(currentLord.pathComponents.last ?? ""))")
+                        } icon: {
+                            if currentLord.absoluteString.contains("house") {
+                                Image(systemName: "house")
+                            } else if currentLord.absoluteString.contains("character") {
+                                Image(systemName: "person")
+                            }
+                        }
                     }
-                }
+                } else {
+                    Text("Current lord")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
 
-                if currentLord == nil {
                     Text("-")
                 }
             }
 
             VStack(alignment: .leading) {
-                Text("Heir")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                heir.map { heir in
-                    Link(destination: heir) {
-                        Text(heir.absoluteString)
+                if let heir {
+                    NavigationLink(value: heir) {
+                        Label {
+                            Text("Heir (id: \(heir.pathComponents.last ?? ""))")
+                        } icon: {
+                            if heir.absoluteString.contains("house") {
+                                Image(systemName: "house")
+                            } else if heir.absoluteString.contains("character") {
+                                Image(systemName: "person")
+                            }
+                        }
                     }
-                }
+                } else {
+                    Text("Heir")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
 
-                if heir == nil {
                     Text("-")
                 }
             }
 
             VStack(alignment: .leading) {
-                Text("Overlord")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                overlord.map { overlord in
-                    Link(destination: overlord) {
-                        Text(overlord.absoluteString)
+                if let overlord {
+                    NavigationLink(value: overlord) {
+                        Label {
+                            Text("Overlord (id: \(overlord.pathComponents.last ?? ""))")
+                        } icon: {
+                            if overlord.absoluteString.contains("house") {
+                                Image(systemName: "house")
+                            } else if overlord.absoluteString.contains("character") {
+                                Image(systemName: "person")
+                            }
+                        }
                     }
-                }
+                } else {
+                    Text("Overlord")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
 
-                if overlord == nil {
                     Text("-")
                 }
             }
 
             VStack(alignment: .leading) {
-                Text("Founder")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                founder.map { founder in
-                    Link(destination: founder) {
-                        Text(founder.absoluteString)
+                if let founder {
+                    NavigationLink(value: founder) {
+                        Label {
+                            Text("Founder (id: \(founder.pathComponents.last ?? ""))")
+                        } icon: {
+                            if founder.absoluteString.contains("house") {
+                                Image(systemName: "house")
+                            } else if founder.absoluteString.contains("character") {
+                                Image(systemName: "person")
+                            }
+                        }
                     }
-                }
+                } else {
+                    Text("Founder")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
 
-                if founder == nil {
                     Text("-")
                 }
             }
@@ -151,11 +175,11 @@ struct HouseFactsView_Previews: PreviewProvider {
                 region: "House region",
                 coatOfArms: "House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms House Code of Arms",
                 words: "House of Words",
-                currentLord: nil,
-                heir: nil,
-                overlord: nil,
+                currentLord: URL(string: "https://duckduckgo.com")!,
+                heir: URL(string: "https://duckduckgo.com")!,
+                overlord: URL(string: "https://duckduckgo.com")!,
                 founded: "1990",
-                founder: nil,
+                founder: URL(string: "https://duckduckgo.com")!,
                 diedOut: "Unknown"
             )
         }

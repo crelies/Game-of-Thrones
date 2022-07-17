@@ -13,8 +13,16 @@ struct HouseSwornMembersView: View {
 
     var body: some View {
         ForEach(swornMembers, id: \.self) { swornMember in
-            Link(destination: swornMember) {
-                Text(swornMember.absoluteString)
+            NavigationLink(value: swornMember) {
+                Label {
+                    Text("Member (id: \(swornMember.pathComponents.last ?? ""))")
+                } icon: {
+                    if swornMember.absoluteString.contains("house") {
+                        Image(systemName: "house")
+                    } else if swornMember.absoluteString.contains("character") {
+                        Image(systemName: "person")
+                    }
+                }
             }
         }
     }
@@ -22,6 +30,10 @@ struct HouseSwornMembersView: View {
 
 struct HouseSwornMembersView_Previews: PreviewProvider {
     static var previews: some View {
-        HouseSwornMembersView(swornMembers: [])
+        List {
+            HouseSwornMembersView(swornMembers: [
+                URL(string: "https://duckduckgo.com")!
+            ])
+        }
     }
 }

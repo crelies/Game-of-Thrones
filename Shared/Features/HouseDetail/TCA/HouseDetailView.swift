@@ -42,7 +42,7 @@ struct HouseDetailView: View {
     }
 }
 
-extension HouseDetailView {
+private extension HouseDetailView {
     func loaded(
         viewStore: ViewStore<HouseDetailView.State, Action>,
         dataModel: HouseDataModel
@@ -80,6 +80,9 @@ extension HouseDetailView {
             Section(header: Text("\(dataModel.swornMembers.count) Sworn Members")) {
                 HouseSwornMembersView(swornMembers: dataModel.swornMembers)
             }
+        }
+        .navigationDestination(for: URL.self) { url in
+            Text(url.absoluteString)
         }
     }
 }

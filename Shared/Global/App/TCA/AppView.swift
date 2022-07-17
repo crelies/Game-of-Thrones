@@ -39,14 +39,16 @@ struct AppView: View {
                 )
                 .frame(minWidth: 300, minHeight: 700)
             } detail: {
-                IfLetStore(
-                    store.scope(state: \.selectedHouse, action: AppAction.houseDetail),
-                    then: HouseDetailView.init,
-                    else: {
-                        Text("No item selected")
-                    }
-                )
-                .frame(minWidth: 300, minHeight: 700)
+                NavigationStack {
+                    IfLetStore(
+                        store.scope(state: \.selectedHouse, action: AppAction.houseDetail),
+                        then: HouseDetailView.init,
+                        else: {
+                            Text("No item selected")
+                        }
+                    )
+                    .frame(minWidth: 300, minHeight: 700)
+                }
             }
         }
     }

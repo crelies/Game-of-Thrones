@@ -24,15 +24,25 @@ extension HouseDataModel {
             seats: [
                 "High Chair"
             ],
-            currentLord: nil,
-            heir: nil,
-            overlord: nil,
+            currentLord: URL(string: "https://duckduckgo.com")!,
+            heir: URL(string: "https://duckduckgo.com")!,
+            overlord: URL(string: "https://duckduckgo.com")!,
             founded: "1990",
-            founder: nil,
+            founder: URL(string: "https://duckduckgo.com")!,
             diedOut: "9999",
-            ancestralWeapons: [],
-            cadetBranches: [],
-            swornMembers: []
+            ancestralWeapons: [
+                "Sword"
+            ],
+            cadetBranches: [
+                URL(string: "https://duckduckgo.com")!,
+                URL(string: "https://duckduckgo.com")!,
+                URL(string: "https://duckduckgo.com")!
+            ],
+            swornMembers: [
+                URL(string: "https://duckduckgo.com")!,
+                URL(string: "https://duckduckgo.com")!,
+                URL(string: "https://duckduckgo.com")!
+            ]
         )
     }
 }
