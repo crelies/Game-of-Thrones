@@ -20,7 +20,7 @@ final class DefaultAPIService {
     }()
 }
 
-extension DefaultAPIService: APIService {
+extension DefaultAPIService: HousesAPIService {
     func getHouses(page: Int, pageSize: Int) async throws -> [HouseResponseModel] {
         let queryItemPage = URLQueryItem(name: "page", value: "\(page)")
         let queryItemPageSize = URLQueryItem(name: "pageSize", value: "\(pageSize)")
@@ -44,5 +44,17 @@ extension DefaultAPIService: APIService {
         let houseURLRequest = URLRequest(url: url)
         let (data, _) = try await urlSession.data(for: houseURLRequest)
         return try jsonDecoder.decode(HouseResponseModel.self, from: data)
+    }
+}
+
+extension DefaultAPIService: CharactersAPIService {
+    func getCharacters() async throws -> [CharacterResponseModel] {
+        // TODO:
+        []
+    }
+
+    func getCharacter(atURL url: URL) async throws -> CharacterResponseModel {
+        // TODO:
+        throw APIServiceError.couldNotCreateURL
     }
 }

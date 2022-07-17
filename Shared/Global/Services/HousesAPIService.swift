@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  HousesAPIService.swift
 //  GameOfThrones
 //
 //  Created by Christian Elies on 17/07/2022.
@@ -8,11 +8,7 @@
 
 import Foundation
 
-protocol APIServiceProvider {
-    var apiService: APIService { get }
-}
-
-protocol APIService {
+protocol HousesAPIService {
     func getHouses(page: Int, pageSize: Int) async throws -> [HouseResponseModel]
     func getHouse(atURL url: URL) async throws -> HouseResponseModel
 }

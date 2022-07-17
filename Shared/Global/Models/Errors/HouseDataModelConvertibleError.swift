@@ -9,7 +9,6 @@
 import Foundation
 
 enum HouseDataModelConvertibleError: Error {
-    case missingURL
     case missingName
     case missingRegion
 }

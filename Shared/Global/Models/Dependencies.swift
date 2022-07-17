@@ -7,7 +7,7 @@
 //
 
 struct Dependencies {
-    let apiService: APIService
+    let apiService: (HousesAPIService & CharactersAPIService)
 
     init() {
         apiService = DefaultAPIService()

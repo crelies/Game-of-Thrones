@@ -10,10 +10,6 @@ import Foundation
 
 extension HouseResponseModel: HouseDataModelConvertible {
     func houseDataModel(id: String) throws -> HouseDataModel {
-        guard let url = url else {
-            throw HouseDataModelConvertibleError.missingURL
-        }
-
         guard let name = name else {
             throw HouseDataModelConvertibleError.missingName
         }
@@ -21,47 +17,47 @@ extension HouseResponseModel: HouseDataModelConvertible {
         guard let region = region else {
             throw HouseDataModelConvertibleError.missingRegion
         }
-        
+
         var arms = "-"
         if let coatOfArms = coatOfArms {
             arms = coatOfArms.isEmpty ? "-" : coatOfArms
         }
-        
+
         var word = "-"
         if let words = words {
             word = words.isEmpty ? "-" : words
         }
-        
+
         var found = "-"
         if let founded = founded {
             found = founded.isEmpty ? "-" : founded
         }
-        
+
         var died = "-"
         if let diedOut = diedOut {
             died = diedOut.isEmpty ? "-" : diedOut
         }
-        
+
         var currentLordURL: URL?
         if let currentLord = currentLord {
             currentLordURL = URL(string: currentLord)
         }
-        
+
         var heirURL: URL?
         if let heir = heir {
             heirURL = URL(string: heir)
         }
-        
+
         var overlordURL: URL?
         if let overlord = overlord {
             overlordURL = URL(string: overlord)
         }
-        
+
         var founderURL: URL?
         if let founder = founder {
             founderURL = URL(string: founder)
         }
-        
+
         return HouseDataModel(
             id: id,
             url: url,

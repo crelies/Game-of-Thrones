@@ -66,7 +66,7 @@
 		B956172D24C8ED08003A3ACF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172C24C8ED08003A3ACF /* Category.swift */; };
 		B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAD128843B3600D5028B /* StyleConstants.swift */; };
 		B972EAD428843C9300D5028B /* HouseDataModel+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */; };
-		B972EAD928844ACF00D5028B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAD828844ACF00D5028B /* APIService.swift */; };
+		B972EAD928844ACF00D5028B /* HousesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAD828844ACF00D5028B /* HousesAPIService.swift */; };
 		B972EAE7288494DD00D5028B /* CharacterListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EADE288494DD00D5028B /* CharacterListAction.swift */; };
 		B972EAE8288494DD00D5028B /* CharacterListState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EADF288494DD00D5028B /* CharacterListState+view.swift */; };
 		B972EAE9288494DD00D5028B /* CharacterListView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAE0288494DD00D5028B /* CharacterListView.Action+feature.swift */; };
@@ -85,6 +85,12 @@
 		B972EAFF288494EB00D5028B /* CharacterDetailView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAF6288494EB00D5028B /* CharacterDetailView+State.swift */; };
 		B972EB00288494EB00D5028B /* CharacterDetailReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAF7288494EB00D5028B /* CharacterDetailReducer.swift */; };
 		B972EB01288494EB00D5028B /* CharacterDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EAF8288494EB00D5028B /* CharacterDetailState.swift */; };
+		B972EB032884986000D5028B /* CharactersAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB022884986000D5028B /* CharactersAPIService.swift */; };
+		B972EB05288498AE00D5028B /* CharacterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB04288498AE00D5028B /* CharacterResponseModel.swift */; };
+		B972EB0728849A9A00D5028B /* CharacterDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0628849A9A00D5028B /* CharacterDataModel.swift */; };
+		B972EB0928849B3300D5028B /* CharacterDataModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0828849B3300D5028B /* CharacterDataModelConvertible.swift */; };
+		B972EB0B28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0A28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift */; };
+		B972EB0D28849BA200D5028B /* CharacterDataModelConvertibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0C28849BA200D5028B /* CharacterDataModelConvertibleError.swift */; };
 		B98956C226DD8FF900FE3277 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956B926DD8FF900FE3277 /* AppAction.swift */; };
 		B98956C426DD8FF900FE3277 /* AppState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956BA26DD8FF900FE3277 /* AppState+view.swift */; };
 		B98956C626DD8FF900FE3277 /* AppView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956BB26DD8FF900FE3277 /* AppView.Action+feature.swift */; };
@@ -156,7 +162,7 @@
 		B95E9F062883472D006BEB6E /* GameOfThrones.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameOfThrones.entitlements; sourceTree = "<group>"; };
 		B972EAD128843B3600D5028B /* StyleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
 		B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseDataModel+mock.swift"; sourceTree = "<group>"; };
-		B972EAD828844ACF00D5028B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		B972EAD828844ACF00D5028B /* HousesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousesAPIService.swift; sourceTree = "<group>"; };
 		B972EADE288494DD00D5028B /* CharacterListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListAction.swift; sourceTree = "<group>"; };
 		B972EADF288494DD00D5028B /* CharacterListState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterListState+view.swift"; sourceTree = "<group>"; };
 		B972EAE0288494DD00D5028B /* CharacterListView.Action+feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterListView.Action+feature.swift"; sourceTree = "<group>"; };
@@ -175,6 +181,12 @@
 		B972EAF6288494EB00D5028B /* CharacterDetailView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDetailView+State.swift"; sourceTree = "<group>"; };
 		B972EAF7288494EB00D5028B /* CharacterDetailReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailReducer.swift; sourceTree = "<group>"; };
 		B972EAF8288494EB00D5028B /* CharacterDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailState.swift; sourceTree = "<group>"; };
+		B972EB022884986000D5028B /* CharactersAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPIService.swift; sourceTree = "<group>"; };
+		B972EB04288498AE00D5028B /* CharacterResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponseModel.swift; sourceTree = "<group>"; };
+		B972EB0628849A9A00D5028B /* CharacterDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataModel.swift; sourceTree = "<group>"; };
+		B972EB0828849B3300D5028B /* CharacterDataModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataModelConvertible.swift; sourceTree = "<group>"; };
+		B972EB0A28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterResponseModel+CharacterDataModelConvertible.swift"; sourceTree = "<group>"; };
+		B972EB0C28849BA200D5028B /* CharacterDataModelConvertibleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataModelConvertibleError.swift; sourceTree = "<group>"; };
 		B98956B726DD80EC00FE3277 /* Game-of-Thrones-SwiftUI.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Game-of-Thrones-SwiftUI.gif"; sourceTree = "<group>"; };
 		B98956B926DD8FF900FE3277 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		B98956BA26DD8FF900FE3277 /* AppState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+view.swift"; sourceTree = "<group>"; };
@@ -369,6 +381,8 @@
 		B972EAD5288449AC00D5028B /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				B972EB04288498AE00D5028B /* CharacterResponseModel.swift */,
+				B972EB0A28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift */,
 				B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */,
 				B9E03AC123032FD600E2B3F5 /* HouseResponseModel+HouseDataModelConvertible.swift */,
 			);
@@ -378,6 +392,8 @@
 		B972EAD6288449BF00D5028B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				B972EB0628849A9A00D5028B /* CharacterDataModel.swift */,
+				B972EB0828849B3300D5028B /* CharacterDataModelConvertible.swift */,
 				B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */,
 				B9E03AC723032FDD00E2B3F5 /* HouseDataModelConvertible.swift */,
 				B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */,
@@ -390,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E03AC023032FD600E2B3F5 /* APIServiceError.swift */,
+				B972EB0C28849BA200D5028B /* CharacterDataModelConvertibleError.swift */,
 				B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */,
 			);
 			path = Errors;
@@ -542,8 +559,9 @@
 		B9E03AB623032E9400E2B3F5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				B972EAD828844ACF00D5028B /* APIService.swift */,
+				B972EB022884986000D5028B /* CharactersAPIService.swift */,
 				B9E03AC923032FE300E2B3F5 /* DefaultAPIService.swift */,
+				B972EAD828844ACF00D5028B /* HousesAPIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -670,6 +688,7 @@
 				B972EAEF288494DD00D5028B /* CharacterListState.swift in Sources */,
 				B92B64F726DB92E1004EB679 /* HouseListView.Action+feature.swift in Sources */,
 				B972EAED288494DD00D5028B /* CharacterListView+State.swift in Sources */,
+				B972EB0B28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift in Sources */,
 				B936305A2883698E00D48437 /* CategoryListEnvironment.swift in Sources */,
 				B95616F024C8C7FD003A3ACF /* HouseResponseModel.swift in Sources */,
 				B92B651726DB963C004EB679 /* HouseListRowState.swift in Sources */,
@@ -687,6 +706,7 @@
 				B972EAF9288494EB00D5028B /* CharacterDetailAction.swift in Sources */,
 				B98956C426DD8FF900FE3277 /* AppState+view.swift in Sources */,
 				B972EAE9288494DD00D5028B /* CharacterListView.Action+feature.swift in Sources */,
+				B972EB032884986000D5028B /* CharactersAPIService.swift in Sources */,
 				B92B650126DB92E1004EB679 /* HouseListReducer.swift in Sources */,
 				B972EB01288494EB00D5028B /* CharacterDetailState.swift in Sources */,
 				B93630552883698E00D48437 /* CategoryListAction.swift in Sources */,
@@ -719,17 +739,20 @@
 				B92B652626DC24FD004EB679 /* HouseDetailView.swift in Sources */,
 				B956170324C8C812003A3ACF /* HouseFactsView.swift in Sources */,
 				B92B651426DB963C004EB679 /* HouseListRowEnvironment.swift in Sources */,
+				B972EB05288498AE00D5028B /* CharacterResponseModel.swift in Sources */,
 				B98956D026DD8FF900FE3277 /* AppReducer.swift in Sources */,
 				B95616F224C8C7FD003A3ACF /* HouseResponseModel+HouseDataModelConvertible.swift in Sources */,
 				B98956CE26DD8FF900FE3277 /* AppView+State.swift in Sources */,
 				B972EAFA288494EB00D5028B /* CharacterDetailState+view.swift in Sources */,
 				B92B650F26DB963C004EB679 /* HouseListRowAction.swift in Sources */,
 				B936305C2883698E00D48437 /* CategoryListReducer.swift in Sources */,
+				B972EB0728849A9A00D5028B /* CharacterDataModel.swift in Sources */,
 				B92B651026DB963C004EB679 /* HouseListRowState+view.swift in Sources */,
 				B972EAFE288494EB00D5028B /* CharacterDetailEnvironment.swift in Sources */,
 				B95616E224C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */,
 				B972EAD428843C9300D5028B /* HouseDataModel+mock.swift in Sources */,
 				B92B652526DC24FD004EB679 /* HouseDetailView+Action.swift in Sources */,
+				B972EB0928849B3300D5028B /* CharacterDataModelConvertible.swift in Sources */,
 				B956172D24C8ED08003A3ACF /* Category.swift in Sources */,
 				B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
 				B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */,
@@ -744,11 +767,12 @@
 				B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */,
 				B92B652A26DC24FD004EB679 /* HouseDetailState.swift in Sources */,
 				B92B64F526DB92E1004EB679 /* HouseListState+view.swift in Sources */,
-				B972EAD928844ACF00D5028B /* APIService.swift in Sources */,
+				B972EAD928844ACF00D5028B /* HousesAPIService.swift in Sources */,
 				B95616FC24C8C808003A3ACF /* HouseMetadataModel.swift in Sources */,
 				B972EAE8288494DD00D5028B /* CharacterListState+view.swift in Sources */,
 				B98956CA26DD8FF900FE3277 /* AppView.swift in Sources */,
 				B92B651326DB963C004EB679 /* HouseListRowView.swift in Sources */,
+				B972EB0D28849BA200D5028B /* CharacterDataModelConvertibleError.swift in Sources */,
 				B98956C826DD8FF900FE3277 /* AppView+Action.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@
 import Foundation
 
 struct HouseResponseModel: Codable {
-    let url: URL?
+    let url: URL
     let name: String?
     let region: String?
     let coatOfArms: String?
