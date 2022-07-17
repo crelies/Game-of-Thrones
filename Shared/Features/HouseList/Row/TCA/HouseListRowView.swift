@@ -25,6 +25,9 @@ struct HouseListRowView: View {
             )
         ) { viewStore in
             Label(viewStore.dataModel.name, systemImage: "house")
+                .onAppear {
+                    viewStore.send(.onAppear)
+                }
         }
     }
 }

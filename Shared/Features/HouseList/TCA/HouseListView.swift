@@ -26,25 +26,31 @@ struct HouseListView: View {
         ) { viewStore in
             VStack {
                 switch viewStore.viewState {
-                case .loading:
+                case .loading(.none):
                     ProgressView()
                         .onAppear {
                             viewStore.send(.onAppear)
                         }
-                case let .loaded(value):
-                    List(selection: viewStore.binding(get: \.selection, send: HouseListView.Action.setSelection)) {
-                        ForEachStore(
-                            store.scope(state: { _ in value }, action: HouseListAction.row)
-                        ) { rowStore in
-                            HouseListRowView(store: rowStore)
+                case let .loaded(value), let .loading(.some(value)):
+                    VStack {
+                        List(selection: viewStore.binding(get: \.selection, send: HouseListView.Action.setSelection)) {
+                            ForEachStore(
+                                store.scope(state: { _ in value }, action: HouseListAction.row)
+                            ) { rowStore in
+                                HouseListRowView(store: rowStore)
+                            }
                         }
-                    }
-                    .alert(
-                        store.scope(state: \.alertState),
-                        dismiss: .alertDismissed
-                    )
-                    .refreshable {
-                        await viewStore.send(.refresh, while: \.viewState.isLoading)
+                        .alert(
+                            store.scope(state: \.alertState),
+                            dismiss: .alertDismissed
+                        )
+                        .refreshable {
+                            await viewStore.send(.refresh, while: \.viewState.isLoading)
+                        }
+
+                        if case ViewState.loading = viewStore.viewState {
+                            ProgressView()
+                        }
                     }
                 case let .failure(error):
                     Text(error.localizedDescription)

@@ -14,6 +14,8 @@ import ComposableArchitecture
 enum HouseListModule {}
 
 extension HouseListModule {
+    private struct FetchHousesID: Hashable {}
+
     static var reducer: Reducer<HouseListState, HouseListAction, HouseListEnvironment> {
         .combine(
             HouseListRowModule.reducer
@@ -45,12 +47,13 @@ extension HouseListModule {
                     return .init(value: .fetchHouses)
 
                 case .fetchHouses:
-                    state.viewState = .loading()
+                    state.viewState = .loading(state.viewState.value)
 
                     return environment
                         .fetchHouses(state.page, state.pageSize)
                         .receive(on: environment.mainQueue())
                         .catchToEffect(HouseListAction.housesResponse)
+                        .cancellable(id: FetchHousesID(), cancelInFlight: true)
 
                 case let .housesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
@@ -65,37 +68,26 @@ extension HouseListModule {
                         return .none
                     }
 
-                    // TODO:
-//                    if var lastRowState = state.rowStates.last {
-//                        lastRowState.isLoading = true
-//                        state.rowStates.updateOrAppend(lastRowState)
-//                    }
-
                     state.page += 1
+
+                    state.viewState = .loading(state.viewState.value)
 
                     return environment
                         .fetchHouses(state.page, state.pageSize)
                         .receive(on: environment.mainQueue())
                         .catchToEffect(HouseListAction.nextHousesResponse)
+                        .cancellable(id: FetchHousesID(), cancelInFlight: true)
 
                 case let .nextHousesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
-
-                    // TODO:
-//                    if var lastRowState = state.rowStates.last {
-//                        lastRowState.isLoading = false
-//                        state.rowStates.updateOrAppend(lastRowState)
-//                    }
-
                     let newRows = houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }
-                    state.viewState.value?.append(contentsOf: newRows)
+
+                    var currentRows = state.viewState.value ?? []
+                    currentRows.append(contentsOf: newRows)
+                    state.viewState = .loaded(currentRows)
 
                 case let .nextHousesResponse(.failure(error)):
-                    // TODO:
-//                    if var lastRowState = state.rowStates.last {
-//                        lastRowState.isLoading = false
-//                        state.rowStates.updateOrAppend(lastRowState)
-//                    }
+                    state.viewState = .loaded(state.viewState.value ?? [])
                     return .init(value: .presentAlert(error: error))
 
                 case let .row(id, action):
@@ -118,28 +110,11 @@ extension HouseListModule {
                     default: ()
                     }
 
-                case let .selectHouse(selectedHouse): ()
-                    // TODO:
-//                    guard let selectedRowState = state.rowStates.first(where: { $0.id == selectedHouse }), selectedRowState.houseDetailState != nil else {
-//                        state.selection = selectedHouse
-//                        return .none
-//                    }
-//                    var selection: HouseListRowState.ID?
-//                    for rowState in state.rowStates {
-//                        var updatedRowState = rowState
-//                        updatedRowState.selected = rowState.id == selectedHouse
-//                        state.rowStates.updateOrAppend(updatedRowState)
-//
-//                        if selection == nil, updatedRowState.selected, updatedRowState.houseDetailState != nil {
-//                            selection = updatedRowState.id
-//                        }
-//                    }
-//                    if let selection = selection {
-//                        state.selection = selection
-//                    }
-
                 case let .presentAlert(error):
-                    state.alertState = AlertState(title: TextState("Error"), message: TextState(error.localizedDescription))
+                    state.alertState = AlertState(
+                        title: TextState("Error"),
+                        message: TextState(error.localizedDescription)
+                    )
 
                 case .alertDismissed:
                     state.alertState = nil
@@ -152,6 +127,8 @@ extension HouseListModule {
 
                 case .setSelection(selection: .none):
                     state.selection = nil
+
+                default: ()
                 }
 
                 return .none
