@@ -340,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */,
+				B9E03AC123032FD600E2B3F5 /* HouseResponseModel+HouseDataModelConvertible.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -348,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */,
+				B9E03AC723032FDD00E2B3F5 /* HouseDataModelConvertible.swift */,
 				B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */,
 				B9E03ACB23032FEA00E2B3F5 /* HouseMetadataModel.swift */,
 			);
@@ -420,7 +422,6 @@
 				B98956B826DD8FEC00FE3277 /* App */,
 				B936304328834AAC00D48437 /* Extensions */,
 				B9E03AB423032E8800E2B3F5 /* Models */,
-				B9E03AB523032E8D00E2B3F5 /* Protocols */,
 				B9E03AB623032E9400E2B3F5 /* Services */,
 			);
 			path = Global;
@@ -452,19 +453,10 @@
 				B972EAD5288449AC00D5028B /* Response */,
 				B956172C24C8ED08003A3ACF /* Category.swift */,
 				B93630612883752700D48437 /* Dependencies.swift */,
-				B9E03AC123032FD600E2B3F5 /* HouseResponseModel+HouseDataModelConvertible.swift */,
 				B972EAD128843B3600D5028B /* StyleConstants.swift */,
 				B93630482883628400D48437 /* ViewState.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		B9E03AB523032E8D00E2B3F5 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				B9E03AC723032FDD00E2B3F5 /* HouseDataModelConvertible.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		B9E03AB623032E9400E2B3F5 /* Services */ = {
