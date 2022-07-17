@@ -44,8 +44,7 @@ struct HouseFactsView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
 
-                Text(coatOfArms)
-                    .lineLimit(nil)
+                Label(coatOfArms, systemImage: "bookmark")
             }
 
             VStack(alignment: .leading) {
@@ -81,11 +80,7 @@ struct HouseFactsView: View {
                         Label {
                             Text("Current lord (id: \(currentLord.pathComponents.last ?? ""))")
                         } icon: {
-                            if currentLord.absoluteString.contains("house") {
-                                Image(systemName: "house")
-                            } else if currentLord.absoluteString.contains("character") {
-                                Image(systemName: "person")
-                            }
+                            Image(systemName: "crown")
                         }
                     }
                 } else {
@@ -103,11 +98,7 @@ struct HouseFactsView: View {
                         Label {
                             Text("Heir (id: \(heir.pathComponents.last ?? ""))")
                         } icon: {
-                            if heir.absoluteString.contains("house") {
-                                Image(systemName: "house")
-                            } else if heir.absoluteString.contains("character") {
-                                Image(systemName: "person")
-                            }
+                            Image(systemName: "person")
                         }
                     }
                 } else {
@@ -125,11 +116,7 @@ struct HouseFactsView: View {
                         Label {
                             Text("Overlord (id: \(overlord.pathComponents.last ?? ""))")
                         } icon: {
-                            if overlord.absoluteString.contains("house") {
-                                Image(systemName: "house")
-                            } else if overlord.absoluteString.contains("character") {
-                                Image(systemName: "person")
-                            }
+                            Image(systemName: "house")
                         }
                     }
                 } else {

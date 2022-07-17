@@ -17,11 +17,7 @@ struct HouseCadetBranchesView: View {
                 Label {
                     Text("Branch (id: \(cadetBranch.pathComponents.last ?? ""))")
                 } icon: {
-                    if cadetBranch.absoluteString.contains("house") {
-                        Image(systemName: "house")
-                    } else if cadetBranch.absoluteString.contains("character") {
-                        Image(systemName: "person")
-                    }
+                    Image(systemName: "house")
                 }
             }
         }

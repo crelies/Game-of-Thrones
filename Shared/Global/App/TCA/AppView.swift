@@ -37,7 +37,7 @@ struct AppView: View {
                         Text("No category selected")
                     }
                 )
-                .frame(minWidth: 300, minHeight: 700)
+                .frame(minWidth: 300, maxWidth: 700, minHeight: 700)
             } detail: {
                 NavigationStack {
                     IfLetStore(
@@ -47,7 +47,7 @@ struct AppView: View {
                             Text("No item selected")
                         }
                     )
-                    .frame(minWidth: 500, minHeight: 700)
+                    .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
                 }
             }
         }

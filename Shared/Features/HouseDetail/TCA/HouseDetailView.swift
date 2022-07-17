@@ -69,15 +69,15 @@ private extension HouseDetailView {
                 seats(seats: dataModel.seats)
             }
 
-            Section(header: Text("\(dataModel.ancestralWeapons.count) Ancestral Weapons")) {
+            Section(header: Label("\(dataModel.ancestralWeapons.count) Ancestral Weapons", systemImage: "hammer")) {
                 ancestralWeapons(ancestralWeapons: dataModel.ancestralWeapons)
             }
 
-            Section(header: Text("\(dataModel.cadetBranches.count) Cadet Branches")) {
+            Section(header: Label("\(dataModel.cadetBranches.count) Cadet Branches", systemImage: "building.columns")) {
                 HouseCadetBranchesView(cadetBranches: dataModel.cadetBranches)
             }
 
-            Section(header: Text("\(dataModel.swornMembers.count) Sworn Members")) {
+            Section(header: Label("\(dataModel.swornMembers.count) Sworn Members", systemImage: "flag.2.crossed")) {
                 HouseSwornMembersView(swornMembers: dataModel.swornMembers)
             }
         }

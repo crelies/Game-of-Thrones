@@ -17,11 +17,7 @@ struct HouseSwornMembersView: View {
                 Label {
                     Text("Member (id: \(swornMember.pathComponents.last ?? ""))")
                 } icon: {
-                    if swornMember.absoluteString.contains("house") {
-                        Image(systemName: "house")
-                    } else if swornMember.absoluteString.contains("character") {
-                        Image(systemName: "person")
-                    }
+                    Image(systemName: "person")
                 }
             }
         }
