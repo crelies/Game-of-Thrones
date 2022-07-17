@@ -24,7 +24,7 @@ struct CharacterListView: View {
                 }
             )
         ) { viewStore in
-            Text("Hello world!")
+            Text("Character list here")
         }
     }
 }

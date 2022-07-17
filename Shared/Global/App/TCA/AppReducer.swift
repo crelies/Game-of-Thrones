@@ -44,9 +44,12 @@ extension AppModule {
                 switch action {
                 case let .setSelectedCategory(.some(category)):
                     state.category = category
+
                     switch category {
                     case .houses:
                         state.categoryList = .houseList(.init())
+                    case .characters:
+                        state.categoryList = .characters(.init())
                     default:
                         state.categoryList = nil
                         state.selectedHouse = nil
@@ -55,6 +58,7 @@ extension AppModule {
                 case .setSelectedCategory(.none):
                     state.category = nil
                     state.categoryList = nil
+                    state.selectedHouse = nil
 
                 case .categoryList(.houseList(.setSelection(selection: .some))):
                     switch state.categoryList {

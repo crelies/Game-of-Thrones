@@ -17,6 +17,15 @@ enum CategoryListModule {}
 extension CategoryListModule {
     static var reducer: Reducer<CategoryListState, CategoryListAction, CategoryListEnvironment> {
         .combine(
+            CharacterListModule.reducer
+                .pullback(
+                    state: /CategoryListState.characters,
+                    action: /CategoryListAction.characters,
+                    environment: {
+                        .init(mainQueue: $0.mainQueue)
+                    }
+                )
+            ,
             HouseListModule.reducer
                 .pullback(
                     state: /CategoryListState.houseList,

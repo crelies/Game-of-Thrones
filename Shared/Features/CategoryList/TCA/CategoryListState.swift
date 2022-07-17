@@ -11,6 +11,6 @@
 
 enum CategoryListState: Equatable {
     case houseList(HouseListState)
-    case characters
+    case characters(CharacterListState)
     case books
 }
