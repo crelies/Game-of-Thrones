@@ -19,8 +19,7 @@ final class HouseListTests: XCTestCase {
         reducer: HouseListModule.reducer,
         environment: HouseListEnvironment(
             mainQueue: { self.scheduler.eraseToAnyScheduler() },
-            fetchHouses: { _, _ in .none },
-            fetchHouse: { _, _ in .none }
+            houseClient: .mock()
         )
     )
 
@@ -32,7 +31,7 @@ final class HouseListTests: XCTestCase {
         let house = HouseMetadataModel(url: URL(string: "https://duckduckgo.com")!, name: "House 1")
         store.assert(
             .environment {
-                $0.fetchHouses = { _, _ in
+                $0.houseClient.fetchHouses = { _, _ in
                     Effect(value: [house]).eraseToEffect()
                 }
             },
@@ -53,7 +52,7 @@ final class HouseListTests: XCTestCase {
 
         store.assert(
             .environment {
-                $0.fetchHouses = { page, _ in
+                $0.houseClient.fetchHouses = { page, _ in
                     if page == 1 {
                         return Effect(value: houses)
                     } else {
@@ -91,7 +90,7 @@ final class HouseListTests: XCTestCase {
 
         store.assert(
             .environment {
-                $0.fetchHouses = { page, pageSize in
+                $0.houseClient.fetchHouses = { page, pageSize in
                     Effect(value: expectedHouses)
                 }
             },
@@ -130,7 +129,7 @@ final class HouseListTests: XCTestCase {
 
         store.assert(
             .environment {
-                $0.fetchHouse = { id, url in
+                $0.houseClient.fetchHouse = { id, url in
                     Effect(value: expectedHouseDataModel)
                 }
             },

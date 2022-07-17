@@ -91,6 +91,7 @@
 		B972EB0928849B3300D5028B /* CharacterDataModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0828849B3300D5028B /* CharacterDataModelConvertible.swift */; };
 		B972EB0B28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0A28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift */; };
 		B972EB0D28849BA200D5028B /* CharacterDataModelConvertibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0C28849BA200D5028B /* CharacterDataModelConvertibleError.swift */; };
+		B972EB0F28849F8700D5028B /* HouseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B972EB0E28849F8700D5028B /* HouseClient.swift */; };
 		B98956C226DD8FF900FE3277 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956B926DD8FF900FE3277 /* AppAction.swift */; };
 		B98956C426DD8FF900FE3277 /* AppState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956BA26DD8FF900FE3277 /* AppState+view.swift */; };
 		B98956C626DD8FF900FE3277 /* AppView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956BB26DD8FF900FE3277 /* AppView.Action+feature.swift */; };
@@ -187,6 +188,7 @@
 		B972EB0828849B3300D5028B /* CharacterDataModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataModelConvertible.swift; sourceTree = "<group>"; };
 		B972EB0A28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterResponseModel+CharacterDataModelConvertible.swift"; sourceTree = "<group>"; };
 		B972EB0C28849BA200D5028B /* CharacterDataModelConvertibleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataModelConvertibleError.swift; sourceTree = "<group>"; };
+		B972EB0E28849F8700D5028B /* HouseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseClient.swift; sourceTree = "<group>"; };
 		B98956B726DD80EC00FE3277 /* Game-of-Thrones-SwiftUI.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Game-of-Thrones-SwiftUI.gif"; sourceTree = "<group>"; };
 		B98956B926DD8FF900FE3277 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		B98956BA26DD8FF900FE3277 /* AppState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+view.swift"; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				B936304328834AAC00D48437 /* Extensions */,
 				B9E03AB423032E8800E2B3F5 /* Models */,
 				B9E03AB623032E9400E2B3F5 /* Services */,
+				B972EB0E28849F8700D5028B /* HouseClient.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				B972EAEF288494DD00D5028B /* CharacterListState.swift in Sources */,
 				B92B64F726DB92E1004EB679 /* HouseListView.Action+feature.swift in Sources */,
 				B972EAED288494DD00D5028B /* CharacterListView+State.swift in Sources */,
+				B972EB0F28849F8700D5028B /* HouseClient.swift in Sources */,
 				B972EB0B28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift in Sources */,
 				B936305A2883698E00D48437 /* CategoryListEnvironment.swift in Sources */,
 				B95616F024C8C7FD003A3ACF /* HouseResponseModel.swift in Sources */,

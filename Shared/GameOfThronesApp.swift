@@ -17,29 +17,28 @@ let store = Store<AppState, AppAction>(
     reducer: AppModule.reducer,
     environment: AppEnvironment(
         mainQueue: { DispatchQueue.main.eraseToAnyScheduler() },
-        fetchHouses: { page, pageSize in
-            Effect.task {
-                try await dependencies.apiService.getHouses(page: page, pageSize: pageSize)
-                    .compactMap { house -> HouseMetadataModel? in
-                        guard let url = house.url else {
-                            return nil
+        houseClient: .init(
+            fetchHouses: { page, pageSize in
+                Effect.task {
+                    try await dependencies.apiService.getHouses(page: page, pageSize: pageSize)
+                        .compactMap { house -> HouseMetadataModel? in
+                            guard let name = house.name else {
+                                return nil
+                            }
+                            return HouseMetadataModel(url: house.url, name: name)
                         }
-                        guard let name = house.name else {
-                            return nil
-                        }
-                        return HouseMetadataModel(url: url, name: name)
-                    }
+                }
+                .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
+                .eraseToEffect()
+            }, fetchHouse: { id, url in
+                Effect.task {
+                    let houseResponseModel = try await dependencies.apiService.getHouse(atURL: url)
+                    return try houseResponseModel.houseDataModel(id: id)
+                }
+                .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
+                .eraseToEffect()
             }
-            .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
-            .eraseToEffect()
-        }, fetchHouse: { id, url in
-            Effect.task {
-                let houseResponseModel = try await dependencies.apiService.getHouse(atURL: url)
-                return try houseResponseModel.houseDataModel(id: id)
-            }
-            .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
-            .eraseToEffect()
-        }
+        )
     )
 )
 

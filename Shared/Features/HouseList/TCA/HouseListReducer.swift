@@ -30,8 +30,8 @@ extension HouseListModule {
                 .pullback(
                     state: \.viewState.value,
                     action: /HouseListAction.row,
-                    environment: {
-                        .init(mainQueue: $0.mainQueue, fetchHouse: $0.fetchHouse)
+                    environment: { _ in
+                        .init()
                     }
                 ),
             .init { state, action, environment in
@@ -49,7 +49,7 @@ extension HouseListModule {
                 case .fetchHouses:
                     state.viewState = .loading(state.viewState.value)
 
-                    return environment
+                    return environment.houseClient
                         .fetchHouses(state.page, state.pageSize)
                         .receive(on: environment.mainQueue())
                         .catchToEffect(HouseListAction.housesResponse)
@@ -72,7 +72,7 @@ extension HouseListModule {
 
                     state.viewState = .loading(state.viewState.value)
 
-                    return environment
+                    return environment.houseClient
                         .fetchHouses(state.page, state.pageSize)
                         .receive(on: environment.mainQueue())
                         .catchToEffect(HouseListAction.nextHousesResponse)

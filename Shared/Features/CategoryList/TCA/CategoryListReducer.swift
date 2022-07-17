@@ -33,8 +33,7 @@ extension CategoryListModule {
                     environment: {
                         .init(
                             mainQueue: $0.mainQueue,
-                            fetchHouses: $0.fetchHouses,
-                            fetchHouse: $0.fetchHouse
+                            houseClient: $0.houseClient
                         )
                     }
                 )
