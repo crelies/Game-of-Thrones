@@ -25,7 +25,8 @@ extension CharacterClient {
                     )
                         .compactMap { character in
                             var name = character.name ?? ""
-                            name = name.isEmpty ? "id: \(character.url.pathComponents.last ?? "-")" : name
+                            let id = "id: \(character.url.pathComponents.last ?? "-")"
+                            name = name.isEmpty ? id : "\(name) (\(id))"
                             return CharacterMetadataModel(url: character.url, name: name)
                         }
                 }
