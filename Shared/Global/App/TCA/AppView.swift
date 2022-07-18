@@ -59,6 +59,8 @@ struct AppView: View {
                                 }
                             )
                             .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
+                        } else {
+                            Text("No item selected")
                         }
                     }
                 }

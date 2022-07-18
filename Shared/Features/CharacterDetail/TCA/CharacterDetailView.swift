@@ -32,12 +32,120 @@ struct CharacterDetailView: View {
                             viewStore.send(.onAppear)
                         }
                 case let .loaded(character):
-                    Text(String(describing: character))
+                    loadedView(character: character)
                 case let .failure(error):
                     Text(error.localizedDescription)
                 }
             }
             .navigationTitle(viewStore.viewState.value?.name ?? "Character details")
         }
+    }
+}
+
+private extension CharacterDetailView {
+    @ViewBuilder
+    func loadedView(character: CharacterDataModel) -> some View {
+        List {
+            Section(header: Text("General")) {
+                LabeledContent("Name", value: character.name)
+                LabeledContent("Gender", value: character.gender)
+                LabeledContent("Culture", value: character.culture)
+
+                LabeledContent {
+                    Text(character.born)
+                } label: {
+                    Label("Born", systemImage: "calendar")
+                }
+
+                LabeledContent {
+                    Text(character.died)
+                } label: {
+                    Label("Died", systemImage: "clock")
+                }
+            }
+
+            Section(header: Text("Titles")) {
+                ForEach(character.titles, id: \.self) { title in
+                    Text(title)
+                }
+            }
+
+            Section(header: Text("Aliases")) {
+                ForEach(character.aliases, id: \.self) { alias in
+                    Text(alias)
+                }
+            }
+
+            Section(header: Label("Family", systemImage: "person.3")) {
+                if let father = character.father {
+                    NavigationLink(value: father) {
+                        Label("Father", systemImage: "person")
+                    }
+                }
+
+                if let mother = character.mother {
+                    NavigationLink(value: mother) {
+                        Label("Mother", systemImage: "person")
+                    }
+                }
+
+                if let spouse = character.spouse {
+                    NavigationLink(value: spouse) {
+                        Label("Spouse", systemImage: "person")
+                    }
+                }
+            }
+
+            Section(header: Label("Allegiances", systemImage: "flag.2.crossed")) {
+                ForEach(character.allegiances, id: \.self) { allegiance in
+                    NavigationLink(value: allegiance) {
+                        Label("House (id: \(allegiance.pathComponents.last ?? "-"))", systemImage: "house")
+                    }
+                }
+            }
+
+            Section(header: Label("Books", systemImage: "book")) {
+                ForEach(character.books, id: \.self) { book in
+                    NavigationLink("Book (id: \(book.pathComponents.last ?? "-"))", value: book)
+                }
+            }
+
+            Section(header: Label("POV Books", systemImage: "book")) {
+                ForEach(character.povBooks, id: \.self) { povBook in
+                    NavigationLink("Book (id: \(povBook.pathComponents.last ?? "-"))", value: povBook)
+                }
+            }
+
+            Section(header: Label("TV Series", systemImage: "tv")) {
+                ForEach(character.tvSeries, id: \.self) { tvSeries in
+                    Text(tvSeries)
+                }
+            }
+
+            Section(header: Label("Played by", systemImage: "person")) {
+                ForEach(character.playedBy, id: \.self) { playedBy in
+                    Text(playedBy)
+                }
+            }
+        }
+    }
+}
+
+struct CharacterDetailView_Preview: PreviewProvider {
+    static var previews: some View {
+        CharacterDetailView(
+            store: .init(
+                initialState: .init(url: URL(string: "https://duckduckgo.com")!),
+                reducer: CharacterDetailModule.reducer,
+                environment: .init(
+                    mainQueue: { .main.eraseToAnyScheduler() },
+                    fetchCharacter: { _ in
+                        Effect(
+                            value: .mock()
+                        )
+                    }
+                )
+            )
+        )
     }
 }
