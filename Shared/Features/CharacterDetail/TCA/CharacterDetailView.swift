@@ -37,7 +37,15 @@ struct CharacterDetailView: View {
                     Text(error.localizedDescription)
                 }
             }
+            #if os(macOS)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(viewStore.viewState.value?.name ?? "Character details")
+                }
+            }
+            #else
             .navigationTitle(viewStore.viewState.value?.name ?? "Character details")
+            #endif
         }
     }
 }

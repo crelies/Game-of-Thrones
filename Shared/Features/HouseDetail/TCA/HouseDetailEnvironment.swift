@@ -15,4 +15,5 @@ import Foundation
 struct HouseDetailEnvironment {
     var mainQueue: () -> AnySchedulerOf<DispatchQueue>
     var fetchHouse: (_ id: String, _ url: URL) -> Effect<HouseDataModel, HouseListError>
+    var fetchCharacter: (URL) -> Effect<CharacterDataModel, CharacterClientError>
 }

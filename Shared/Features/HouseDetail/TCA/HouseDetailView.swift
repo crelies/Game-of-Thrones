@@ -37,7 +37,15 @@ struct HouseDetailView: View {
                     Text(error.localizedDescription)
                 }
             }
+            #if os(macOS)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(viewStore.viewState.value?.name ?? "House Details")
+                }
+            }
+            #else
             .navigationTitle(viewStore.viewState.value?.name ?? "House Details")
+            #endif
         }
     }
 }
@@ -48,7 +56,8 @@ private extension HouseDetailView {
         dataModel: HouseDataModel
     ) -> some View {
         List {
-            HouseFactsView(
+            factsView(
+                viewStore: viewStore,
                 name: dataModel.name,
                 region: dataModel.region,
                 coatOfArms: dataModel.coatOfArms,
@@ -78,11 +87,175 @@ private extension HouseDetailView {
             }
 
             Section(header: Label("\(dataModel.swornMembers.count) Sworn Members", systemImage: "flag.2.crossed")) {
-                HouseSwornMembersView(swornMembers: dataModel.swornMembers)
+                ForEach(dataModel.swornMembers, id: \.self) { swornMember in
+                    Label {
+                        Text("Member (id: \(swornMember.pathComponents.last ?? ""))")
+                    } icon: {
+                        Image(systemName: "person")
+                    }
+                    .onTapGesture {
+                        viewStore.send(.setSelectedCharacter(url: swornMember))
+                    }
+                }
             }
+        }
+        .navigationDestination(
+            isPresented: viewStore.binding(
+                get: { $0.selectedCharacter != nil },
+                send: Action.setSelectedCharacterPresented
+            )
+        ) {
+            IfLetStore(
+                store.scope(state: \.selectedCharacter, action: HouseDetailAction.characterDetail),
+                then: CharacterDetailView.init
+            )
         }
         .navigationDestination(for: URL.self) { url in
             Text(url.absoluteString)
+        }
+    }
+
+    @ViewBuilder
+    func factsView(
+        viewStore: ViewStore<HouseDetailView.State, HouseDetailView.Action>,
+        name: String,
+        region: String,
+        coatOfArms: String,
+        words: String,
+        currentLord: URL?,
+        heir: URL?,
+        overlord: URL?,
+        founded: String,
+        founder: URL?,
+        diedOut: String
+    ) -> some View {
+        Section(header: Text("Facts")) {
+            VStack(alignment: .leading) {
+                Text("Name")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
+                Text(name)
+                    .lineLimit(nil)
+            }
+
+            VStack(alignment: .leading) {
+                Text("Region")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
+                Label(region, systemImage: "mappin.and.ellipse")
+            }
+
+            VStack(alignment: .leading) {
+                Text("Coat of arms")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
+                Label(coatOfArms, systemImage: "bookmark")
+            }
+
+            VStack(alignment: .leading) {
+                Text("Words")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
+                Text(words)
+                    .lineLimit(nil)
+            }
+
+            VStack(alignment: .leading) {
+                Text("Founded")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
+                Label(founded, systemImage: "calendar")
+            }
+
+            VStack(alignment: .leading) {
+                Text("Died out")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+
+                Label(diedOut, systemImage: "calendar")
+            }
+        }
+
+        Section(header: Text("Links")) {
+            VStack(alignment: .leading) {
+                if let currentLord {
+                    Label {
+                        Text("Current lord (id: \(currentLord.pathComponents.last ?? ""))")
+                    } icon: {
+                        Image(systemName: "crown")
+                    }
+                    .onTapGesture {
+                        viewStore.send(.setSelectedCharacter(url: currentLord))
+                    }
+                } else {
+                    Text("Current lord")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+
+                    Text("-")
+                }
+            }
+
+            VStack(alignment: .leading) {
+                if let heir {
+                    Label {
+                        Text("Heir (id: \(heir.pathComponents.last ?? ""))")
+                    } icon: {
+                        Image(systemName: "person")
+                    }
+                    .onTapGesture {
+                        viewStore.send(.setSelectedCharacter(url: heir))
+                    }
+                } else {
+                    Text("Heir")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+
+                    Text("-")
+                }
+            }
+
+            VStack(alignment: .leading) {
+                if let overlord {
+                    NavigationLink(value: overlord) {
+                        Label {
+                            Text("Overlord (id: \(overlord.pathComponents.last ?? ""))")
+                        } icon: {
+                            Image(systemName: "house")
+                        }
+                    }
+                } else {
+                    Text("Overlord")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+
+                    Text("-")
+                }
+            }
+
+            VStack(alignment: .leading) {
+                if let founder {
+                    Label {
+                        Text("Founder (id: \(founder.pathComponents.last ?? ""))")
+                    } icon: {
+                        Image(systemName: "person")
+                    }
+                    .onTapGesture {
+                        viewStore.send(.setSelectedCharacter(url: founder))
+                    }
+                } else {
+                    Text("Founder")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+
+                    Text("-")
+                }
+            }
         }
     }
 }
@@ -128,7 +301,8 @@ struct HouseDetailView_Preview: PreviewProvider {
                         fetchHouse: { _, _ in
                             let houseDataModel: HouseDataModel = .mock()
                             return Effect(value: houseDataModel)
-                        }
+                        },
+                        fetchCharacter: { _ in .none }
                     )
                 )
             )

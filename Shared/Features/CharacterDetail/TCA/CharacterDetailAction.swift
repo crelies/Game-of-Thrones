@@ -14,3 +14,5 @@ enum CharacterDetailAction: Equatable {
     case fetchCharacter
     case characterResponse(Result<CharacterDataModel, CharacterClientError>)
 }
+
+extension CharacterDetailAction: Hashable {}

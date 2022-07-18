@@ -16,6 +16,7 @@ struct HouseDetailState: Equatable {
     let id: String
     let url: URL
     var viewState: ViewState<HouseDataModel, HouseListError> = .loading()
+    var selectedCharacter: CharacterDetailState?
 }
 
 extension HouseDetailState: Identifiable {}

@@ -32,7 +32,11 @@ extension AppModule {
                     state: \.selectedHouse,
                     action: /AppAction.houseDetail,
                     environment: {
-                        .init(mainQueue: $0.mainQueue, fetchHouse: $0.houseClient.fetchHouse)
+                        .init(
+                            mainQueue: $0.mainQueue,
+                            fetchHouse: $0.houseClient.fetchHouse,
+                            fetchCharacter: $0.characterClient.fetchCharacter
+                        )
                     }
                 )
             ,

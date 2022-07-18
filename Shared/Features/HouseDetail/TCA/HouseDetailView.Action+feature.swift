@@ -12,8 +12,12 @@
 extension HouseDetailView.Action {
     var feature: HouseDetailAction {
         switch self {
-            case HouseDetailView.Action.onAppear:
-                return HouseDetailAction.onAppear
+        case .onAppear:
+            return .onAppear
+        case let .setSelectedCharacter(url):
+            return .setSelectedCharacter(url: url)
+        case let .setSelectedCharacterPresented(isPresented):
+            return .setSelectedCharacterPresented(isPresented: isPresented)
         }
     }
 }

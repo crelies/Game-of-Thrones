@@ -9,10 +9,15 @@
 //  https://www.christianelies.de
 //
 
+import Foundation
+
 enum HouseDetailAction: Equatable {
     case onAppear
     case fetchHouse
     case houseResponse(Result<HouseDataModel, HouseListError>)
+    case setSelectedCharacter(url: URL?)
+    case setSelectedCharacterPresented(isPresented: Bool)
+    case characterDetail(CharacterDetailAction)
 }
 
 extension HouseDetailAction: Hashable {}

@@ -11,6 +11,9 @@
 
 extension HouseDetailState {
     var view: HouseDetailView.State {
-        .init(viewState: viewState)
+        .init(
+            viewState: viewState,
+            selectedCharacter: selectedCharacter?.url
+        )
     }
 }

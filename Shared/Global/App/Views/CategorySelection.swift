@@ -18,6 +18,6 @@ struct CategorySelection: View {
             Label("Books", systemImage: "book").tag(Category.books)
         }
         .listStyle(.sidebar)
-//        .navigationTitle("Categories")
+        .navigationTitle("Categories")
     }
 }

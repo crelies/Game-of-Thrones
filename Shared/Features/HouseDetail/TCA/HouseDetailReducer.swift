@@ -15,34 +15,58 @@ enum HouseDetailModule {}
 
 extension HouseDetailModule {
     static var reducer: Reducer<HouseDetailState, HouseDetailAction, HouseDetailEnvironment> {
-        Reducer<HouseDetailState, HouseDetailAction, HouseDetailEnvironment> { state, action, environment in
-            switch action {
-            case .onAppear:
-                switch state.viewState {
-                case .loaded:
-                    return .none
+        .combine(
+            CharacterDetailModule.reducer
+                .optional()
+                .pullback(
+                    state: \.selectedCharacter,
+                    action: /HouseDetailAction.characterDetail,
+                    environment: {
+                        .init(mainQueue: $0.mainQueue, fetchCharacter: $0.fetchCharacter)
+                    }
+                )
+            ,
+            .init { state, action, environment in
+                switch action {
+                case .onAppear:
+                    switch state.viewState {
+                    case .loaded:
+                        return .none
+                    default: ()
+                    }
+                    return .init(value: .fetchHouse)
+
+                case .fetchHouse:
+                    state.viewState = .loading()
+
+                    return environment
+                        .fetchHouse(state.id, state.url)
+                        .receive(on: environment.mainQueue())
+                        .catchToEffect(HouseDetailAction.houseResponse)
+
+                case let .houseResponse(result):
+                    switch result {
+                    case let .success(dataModel):
+                        state.viewState = .loaded(dataModel)
+
+                    case let .failure(error):
+                        state.viewState = .failure(error)
+                    }
+
+                case let .setSelectedCharacter(url: .some(url)):
+                    state.selectedCharacter = .init(url: url)
+
+                case .setSelectedCharacter(url: .none):
+                    state.selectedCharacter = nil
+
+                case .setSelectedCharacterPresented(false):
+                    state.selectedCharacter = nil
+
                 default: ()
                 }
-                return .init(value: .fetchHouse)
 
-            case .fetchHouse:
-                state.viewState = .loading()
-
-                return environment
-                    .fetchHouse(state.id, state.url)
-                    .receive(on: environment.mainQueue())
-                    .catchToEffect(HouseDetailAction.houseResponse)
-
-            case let .houseResponse(result):
-                switch result {
-                case let .success(dataModel):
-                    state.viewState = .loaded(dataModel)
-
-                case let .failure(error):
-                    state.viewState = .failure(error)
-                }
+                return .none
             }
-            return .none
-        }
+        )
     }
 }

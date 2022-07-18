@@ -9,8 +9,11 @@
 //  https://www.christianelies.de
 //
 
+import Foundation
+
 extension HouseDetailView {
     struct State: Equatable {
         let viewState: ViewState<HouseDataModel, HouseListError>
+        var selectedCharacter: URL?
     }
 }
