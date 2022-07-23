@@ -99,10 +99,7 @@ extension AppModule {
                     state.selectedCharacter = nil
 
                 case let .houseDetail(.setSelectedHouse(url)):
-                    guard let url else {
-                        return .none
-                    }
-                    state.selectedHouse = .init(url: url)
+                    return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
 
                 default: ()
                 }
