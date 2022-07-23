@@ -130,54 +130,36 @@ private extension HouseDetailView {
         diedOut: String
     ) -> some View {
         Section(header: Text("Facts")) {
-            VStack(alignment: .leading) {
-                Text("Name")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+            LabeledContent("Name", value: name)
 
-                Text(name)
-                    .lineLimit(nil)
+            LabeledContent {
+                Text(region)
+            } label: {
+                Label("Region", systemImage: "mappin.and.ellipse")
             }
 
-            VStack(alignment: .leading) {
-                Text("Region")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                Label(region, systemImage: "mappin.and.ellipse")
+            LabeledContent {
+                Text(coatOfArms)
+            } label: {
+                Label("Coat of arms", systemImage: "bookmark")
             }
 
-            VStack(alignment: .leading) {
-                Text("Coat of arms")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                Label(coatOfArms, systemImage: "bookmark")
-            }
-
-            VStack(alignment: .leading) {
-                Text("Words")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
+            LabeledContent {
                 Text(words)
-                    .lineLimit(nil)
+            } label: {
+                Label("Words", systemImage: "abc")
             }
 
-            VStack(alignment: .leading) {
-                Text("Founded")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                Label(founded, systemImage: "calendar")
+            LabeledContent {
+                Text(founded)
+            } label: {
+                Label("Founded", systemImage: "calendar")
             }
 
-            VStack(alignment: .leading) {
-                Text("Died out")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-
-                Label(diedOut, systemImage: "calendar")
+            LabeledContent {
+                Text(diedOut)
+            } label: {
+                Label("Died out", systemImage: "calendar")
             }
         }
 
@@ -193,11 +175,7 @@ private extension HouseDetailView {
                         viewStore.send(.setSelectedCharacter(url: currentLord))
                     }
                 } else {
-                    Text("Current lord")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-
-                    Text("-")
+                    LabeledContent("Current lord", value: "-")
                 }
             }
 
@@ -212,11 +190,7 @@ private extension HouseDetailView {
                         viewStore.send(.setSelectedCharacter(url: heir))
                     }
                 } else {
-                    Text("Heir")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-
-                    Text("-")
+                    LabeledContent("Heir", value: "-")
                 }
             }
 
@@ -230,11 +204,7 @@ private extension HouseDetailView {
                         }
                     }
                 } else {
-                    Text("Overlord")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-
-                    Text("-")
+                    LabeledContent("Overlord", value: "-")
                 }
             }
 
@@ -249,11 +219,7 @@ private extension HouseDetailView {
                         viewStore.send(.setSelectedCharacter(url: founder))
                     }
                 } else {
-                    Text("Founder")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-
-                    Text("-")
+                    LabeledContent("Founder", value: "-")
                 }
             }
         }
