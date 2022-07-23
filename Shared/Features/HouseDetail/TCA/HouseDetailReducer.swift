@@ -40,7 +40,7 @@ extension HouseDetailModule {
                     state.viewState = .loading()
 
                     return environment
-                        .fetchHouse(state.id, state.url)
+                        .fetchHouse(state.url)
                         .receive(on: environment.mainQueue())
                         .catchToEffect(HouseDetailAction.houseResponse)
 

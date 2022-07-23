@@ -274,13 +274,12 @@ struct HouseDetailView_Preview: PreviewProvider {
             HouseDetailView(
                 store: .init(
                     initialState: .init(
-                        id: "123",
                         url: URL(string: "https://duckduckgo.com")!
                     ),
                     reducer: HouseDetailModule.reducer,
                     environment: .init(
                         mainQueue: { .main.eraseToAnyScheduler() },
-                        fetchHouse: { _, _ in
+                        fetchHouse: { _ in
                             let houseDataModel: HouseDataModel = .mock()
                             return Effect(value: houseDataModel)
                         },

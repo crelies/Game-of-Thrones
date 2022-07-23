@@ -41,7 +41,7 @@ final class HouseListTests: XCTestCase {
             },
             .receive(.housesResponse(.success([house]))) {
                 $0.allHousesLoaded = true
-                $0.viewState = .loaded(.init(uniqueElements: [HouseListRowState(id: house.id.absoluteString, dataModel: house)]))
+                $0.viewState = .loaded(.init(uniqueElements: [HouseListRowState(dataModel: house)]))
             }
         )
     }
@@ -61,10 +61,10 @@ final class HouseListTests: XCTestCase {
                 }
             },
             .send(.housesResponse(.success(houses))) {
-                $0.viewState = .loaded(.init(uniqueElements: houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }))
+                $0.viewState = .loaded(.init(uniqueElements: houses.map { HouseListRowState(dataModel: $0) }))
             },
-            .send(.row(index: houses[0].id.absoluteString, action: .onAppear)),
-            .send(.row(index: houses.last!.id.absoluteString, action: .onAppear))
+            .send(.row(id: houses[0].id, action: .onAppear)),
+            .send(.row(id: houses.last!.id, action: .onAppear))
 //            .receive(.fetchNextHouses) {
 //                $0.page = $0.page + 1
 //                if var lastRowState = $0.rowStates.last {
@@ -98,7 +98,7 @@ final class HouseListTests: XCTestCase {
                 $0.viewState = .loading()
             },
             .receive(.housesResponse(.success(expectedHouses))) {
-                $0.viewState = .loaded(.init(uniqueElements: expectedHouses.map { house in HouseListRowState(id: house.id.absoluteString, dataModel: house) }))
+                $0.viewState = .loaded(.init(uniqueElements: expectedHouses.map { house in HouseListRowState(dataModel: house) }))
                 $0.allHousesLoaded = true
             }
         )
@@ -108,7 +108,6 @@ final class HouseListTests: XCTestCase {
         let houses = Array(0..<10).map { HouseMetadataModel(url: URL(string: "https://duckduckgo.com/house\($0)")!, name: "House \($0)")}
         let selectedHouse = houses[2]
         let expectedHouseDataModel: HouseDataModel = .init(
-            id: selectedHouse.id.absoluteString,
             url: selectedHouse.id,
             name: selectedHouse.name,
             region: "",
@@ -129,17 +128,17 @@ final class HouseListTests: XCTestCase {
 
         store.assert(
             .environment {
-                $0.houseClient.fetchHouse = { id, url in
+                $0.houseClient.fetchHouse = { url in
                     Effect(value: expectedHouseDataModel)
                 }
             },
             .send(.housesResponse(.success(houses))) {
-                $0.viewState = .loaded(.init(uniqueElements: houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }))
+                $0.viewState = .loaded(.init(uniqueElements: houses.map { HouseListRowState(dataModel: $0) }))
             }
             // Set selection
-//            .send(.row(index: selectedHouse.id.absoluteString, action: .setSelected(selected: true))),
+//            .send(.row(id: selectedHouse.id.absoluteString, action: .setSelected(selected: true))),
             // Start fetching
-//            .receive(.row(index: selectedHouse.id.absoluteString, action: .fetchHouse(id: selectedHouse.id.absoluteString))) {
+//            .receive(.row(id: selectedHouse.id.absoluteString, action: .fetchHouse(id: selectedHouse.id.absoluteString))) {
 //                if var rowState = $0.rowStates.first(where: { $0.id == selectedHouse.id.absoluteString }) {
 ////                    rowState.isLoading = true
 //                    $0.rowStates.updateOrAppend(rowState)
@@ -149,7 +148,7 @@ final class HouseListTests: XCTestCase {
 //            .receive(.selectHouse(selection: selectedHouse.id.absoluteString)) {
 //                $0.selection = selectedHouse.id.absoluteString
 //            },
-//            .receive(.row(index: selectedHouse.id.absoluteString, action: .houseResponse(id: selectedHouse.id.absoluteString, .success(expectedHouseDataModel)))) {
+//            .receive(.row(id: selectedHouse.id.absoluteString, action: .houseResponse(id: selectedHouse.id.absoluteString, .success(expectedHouseDataModel)))) {
 //                if var rowState = $0.rowStates.first(where: { $0.id == selectedHouse.id.absoluteString }) {
 ////                    rowState.isLoading = false
 ////                    rowState.houseDetailState = .init(dataModel: expectedHouseDataModel)
@@ -157,7 +156,7 @@ final class HouseListTests: XCTestCase {
 //                }
 //            },
             // Call set selection again after successful loading, this time the row will be selected
-//            .receive(.row(index: selectedHouse.id.absoluteString, action: .setSelected(selected: true))) {
+//            .receive(.row(id: selectedHouse.id.absoluteString, action: .setSelected(selected: true))) {
 //                if var rowState = $0.rowStates.first(where: { $0.id == selectedHouse.id.absoluteString }) {
 ////                    rowState.selected = true
 //                    $0.rowStates.updateOrAppend(rowState)

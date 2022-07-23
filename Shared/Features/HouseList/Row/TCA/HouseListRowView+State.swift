@@ -13,8 +13,11 @@ import ComposableArchitecture
 import Foundation
 
 extension HouseListRowView {
-    struct State: Equatable, Identifiable {
-        let id: String
+    struct State: Equatable {
         let dataModel: HouseMetadataModel
     }
+}
+
+extension HouseListRowView.State: Identifiable {
+    var id: HouseMetadataModel.ID { dataModel.id }
 }

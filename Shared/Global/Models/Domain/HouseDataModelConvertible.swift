@@ -9,5 +9,5 @@
 import Foundation
 
 protocol HouseDataModelConvertible {
-    func houseDataModel(id: String) throws -> HouseDataModel
+    func houseDataModel() throws -> HouseDataModel
 }

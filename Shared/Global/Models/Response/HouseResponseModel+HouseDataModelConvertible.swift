@@ -9,7 +9,7 @@
 import Foundation
 
 extension HouseResponseModel: HouseDataModelConvertible {
-    func houseDataModel(id: String) throws -> HouseDataModel {
+    func houseDataModel() throws -> HouseDataModel {
         guard let name = name else {
             throw HouseDataModelConvertibleError.missingName
         }
@@ -59,7 +59,6 @@ extension HouseResponseModel: HouseDataModelConvertible {
         }
 
         return HouseDataModel(
-            id: id,
             url: url,
             name: name,
             region: region,

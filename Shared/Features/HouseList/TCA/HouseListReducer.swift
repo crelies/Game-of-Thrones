@@ -57,7 +57,7 @@ extension HouseListModule {
 
                 case let .housesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
-                    state.viewState = .loaded(.init(uniqueElements: houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }))
+                    state.viewState = .loaded(.init(uniqueElements: houses.map { HouseListRowState(dataModel: $0) }))
 
                 case let .housesResponse(.failure(error)):
                     state.viewState = .failure(error)
@@ -80,7 +80,7 @@ extension HouseListModule {
 
                 case let .nextHousesResponse(.success(houses)):
                     state.allHousesLoaded = houses.count < state.pageSize
-                    let newRows = houses.map { HouseListRowState(id: $0.id.absoluteString, dataModel: $0) }
+                    let newRows = houses.map { HouseListRowState(dataModel: $0) }
 
                     var currentRows = state.viewState.value ?? []
                     currentRows.append(contentsOf: newRows)
@@ -124,7 +124,7 @@ extension HouseListModule {
                     guard let rowState = state.viewState.value?.first(where: { $0.id == id }) else {
                         return .none
                     }
-                    state.selection = .init(id: id, url: rowState.dataModel.url)
+                    state.selection = .init(url: rowState.dataModel.url)
 
                 case .setSelection(selection: .none):
                     state.selection = nil

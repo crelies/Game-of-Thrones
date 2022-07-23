@@ -9,7 +9,6 @@
 import Foundation
 
 struct HouseDataModel {
-    let id: String
     let url: URL
     let name: String
     let region: String
@@ -28,7 +27,9 @@ struct HouseDataModel {
     let swornMembers: [URL]
 }
 
-extension HouseDataModel: Identifiable {}
+extension HouseDataModel: Identifiable {
+    var id: URL { url }
+}
 
 extension HouseDataModel: Equatable {}
 

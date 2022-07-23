@@ -11,6 +11,6 @@
 
 extension HouseListRowState {
     var view: HouseListRowView.State {
-        .init(id: id, dataModel: dataModel)
+        .init(dataModel: dataModel)
     }
 }

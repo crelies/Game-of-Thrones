@@ -12,7 +12,6 @@ import Foundation
 extension HouseDataModel {
     static func mock() -> Self {
         .init(
-            id: UUID().uuidString,
             url: URL(string: "https://duckduckgo.com")!,
             name: "Mock House",
             region: "Amsterdam",

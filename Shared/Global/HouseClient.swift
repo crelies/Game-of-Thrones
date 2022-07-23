@@ -11,7 +11,7 @@ import Foundation
 
 struct HouseClient {
     var fetchHouses: (_ page: Int, _ pageSize: Int) -> Effect<[HouseMetadataModel], HouseListError>
-    var fetchHouse: (_ id: String, _ at: URL) -> Effect<HouseDataModel, HouseListError>
+    var fetchHouse: (_ at: URL) -> Effect<HouseDataModel, HouseListError>
 }
 
 extension HouseClient {
@@ -29,10 +29,10 @@ extension HouseClient {
                 }
                 .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
                 .eraseToEffect()
-            }, fetchHouse: { id, url in
+            }, fetchHouse: { url in
                 Effect.task {
                     let houseResponseModel = try await dependencies.apiService.getHouse(atURL: url)
-                    return try houseResponseModel.houseDataModel(id: id)
+                    return try houseResponseModel.houseDataModel()
                 }
                 .mapError { HouseListError.fetchError(underlying: $0 as NSError) }
                 .eraseToEffect()
@@ -46,7 +46,7 @@ extension HouseClient {
     static func mock() -> Self {
         .init(
             fetchHouses: { _, _ in .none },
-            fetchHouse: { _, _ in .none }
+            fetchHouse: { _ in .none }
         )
     }
 }

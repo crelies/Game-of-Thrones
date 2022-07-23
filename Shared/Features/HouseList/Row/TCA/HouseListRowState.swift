@@ -12,9 +12,12 @@
 import ComposableArchitecture
 import Foundation
 
-struct HouseListRowState: Equatable, Identifiable {
-    let id: String
+struct HouseListRowState: Equatable {
     let dataModel: HouseMetadataModel
+}
+
+extension HouseListRowState: Identifiable {
+    var id: HouseMetadataModel.ID { dataModel.id }
 }
 
 extension HouseListRowState: Hashable {}

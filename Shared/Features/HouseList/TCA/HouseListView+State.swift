@@ -15,6 +15,6 @@ import IdentifiedCollections
 extension HouseListView {
     struct State: Equatable {
         let viewState: ViewState<IdentifiedArrayOf<HouseListRowState>, HouseListError>
-        let selection: String?
+        let selection: URL?
     }
 }
