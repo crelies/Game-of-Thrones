@@ -18,6 +18,7 @@ enum HouseDetailAction: Equatable {
     case setSelectedCharacter(url: URL?)
     case setSelectedCharacterPresented(isPresented: Bool)
     case characterDetail(CharacterDetailAction)
+    case setSelectedHouse(url: URL?)
 }
 
 extension HouseDetailAction: Hashable {}

@@ -83,19 +83,30 @@ private extension HouseDetailView {
             }
 
             Section(header: Label("\(dataModel.cadetBranches.count) Cadet Branches", systemImage: "building.columns")) {
-                HouseCadetBranchesView(cadetBranches: dataModel.cadetBranches)
+                ForEach(dataModel.cadetBranches, id: \.self) { cadetBranch in
+                    Button(action: {
+                        viewStore.send(.setSelectedHouse(url: cadetBranch))
+                    }, label: {
+                        Label {
+                            Text("Branch (id: \(cadetBranch.pathComponents.last ?? ""))")
+                        } icon: {
+                            Image(systemName: "house")
+                        }
+                    })
+                }
             }
 
             Section(header: Label("\(dataModel.swornMembers.count) Sworn Members", systemImage: "flag.2.crossed")) {
                 ForEach(dataModel.swornMembers, id: \.self) { swornMember in
-                    Label {
-                        Text("Member (id: \(swornMember.pathComponents.last ?? ""))")
-                    } icon: {
-                        Image(systemName: "person")
-                    }
-                    .onTapGesture {
+                    Button(action: {
                         viewStore.send(.setSelectedCharacter(url: swornMember))
-                    }
+                    }, label: {
+                        Label {
+                            Text("Member (id: \(swornMember.pathComponents.last ?? ""))")
+                        } icon: {
+                            Image(systemName: "person")
+                        }
+                    })
                 }
             }
         }
@@ -166,14 +177,15 @@ private extension HouseDetailView {
         Section(header: Text("Links")) {
             VStack(alignment: .leading) {
                 if let currentLord {
-                    Label {
-                        Text("Current lord (id: \(currentLord.pathComponents.last ?? ""))")
-                    } icon: {
-                        Image(systemName: "crown")
-                    }
-                    .onTapGesture {
+                    Button(action: {
                         viewStore.send(.setSelectedCharacter(url: currentLord))
-                    }
+                    }, label: {
+                        Label {
+                            Text("Current lord (id: \(currentLord.pathComponents.last ?? ""))")
+                        } icon: {
+                            Image(systemName: "crown")
+                        }
+                    })
                 } else {
                     LabeledContent("Current lord", value: "-")
                 }
@@ -181,14 +193,15 @@ private extension HouseDetailView {
 
             VStack(alignment: .leading) {
                 if let heir {
-                    Label {
-                        Text("Heir (id: \(heir.pathComponents.last ?? ""))")
-                    } icon: {
-                        Image(systemName: "person")
-                    }
-                    .onTapGesture {
+                    Button(action: {
                         viewStore.send(.setSelectedCharacter(url: heir))
-                    }
+                    }, label: {
+                        Label {
+                            Text("Heir (id: \(heir.pathComponents.last ?? ""))")
+                        } icon: {
+                            Image(systemName: "person")
+                        }
+                    })
                 } else {
                     LabeledContent("Heir", value: "-")
                 }
@@ -196,13 +209,15 @@ private extension HouseDetailView {
 
             VStack(alignment: .leading) {
                 if let overlord {
-                    NavigationLink(value: overlord) {
+                    Button(action: {
+                        viewStore.send(.setSelectedHouse(url: overlord))
+                    }, label: {
                         Label {
                             Text("Overlord (id: \(overlord.pathComponents.last ?? ""))")
                         } icon: {
                             Image(systemName: "house")
                         }
-                    }
+                    })
                 } else {
                     LabeledContent("Overlord", value: "-")
                 }
@@ -210,14 +225,15 @@ private extension HouseDetailView {
 
             VStack(alignment: .leading) {
                 if let founder {
-                    Label {
-                        Text("Founder (id: \(founder.pathComponents.last ?? ""))")
-                    } icon: {
-                        Image(systemName: "person")
-                    }
-                    .onTapGesture {
+                    Button(action: {
                         viewStore.send(.setSelectedCharacter(url: founder))
-                    }
+                    }, label: {
+                        Label {
+                            Text("Founder (id: \(founder.pathComponents.last ?? ""))")
+                        } icon: {
+                            Image(systemName: "person")
+                        }
+                    })
                 } else {
                     LabeledContent("Founder", value: "-")
                 }

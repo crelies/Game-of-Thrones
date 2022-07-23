@@ -16,5 +16,6 @@ extension HouseDetailView {
         case onAppear
         case setSelectedCharacter(url: URL?)
         case setSelectedCharacterPresented(isPresented: Bool)
+        case setSelectedHouse(url: URL?)
     }
 }

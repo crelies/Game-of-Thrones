@@ -58,7 +58,6 @@
 		B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AC723032FDD00E2B3F5 /* HouseDataModelConvertible.swift */; };
 		B95616FA24C8C805003A3ACF /* DefaultAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AC923032FE300E2B3F5 /* DefaultAPIService.swift */; };
 		B95616FC24C8C808003A3ACF /* HouseMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03ACB23032FEA00E2B3F5 /* HouseMetadataModel.swift */; };
-		B956170224C8C812003A3ACF /* HouseCadetBranchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03AD32303343100E2B3F5 /* HouseCadetBranchesView.swift */; };
 		B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA37A023096E3300D3CCA8 /* HouseListError.swift */; };
 		B956172124C8C836003A3ACF /* AdvancedList in Frameworks */ = {isa = PBXBuildFile; productRef = B956172024C8C836003A3ACF /* AdvancedList */; };
 		B956172D24C8ED08003A3ACF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B956172C24C8ED08003A3ACF /* Category.swift */; };
@@ -216,7 +215,6 @@
 		B9E03AC723032FDD00E2B3F5 /* HouseDataModelConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModelConvertible.swift; sourceTree = "<group>"; };
 		B9E03AC923032FE300E2B3F5 /* DefaultAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAPIService.swift; sourceTree = "<group>"; };
 		B9E03ACB23032FEA00E2B3F5 /* HouseMetadataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseMetadataModel.swift; sourceTree = "<group>"; };
-		B9E03AD32303343100E2B3F5 /* HouseCadetBranchesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseCadetBranchesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,7 +537,6 @@
 			isa = PBXGroup;
 			children = (
 				B936303F2883493400D48437 /* TCA */,
-				B9E03AB923032EB300E2B3F5 /* Views */,
 			);
 			path = HouseDetail;
 			sourceTree = "<group>";
@@ -575,14 +572,6 @@
 				B972EAD828844ACF00D5028B /* HousesAPIService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		B9E03AB923032EB300E2B3F5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				B9E03AD32303343100E2B3F5 /* HouseCadetBranchesView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -702,7 +691,6 @@
 				B936305A2883698E00D48437 /* CategoryListEnvironment.swift in Sources */,
 				B95616F024C8C7FD003A3ACF /* HouseResponseModel.swift in Sources */,
 				B92B651726DB963C004EB679 /* HouseListRowState.swift in Sources */,
-				B956170224C8C812003A3ACF /* HouseCadetBranchesView.swift in Sources */,
 				B93630622883752700D48437 /* Dependencies.swift in Sources */,
 				B972EAEC288494DD00D5028B /* CharacterListEnvironment.swift in Sources */,
 				B98956C626DD8FF900FE3277 /* AppView.Action+feature.swift in Sources */,
