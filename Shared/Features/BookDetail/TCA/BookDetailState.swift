@@ -9,6 +9,14 @@
 //  https://www.christianelies.de
 //
 
+import Foundation
+
 struct BookDetailState: Equatable {
-    
+    let url: URL
 }
+
+extension BookDetailState: Identifiable {
+    var id: URL { url }
+}
+
+extension BookDetailState: Hashable {}

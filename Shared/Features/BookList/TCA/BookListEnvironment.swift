@@ -10,7 +10,9 @@
 //
 
 import ComposableArchitecture
+import Foundation
 
 struct BookListEnvironment {
-
+    var mainQueue: () -> AnySchedulerOf<DispatchQueue>
+    var bookClient: BookClient
 }

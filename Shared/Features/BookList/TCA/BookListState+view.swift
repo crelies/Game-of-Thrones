@@ -11,6 +11,9 @@
 
 extension BookListState {
     var view: BookListView.State {
-        .init()
+        .init(
+            viewState: viewState,
+            selection: selection?.id
+        )
     }
 }

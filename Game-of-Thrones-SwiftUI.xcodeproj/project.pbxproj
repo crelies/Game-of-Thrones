@@ -72,6 +72,9 @@
 		B951BDCC28948D4200FCB77A /* BookDetailView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC328948D4200FCB77A /* BookDetailView+State.swift */; };
 		B951BDCD28948D4200FCB77A /* BookDetailReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC428948D4200FCB77A /* BookDetailReducer.swift */; };
 		B951BDCE28948D4200FCB77A /* BookDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC528948D4200FCB77A /* BookDetailState.swift */; };
+		B951BDD028948DE600FCB77A /* BookMetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDCF28948DE600FCB77A /* BookMetadataModel.swift */; };
+		B951BDD328948E2A00FCB77A /* BookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDD228948E2A00FCB77A /* BookClient.swift */; };
+		B951BDD528948E8A00FCB77A /* BookClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDD428948E8A00FCB77A /* BookClientError.swift */; };
 		B95616E224C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95616D024C8BF0D003A3ACF /* GameOfThronesApp.swift */; };
 		B95616E624C8BF0F003A3ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B95616D224C8BF0F003A3ACF /* Assets.xcassets */; };
 		B95616EE24C8C7FD003A3ACF /* HouseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */; };
@@ -205,6 +208,9 @@
 		B951BDC328948D4200FCB77A /* BookDetailView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDetailView+State.swift"; sourceTree = "<group>"; };
 		B951BDC428948D4200FCB77A /* BookDetailReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailReducer.swift; sourceTree = "<group>"; };
 		B951BDC528948D4200FCB77A /* BookDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailState.swift; sourceTree = "<group>"; };
+		B951BDCF28948DE600FCB77A /* BookMetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMetadataModel.swift; sourceTree = "<group>"; };
+		B951BDD228948E2A00FCB77A /* BookClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClient.swift; sourceTree = "<group>"; };
+		B951BDD428948E8A00FCB77A /* BookClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClientError.swift; sourceTree = "<group>"; };
 		B95616D024C8BF0D003A3ACF /* GameOfThronesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfThronesApp.swift; sourceTree = "<group>"; };
 		B95616D224C8BF0F003A3ACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B95616D724C8BF0F003A3ACF /* GameOfThrones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfThrones.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -496,6 +502,7 @@
 			children = (
 				B951BD9D289486D800FCB77A /* BookDataModel.swift */,
 				B951BD9F289486E400FCB77A /* BookDataModelConvertible.swift */,
+				B951BDCF28948DE600FCB77A /* BookMetadataModel.swift */,
 				B972EB0628849A9A00D5028B /* CharacterDataModel.swift */,
 				B972EB162885EDB700D5028B /* CharacterDataModel+mock.swift */,
 				B972EB0828849B3300D5028B /* CharacterDataModelConvertible.swift */,
@@ -512,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				B9E03AC023032FD600E2B3F5 /* APIServiceError.swift */,
+				B951BDD428948E8A00FCB77A /* BookClientError.swift */,
 				B972EB122884A1C000D5028B /* CharacterClientError.swift */,
 				B972EB0C28849BA200D5028B /* CharacterDataModelConvertibleError.swift */,
 				B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */,
@@ -629,6 +637,7 @@
 				B936304328834AAC00D48437 /* Extensions */,
 				B9E03AB423032E8800E2B3F5 /* Models */,
 				B9E03AB623032E9400E2B3F5 /* Services */,
+				B951BDD228948E2A00FCB77A /* BookClient.swift */,
 				B972EB102884A0F700D5028B /* CharacterClient.swift */,
 				B972EB0E28849F8700D5028B /* HouseClient.swift */,
 			);
@@ -816,6 +825,7 @@
 				B92B650126DB92E1004EB679 /* HouseListReducer.swift in Sources */,
 				B972EB01288494EB00D5028B /* CharacterDetailState.swift in Sources */,
 				B93630552883698E00D48437 /* CategoryListAction.swift in Sources */,
+				B951BDD528948E8A00FCB77A /* BookClientError.swift in Sources */,
 				B92B64FF26DB92E1004EB679 /* HouseListView+State.swift in Sources */,
 				B972EAFC288494EB00D5028B /* CharacterDetailView+Action.swift in Sources */,
 				B92B650326DB92E1004EB679 /* HouseListState.swift in Sources */,
@@ -887,11 +897,13 @@
 				B936306028836FB500D48437 /* CategorySelection.swift in Sources */,
 				B951BDC928948D4200FCB77A /* BookDetailView+Action.swift in Sources */,
 				B92B652426DC24FD004EB679 /* HouseDetailView.Action+feature.swift in Sources */,
+				B951BDD328948E2A00FCB77A /* BookClient.swift in Sources */,
 				B951BDA22894870E00FCB77A /* BookResponseModel+BookDataModelConvertible.swift in Sources */,
 				B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */,
 				B92B652A26DC24FD004EB679 /* HouseDetailState.swift in Sources */,
 				B92B64F526DB92E1004EB679 /* HouseListState+view.swift in Sources */,
 				B972EAD928844ACF00D5028B /* HousesAPIService.swift in Sources */,
+				B951BDD028948DE600FCB77A /* BookMetadataModel.swift in Sources */,
 				B95616FC24C8C808003A3ACF /* HouseMetadataModel.swift in Sources */,
 				B972EAE8288494DD00D5028B /* CharacterListState+view.swift in Sources */,
 				B951BDCA28948D4200FCB77A /* BookDetailView.swift in Sources */,

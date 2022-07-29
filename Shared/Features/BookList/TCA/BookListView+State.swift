@@ -9,8 +9,11 @@
 //  https://www.christianelies.de
 //
 
+import IdentifiedCollections
+
 extension BookListView {
     struct State: Equatable {
-
+        let viewState: ViewState<IdentifiedArrayOf<BookMetadataModel>, BookClientError>
+        let selection: BookMetadataModel.ID?
     }
 }

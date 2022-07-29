@@ -11,4 +11,11 @@
 
 enum BookListAction: Equatable {
     case onAppear
+    case refresh
+    case fetchBooks
+    case booksResponse(Result<[BookMetadataModel], BookClientError>)
+    case setSelection(selection: BookMetadataModel.ID?)
+    case alertDismissed
 }
+
+extension BookListAction: Hashable {}

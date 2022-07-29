@@ -13,4 +13,5 @@ enum CategoryListAction: Equatable {
     case onAppear
     case houseList(HouseListAction)
     case characters(CharacterListAction)
+    case books(BookListAction)
 }

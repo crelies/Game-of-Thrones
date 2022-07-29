@@ -40,6 +40,16 @@ extension AppModule {
                     }
                 )
             ,
+            BookDetailModule.reducer
+                .optional()
+                .pullback(
+                    state: \.selectedBook,
+                    action: /AppAction.bookDetail,
+                    environment: { _ in
+                        .init()
+                    }
+                )
+            ,
             CategoryListModule.reducer
                 .optional()
                 .pullback(
@@ -49,7 +59,8 @@ extension AppModule {
                         .init(
                             mainQueue: $0.mainQueue,
                             houseClient: $0.houseClient,
-                            characterClient: $0.characterClient
+                            characterClient: $0.characterClient,
+                            bookClient: $0.bookClient
                         )
                     }
                 )
@@ -63,13 +74,20 @@ extension AppModule {
                     case .houses:
                         state.categoryList = .houseList(.init())
                         state.selectedCharacter = nil
+                        state.selectedBook = nil
                     case .characters:
                         state.categoryList = .characters(.init())
                         state.selectedHouse = nil
+                        state.selectedBook = nil
+                    case .books:
+                        state.categoryList = .books(.init())
+                        state.selectedHouse = nil
+                        state.selectedCharacter = nil
                     default:
                         state.categoryList = nil
                         state.selectedHouse = nil
                         state.selectedCharacter = nil
+                        state.selectedBook = nil
                     }
 
                 case .setSelectedCategory(.none):

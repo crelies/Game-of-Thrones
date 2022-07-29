@@ -16,4 +16,5 @@ struct AppState: Equatable {
     var categoryList: CategoryListState?
     var selectedHouse: HouseDetailState?
     var selectedCharacter: CharacterDetailState?
+    var selectedBook: BookDetailState?
 }

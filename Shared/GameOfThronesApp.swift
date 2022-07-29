@@ -17,7 +17,8 @@ let store = Store<AppState, AppAction>(
     environment: AppEnvironment(
         mainQueue: { DispatchQueue.main.eraseToAnyScheduler() },
         houseClient: .live(),
-        characterClient: .live()
+        characterClient: .live(),
+        bookClient: .live()
     )
 )
 

@@ -12,5 +12,7 @@
 extension BookListView {
     enum Action: Equatable {
         case onAppear
+        case refresh
+        case setSelection(selection: BookMetadataModel.ID?)
     }
 }

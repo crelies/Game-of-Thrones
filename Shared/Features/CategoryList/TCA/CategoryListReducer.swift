@@ -41,6 +41,18 @@ extension CategoryListModule {
                     }
                 )
             ,
+            BookListModule.reducer
+                .pullback(
+                    state: /CategoryListState.books,
+                    action: /CategoryListAction.books,
+                    environment: {
+                        .init(
+                            mainQueue: $0.mainQueue,
+                            bookClient: $0.bookClient
+                        )
+                    }
+                )
+            ,
             .init { state, action, environment in
                 return .none
             }

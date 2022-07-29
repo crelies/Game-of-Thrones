@@ -9,6 +9,15 @@
 //  https://www.christianelies.de
 //
 
+import ComposableArchitecture
+import IdentifiedCollections
+
 struct BookListState: Equatable {
-    
+    var page: Int = 1
+    var pageSize: Int = 50
+    var viewState: ViewState<IdentifiedArrayOf<BookMetadataModel>, BookClientError> = .loading()
+    var selection: BookDetailState?
+    var alertState: AlertState<BookListAction>?
 }
+
+extension BookListState: Hashable {}

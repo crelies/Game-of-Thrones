@@ -16,6 +16,38 @@ enum BookListModule {}
 extension BookListModule {
     static var reducer: Reducer<BookListState, BookListAction, BookListEnvironment> {
         .init { state, action, environment in
+            switch action {
+            case .onAppear:
+                guard case ViewState.loading = state.viewState else {
+                    return .none
+                }
+                return .init(value: .refresh)
+
+            case .refresh:
+                return .init(value: .fetchBooks)
+
+            case .fetchBooks:
+                return environment.bookClient.fetchBooks(state.page, state.pageSize)
+                    .receive(on: environment.mainQueue())
+                    .catchToEffect(BookListAction.booksResponse)
+
+            case let .booksResponse(.success(books)):
+                state.viewState = .loaded(.init(uniqueElements: books))
+
+            case let .booksResponse(.failure(error)):
+                state.viewState = .failure(error)
+
+            case let .setSelection(selection: .some(id)):
+                state.selection = .init(url: id)
+
+            case .setSelection(selection: .none):
+                state.selection = nil
+
+            case .alertDismissed:
+                state.alertState = nil
+
+            default: ()
+            }
             return .none
         }
     }

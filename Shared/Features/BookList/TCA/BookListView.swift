@@ -24,7 +24,39 @@ struct BookListView: View {
                 }
             )
         ) { viewStore in
-            Text("Hello world!")
+            VStack {
+                switch viewStore.viewState {
+                case .loading(.none):
+                    ProgressView()
+                        .onAppear {
+                            viewStore.send(.onAppear)
+                        }
+                case let .loaded(value), let .loading(.some(value)):
+                    VStack {
+                        List(selection: viewStore.binding(get: \.selection, send: BookListView.Action.setSelection)) {
+                            ForEach(value) { book in
+                                Label(book.name, systemImage: "book")
+                                    .tag(book.id)
+                            }
+                        }
+                        .listStyle(StyleConstants.houseListStyle)
+                        .alert(
+                            store.scope(state: \.alertState),
+                            dismiss: .alertDismissed
+                        )
+                        .refreshable {
+                            await viewStore.send(.refresh, while: \.viewState.isLoading)
+                        }
+
+                        if case ViewState.loading = viewStore.viewState {
+                            ProgressView()
+                        }
+                    }
+                case let .failure(error):
+                    Text(error.localizedDescription)
+                }
+            }
+            .navigationTitle("Books")
         }
     }
 }

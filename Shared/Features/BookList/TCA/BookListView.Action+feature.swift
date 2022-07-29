@@ -14,6 +14,10 @@ extension BookListView.Action {
         switch self {
         case .onAppear:
             return .onAppear
+        case .refresh:
+            return .refresh
+        case let .setSelection(selection):
+            return .setSelection(selection: selection)
         }
     }
 }

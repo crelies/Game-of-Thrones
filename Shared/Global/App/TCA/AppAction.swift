@@ -15,4 +15,5 @@ enum AppAction: Equatable {
     case categoryList(CategoryListAction)
     case houseDetail(HouseDetailAction)
     case characterDetail(CharacterDetailAction)
+    case bookDetail(BookDetailAction)
 }
