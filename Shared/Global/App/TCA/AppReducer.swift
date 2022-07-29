@@ -102,7 +102,10 @@ extension AppModule {
                     return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
 
                 case let .houseDetail(.characterDetail(.setSelectedHouse(url))):
-                    return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
+                    return .concatenate(
+                        .init(value: .houseDetail(.setSelectedCharacter(url: nil))),
+                        .init(value: .categoryList(.houseList(.setSelection(selection: url))))
+                    )
 
                 case let .characterDetail(.setSelectedHouse(url: url)):
                     if let url {
