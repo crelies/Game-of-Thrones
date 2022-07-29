@@ -18,6 +18,9 @@ final class DefaultAPIService {
     private lazy var charactersURL: URL = {
         return baseURL.appendingPathComponent("/characters")
     }()
+    private lazy var booksURL: URL = {
+        return baseURL.appendingPathComponent("/books")
+    }()
     private lazy var jsonDecoder: JSONDecoder = {
         return JSONDecoder()
     }()
@@ -25,38 +28,44 @@ final class DefaultAPIService {
 
 extension DefaultAPIService: HousesAPIService {
     func getHouses(page: Int, pageSize: Int) async throws -> [HouseResponseModel] {
-        let queryItemPage = URLQueryItem(name: "page", value: "\(page)")
-        let queryItemPageSize = URLQueryItem(name: "pageSize", value: "\(pageSize)")
-
-        var urlComponents = URLComponents(
-            url: housesURL,
-            resolvingAgainstBaseURL: false
-        )
-        urlComponents?.queryItems = [queryItemPage, queryItemPageSize]
-
-        guard let url = urlComponents?.url else {
-            throw APIServiceError.couldNotCreateURL
-        }
-
-        let housesUrlRequest = URLRequest(url: url)
-        let (data, _) = try await urlSession.data(for: housesUrlRequest)
-        return try jsonDecoder.decode([HouseResponseModel].self, from: data)
+        let url = try url(withPage: page, pageSize: pageSize, url: housesURL)
+        return try await requestModel(atURL: url)
     }
 
     func getHouse(atURL url: URL) async throws -> HouseResponseModel {
-        let houseURLRequest = URLRequest(url: url)
-        let (data, _) = try await urlSession.data(for: houseURLRequest)
-        return try jsonDecoder.decode(HouseResponseModel.self, from: data)
+        try await requestModel(atURL: url)
     }
 }
 
 extension DefaultAPIService: CharactersAPIService {
     func getCharacters(page: Int, pageSize: Int) async throws -> [CharacterResponseModel] {
+        let url = try url(withPage: page, pageSize: pageSize, url: charactersURL)
+        return try await requestModel(atURL: url)
+    }
+
+    func getCharacter(atURL url: URL) async throws -> CharacterResponseModel {
+        try await requestModel(atURL: url)
+    }
+}
+
+extension DefaultAPIService: BooksAPIService {
+    func getBooks(page: Int, pageSize: Int) async throws -> [BookResponseModel] {
+        let url = try url(withPage: page, pageSize: pageSize, url: booksURL)
+        return try await requestModel(atURL: url)
+    }
+
+    func getBook(atURL url: URL) async throws -> BookResponseModel {
+        try await requestModel(atURL: url)
+    }
+}
+
+private extension DefaultAPIService {
+    func url(withPage page: Int, pageSize: Int, url: URL) throws -> URL {
         let queryItemPage = URLQueryItem(name: "page", value: "\(page)")
         let queryItemPageSize = URLQueryItem(name: "pageSize", value: "\(pageSize)")
 
         var urlComponents = URLComponents(
-            url: charactersURL,
+            url: url,
             resolvingAgainstBaseURL: false
         )
         urlComponents?.queryItems = [queryItemPage, queryItemPageSize]
@@ -65,14 +74,12 @@ extension DefaultAPIService: CharactersAPIService {
             throw APIServiceError.couldNotCreateURL
         }
 
-        let urlRequest = URLRequest(url: url)
-        let (data, _) = try await urlSession.data(for: urlRequest)
-        return try jsonDecoder.decode([CharacterResponseModel].self, from: data)
+        return url
     }
 
-    func getCharacter(atURL url: URL) async throws -> CharacterResponseModel {
+    func requestModel<T: Decodable>(atURL url: URL) async throws -> T {
         let urlRequest = URLRequest(url: url)
         let (data, _) = try await urlSession.data(for: urlRequest)
-        return try jsonDecoder.decode(CharacterResponseModel.self, from: data)
+        return try jsonDecoder.decode(T.self, from: data)
     }
 }
