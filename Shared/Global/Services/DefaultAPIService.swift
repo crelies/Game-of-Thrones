@@ -10,25 +10,25 @@ import Combine
 import Foundation
 
 final class DefaultAPIService {
+    enum Endpoint: String, CaseIterable {
+        case houses
+        case characters
+        case books
+    }
+
     private let urlSession: URLSession = .shared
-    private let baseURL = URL(string: "https://www.anapioficeandfire.com/api")!
-    private lazy var housesURL: URL = {
-        return baseURL.appendingPathComponent("/houses")
-    }()
-    private lazy var charactersURL: URL = {
-        return baseURL.appendingPathComponent("/characters")
-    }()
-    private lazy var booksURL: URL = {
-        return baseURL.appendingPathComponent("/books")
-    }()
     private lazy var jsonDecoder: JSONDecoder = {
         return JSONDecoder()
     }()
+    private let api = API(
+        baseURL: URL(string: "https://www.anapioficeandfire.com/api")!,
+        endpoints: Endpoint.allCases
+    )
 }
 
 extension DefaultAPIService: HousesAPIService {
     func getHouses(page: Int, pageSize: Int) async throws -> [HouseResponseModel] {
-        let url = try url(withPage: page, pageSize: pageSize, url: housesURL)
+        let url = try url(withPage: page, pageSize: pageSize, url: api.url(for: .houses))
         return try await requestModel(atURL: url)
     }
 
@@ -39,7 +39,7 @@ extension DefaultAPIService: HousesAPIService {
 
 extension DefaultAPIService: CharactersAPIService {
     func getCharacters(page: Int, pageSize: Int) async throws -> [CharacterResponseModel] {
-        let url = try url(withPage: page, pageSize: pageSize, url: charactersURL)
+        let url = try url(withPage: page, pageSize: pageSize, url: api.url(for: .characters))
         return try await requestModel(atURL: url)
     }
 
@@ -50,7 +50,7 @@ extension DefaultAPIService: CharactersAPIService {
 
 extension DefaultAPIService: BooksAPIService {
     func getBooks(page: Int, pageSize: Int) async throws -> [BookResponseModel] {
-        let url = try url(withPage: page, pageSize: pageSize, url: booksURL)
+        let url = try url(withPage: page, pageSize: pageSize, url: api.url(for: .books))
         return try await requestModel(atURL: url)
     }
 
