@@ -17,7 +17,7 @@ struct BookResponseModel: Decodable {
     let publisher: String?
     let country: String?
     let mediaType: String?
-    // iso8601
+    // iso8601 ("1996-08-01T00:00:00")
     let released: Date?
     // Character URLs
     let characters: [URL]?

@@ -25,6 +25,10 @@ struct CategoryListView: View {
                 CharacterListView(store: store)
             }
 
+            CaseLet(state: /CategoryListState.books, action: CategoryListAction.books) { store in
+                BookListView(store: store)
+            }
+
             Default {
                 Text("Not implemented")
             }

@@ -16,9 +16,17 @@ final class DefaultAPIService {
         case books
     }
 
+    private static var customDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter
+    }()
+
     private let urlSession: URLSession = .shared
     private lazy var jsonDecoder: JSONDecoder = {
-        return JSONDecoder()
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(Self.customDateFormatter)
+        return decoder
     }()
     private let api = API(
         baseURL: URL(string: "https://www.anapioficeandfire.com/api")!,
