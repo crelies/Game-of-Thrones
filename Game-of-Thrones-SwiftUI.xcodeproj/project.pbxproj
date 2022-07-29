@@ -54,6 +54,24 @@
 		B951BDA22894870E00FCB77A /* BookResponseModel+BookDataModelConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDA12894870E00FCB77A /* BookResponseModel+BookDataModelConvertible.swift */; };
 		B951BDA4289487C800FCB77A /* BooksAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDA3289487C800FCB77A /* BooksAPIService.swift */; };
 		B951BDA628948C1300FCB77A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDA528948C1300FCB77A /* API.swift */; };
+		B951BDB228948D2E00FCB77A /* BookListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDA928948D2D00FCB77A /* BookListAction.swift */; };
+		B951BDB328948D2E00FCB77A /* BookListState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDAA28948D2D00FCB77A /* BookListState+view.swift */; };
+		B951BDB428948D2E00FCB77A /* BookListView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDAB28948D2D00FCB77A /* BookListView.Action+feature.swift */; };
+		B951BDB528948D2E00FCB77A /* BookListView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDAC28948D2D00FCB77A /* BookListView+Action.swift */; };
+		B951BDB628948D2E00FCB77A /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDAD28948D2D00FCB77A /* BookListView.swift */; };
+		B951BDB728948D2E00FCB77A /* BookListEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDAE28948D2D00FCB77A /* BookListEnvironment.swift */; };
+		B951BDB828948D2E00FCB77A /* BookListView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDAF28948D2E00FCB77A /* BookListView+State.swift */; };
+		B951BDB928948D2E00FCB77A /* BookListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDB028948D2E00FCB77A /* BookListReducer.swift */; };
+		B951BDBA28948D2E00FCB77A /* BookListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDB128948D2E00FCB77A /* BookListState.swift */; };
+		B951BDC628948D4200FCB77A /* BookDetailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDBD28948D4200FCB77A /* BookDetailAction.swift */; };
+		B951BDC728948D4200FCB77A /* BookDetailState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDBE28948D4200FCB77A /* BookDetailState+view.swift */; };
+		B951BDC828948D4200FCB77A /* BookDetailView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDBF28948D4200FCB77A /* BookDetailView.Action+feature.swift */; };
+		B951BDC928948D4200FCB77A /* BookDetailView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC028948D4200FCB77A /* BookDetailView+Action.swift */; };
+		B951BDCA28948D4200FCB77A /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC128948D4200FCB77A /* BookDetailView.swift */; };
+		B951BDCB28948D4200FCB77A /* BookDetailEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC228948D4200FCB77A /* BookDetailEnvironment.swift */; };
+		B951BDCC28948D4200FCB77A /* BookDetailView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC328948D4200FCB77A /* BookDetailView+State.swift */; };
+		B951BDCD28948D4200FCB77A /* BookDetailReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC428948D4200FCB77A /* BookDetailReducer.swift */; };
+		B951BDCE28948D4200FCB77A /* BookDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BDC528948D4200FCB77A /* BookDetailState.swift */; };
 		B95616E224C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95616D024C8BF0D003A3ACF /* GameOfThronesApp.swift */; };
 		B95616E624C8BF0F003A3ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B95616D224C8BF0F003A3ACF /* Assets.xcassets */; };
 		B95616EE24C8C7FD003A3ACF /* HouseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */; };
@@ -169,6 +187,24 @@
 		B951BDA12894870E00FCB77A /* BookResponseModel+BookDataModelConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookResponseModel+BookDataModelConvertible.swift"; sourceTree = "<group>"; };
 		B951BDA3289487C800FCB77A /* BooksAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksAPIService.swift; sourceTree = "<group>"; };
 		B951BDA528948C1300FCB77A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B951BDA928948D2D00FCB77A /* BookListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListAction.swift; sourceTree = "<group>"; };
+		B951BDAA28948D2D00FCB77A /* BookListState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookListState+view.swift"; sourceTree = "<group>"; };
+		B951BDAB28948D2D00FCB77A /* BookListView.Action+feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookListView.Action+feature.swift"; sourceTree = "<group>"; };
+		B951BDAC28948D2D00FCB77A /* BookListView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookListView+Action.swift"; sourceTree = "<group>"; };
+		B951BDAD28948D2D00FCB77A /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
+		B951BDAE28948D2D00FCB77A /* BookListEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListEnvironment.swift; sourceTree = "<group>"; };
+		B951BDAF28948D2E00FCB77A /* BookListView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookListView+State.swift"; sourceTree = "<group>"; };
+		B951BDB028948D2E00FCB77A /* BookListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListReducer.swift; sourceTree = "<group>"; };
+		B951BDB128948D2E00FCB77A /* BookListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListState.swift; sourceTree = "<group>"; };
+		B951BDBD28948D4200FCB77A /* BookDetailAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailAction.swift; sourceTree = "<group>"; };
+		B951BDBE28948D4200FCB77A /* BookDetailState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDetailState+view.swift"; sourceTree = "<group>"; };
+		B951BDBF28948D4200FCB77A /* BookDetailView.Action+feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDetailView.Action+feature.swift"; sourceTree = "<group>"; };
+		B951BDC028948D4200FCB77A /* BookDetailView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDetailView+Action.swift"; sourceTree = "<group>"; };
+		B951BDC128948D4200FCB77A /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		B951BDC228948D4200FCB77A /* BookDetailEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailEnvironment.swift; sourceTree = "<group>"; };
+		B951BDC328948D4200FCB77A /* BookDetailView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDetailView+State.swift"; sourceTree = "<group>"; };
+		B951BDC428948D4200FCB77A /* BookDetailReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailReducer.swift; sourceTree = "<group>"; };
+		B951BDC528948D4200FCB77A /* BookDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailState.swift; sourceTree = "<group>"; };
 		B95616D024C8BF0D003A3ACF /* GameOfThronesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfThronesApp.swift; sourceTree = "<group>"; };
 		B95616D224C8BF0F003A3ACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B95616D724C8BF0F003A3ACF /* GameOfThrones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfThrones.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +405,54 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B951BDA728948CC000FCB77A /* BookList */ = {
+			isa = PBXGroup;
+			children = (
+				B951BDA828948CC700FCB77A /* TCA */,
+			);
+			path = BookList;
+			sourceTree = "<group>";
+		};
+		B951BDA828948CC700FCB77A /* TCA */ = {
+			isa = PBXGroup;
+			children = (
+				B951BDA928948D2D00FCB77A /* BookListAction.swift */,
+				B951BDAE28948D2D00FCB77A /* BookListEnvironment.swift */,
+				B951BDB028948D2E00FCB77A /* BookListReducer.swift */,
+				B951BDB128948D2E00FCB77A /* BookListState.swift */,
+				B951BDAA28948D2D00FCB77A /* BookListState+view.swift */,
+				B951BDAB28948D2D00FCB77A /* BookListView.Action+feature.swift */,
+				B951BDAD28948D2D00FCB77A /* BookListView.swift */,
+				B951BDAC28948D2D00FCB77A /* BookListView+Action.swift */,
+				B951BDAF28948D2E00FCB77A /* BookListView+State.swift */,
+			);
+			path = TCA;
+			sourceTree = "<group>";
+		};
+		B951BDBB28948D3300FCB77A /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B951BDBC28948D3800FCB77A /* TCA */,
+			);
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
+		B951BDBC28948D3800FCB77A /* TCA */ = {
+			isa = PBXGroup;
+			children = (
+				B951BDBD28948D4200FCB77A /* BookDetailAction.swift */,
+				B951BDC228948D4200FCB77A /* BookDetailEnvironment.swift */,
+				B951BDC428948D4200FCB77A /* BookDetailReducer.swift */,
+				B951BDC528948D4200FCB77A /* BookDetailState.swift */,
+				B951BDBE28948D4200FCB77A /* BookDetailState+view.swift */,
+				B951BDBF28948D4200FCB77A /* BookDetailView.Action+feature.swift */,
+				B951BDC128948D4200FCB77A /* BookDetailView.swift */,
+				B951BDC028948D4200FCB77A /* BookDetailView+Action.swift */,
+				B951BDC328948D4200FCB77A /* BookDetailView+State.swift */,
+			);
+			path = TCA;
+			sourceTree = "<group>";
+		};
 		B95616CF24C8BF0D003A3ACF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +611,8 @@
 		B9E03AB023032E6700E2B3F5 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				B951BDA728948CC000FCB77A /* BookList */,
+				B951BDBB28948D3300FCB77A /* BookDetail */,
 				B936304A288368EF00D48437 /* CategoryList */,
 				B972EADC288494C200D5028B /* CharacterDetail */,
 				B972EADA288494B500D5028B /* CharacterList */,
@@ -712,17 +798,20 @@
 				B93630622883752700D48437 /* Dependencies.swift in Sources */,
 				B972EAEC288494DD00D5028B /* CharacterListEnvironment.swift in Sources */,
 				B98956C626DD8FF900FE3277 /* AppView.Action+feature.swift in Sources */,
+				B951BDC728948D4200FCB77A /* BookDetailState+view.swift in Sources */,
 				B936305D2883698E00D48437 /* CategoryListState.swift in Sources */,
 				B98956D226DD8FF900FE3277 /* AppState.swift in Sources */,
 				B972EB00288494EB00D5028B /* CharacterDetailReducer.swift in Sources */,
 				B972EAEB288494DD00D5028B /* CharacterListView.swift in Sources */,
 				B93630562883698E00D48437 /* CategoryListState+view.swift in Sources */,
 				B972EAFD288494EB00D5028B /* CharacterDetailView.swift in Sources */,
+				B951BDB228948D2E00FCB77A /* BookListAction.swift in Sources */,
 				B93630492883628400D48437 /* ViewState.swift in Sources */,
 				B951BD9C2894861700FCB77A /* BookResponseModel.swift in Sources */,
 				B972EAF9288494EB00D5028B /* CharacterDetailAction.swift in Sources */,
 				B98956C426DD8FF900FE3277 /* AppState+view.swift in Sources */,
 				B972EAE9288494DD00D5028B /* CharacterListView.Action+feature.swift in Sources */,
+				B951BDB728948D2E00FCB77A /* BookListEnvironment.swift in Sources */,
 				B972EB032884986000D5028B /* CharactersAPIService.swift in Sources */,
 				B92B650126DB92E1004EB679 /* HouseListReducer.swift in Sources */,
 				B972EB01288494EB00D5028B /* CharacterDetailState.swift in Sources */,
@@ -739,7 +828,9 @@
 				B95616F124C8C7FD003A3ACF /* HouseDataModelConvertibleError.swift in Sources */,
 				B972EAE7288494DD00D5028B /* CharacterListAction.swift in Sources */,
 				B972EB172885EDB700D5028B /* CharacterDataModel+mock.swift in Sources */,
+				B951BDB428948D2E00FCB77A /* BookListView.Action+feature.swift in Sources */,
 				B972EB152884A1FF00D5028B /* CharacterMetadataModel.swift in Sources */,
+				B951BDC828948D4200FCB77A /* BookDetailView.Action+feature.swift in Sources */,
 				B93630572883698E00D48437 /* CategoryListView.Action+feature.swift in Sources */,
 				B92B652226DC24FD004EB679 /* HouseDetailAction.swift in Sources */,
 				B972EAFF288494EB00D5028B /* CharacterDetailView+State.swift in Sources */,
@@ -747,29 +838,38 @@
 				B936305B2883698E00D48437 /* CategoryListView+State.swift in Sources */,
 				B972EAEE288494DD00D5028B /* CharacterListReducer.swift in Sources */,
 				B92B651626DB963C004EB679 /* HouseListRowReducer.swift in Sources */,
+				B951BDCC28948D4200FCB77A /* BookDetailView+State.swift in Sources */,
 				B92B652926DC24FD004EB679 /* HouseDetailReducer.swift in Sources */,
+				B951BDCB28948D4200FCB77A /* BookDetailEnvironment.swift in Sources */,
 				B951BDA628948C1300FCB77A /* API.swift in Sources */,
+				B951BDB828948D2E00FCB77A /* BookListView+State.swift in Sources */,
 				B92B652326DC24FD004EB679 /* HouseDetailState+view.swift in Sources */,
 				B98956CC26DD8FF900FE3277 /* AppEnvironment.swift in Sources */,
 				B936304528834ABA00D48437 /* Store+Hashable.swift in Sources */,
+				B951BDBA28948D2E00FCB77A /* BookListState.swift in Sources */,
 				B92B652826DC24FD004EB679 /* HouseDetailView+State.swift in Sources */,
 				B951BD9E289486D800FCB77A /* BookDataModel.swift in Sources */,
 				B972EB132884A1C000D5028B /* CharacterClientError.swift in Sources */,
 				B93630582883698E00D48437 /* CategoryListView+Action.swift in Sources */,
+				B951BDB328948D2E00FCB77A /* BookListState+view.swift in Sources */,
 				B92B64FD26DB92E1004EB679 /* HouseListEnvironment.swift in Sources */,
 				B92B652626DC24FD004EB679 /* HouseDetailView.swift in Sources */,
 				B92B651426DB963C004EB679 /* HouseListRowEnvironment.swift in Sources */,
 				B972EB05288498AE00D5028B /* CharacterResponseModel.swift in Sources */,
+				B951BDB528948D2E00FCB77A /* BookListView+Action.swift in Sources */,
 				B98956D026DD8FF900FE3277 /* AppReducer.swift in Sources */,
 				B95616F224C8C7FD003A3ACF /* HouseResponseModel+HouseDataModelConvertible.swift in Sources */,
 				B98956CE26DD8FF900FE3277 /* AppView+State.swift in Sources */,
 				B972EAFA288494EB00D5028B /* CharacterDetailState+view.swift in Sources */,
 				B92B650F26DB963C004EB679 /* HouseListRowAction.swift in Sources */,
+				B951BDCD28948D4200FCB77A /* BookDetailReducer.swift in Sources */,
+				B951BDB928948D2E00FCB77A /* BookListReducer.swift in Sources */,
 				B936305C2883698E00D48437 /* CategoryListReducer.swift in Sources */,
 				B972EB0728849A9A00D5028B /* CharacterDataModel.swift in Sources */,
 				B92B651026DB963C004EB679 /* HouseListRowState+view.swift in Sources */,
 				B972EAFE288494EB00D5028B /* CharacterDetailEnvironment.swift in Sources */,
 				B95616E224C8BF0F003A3ACF /* GameOfThronesApp.swift in Sources */,
+				B951BDB628948D2E00FCB77A /* BookListView.swift in Sources */,
 				B972EAD428843C9300D5028B /* HouseDataModel+mock.swift in Sources */,
 				B92B652526DC24FD004EB679 /* HouseDetailView+Action.swift in Sources */,
 				B972EB0928849B3300D5028B /* CharacterDataModelConvertible.swift in Sources */,
@@ -777,6 +877,7 @@
 				B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
 				B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */,
 				B93630592883698E00D48437 /* CategoryListView.swift in Sources */,
+				B951BDCE28948D4200FCB77A /* BookDetailState.swift in Sources */,
 				B95616FA24C8C805003A3ACF /* DefaultAPIService.swift in Sources */,
 				B92B64FB26DB92E1004EB679 /* HouseListView.swift in Sources */,
 				B972EB112884A0F700D5028B /* CharacterClient.swift in Sources */,
@@ -784,6 +885,7 @@
 				B92B652726DC24FD004EB679 /* HouseDetailEnvironment.swift in Sources */,
 				B95616EE24C8C7FD003A3ACF /* HouseDataModel.swift in Sources */,
 				B936306028836FB500D48437 /* CategorySelection.swift in Sources */,
+				B951BDC928948D4200FCB77A /* BookDetailView+Action.swift in Sources */,
 				B92B652426DC24FD004EB679 /* HouseDetailView.Action+feature.swift in Sources */,
 				B951BDA22894870E00FCB77A /* BookResponseModel+BookDataModelConvertible.swift in Sources */,
 				B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */,
@@ -792,10 +894,12 @@
 				B972EAD928844ACF00D5028B /* HousesAPIService.swift in Sources */,
 				B95616FC24C8C808003A3ACF /* HouseMetadataModel.swift in Sources */,
 				B972EAE8288494DD00D5028B /* CharacterListState+view.swift in Sources */,
+				B951BDCA28948D4200FCB77A /* BookDetailView.swift in Sources */,
 				B98956CA26DD8FF900FE3277 /* AppView.swift in Sources */,
 				B951BDA4289487C800FCB77A /* BooksAPIService.swift in Sources */,
 				B951BDA0289486E400FCB77A /* BookDataModelConvertible.swift in Sources */,
 				B92B651326DB963C004EB679 /* HouseListRowView.swift in Sources */,
+				B951BDC628948D4200FCB77A /* BookDetailAction.swift in Sources */,
 				B972EB0D28849BA200D5028B /* CharacterDataModelConvertibleError.swift in Sources */,
 				B98956C826DD8FF900FE3277 /* AppView+Action.swift in Sources */,
 			);
