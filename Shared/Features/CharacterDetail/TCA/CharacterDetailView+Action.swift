@@ -9,8 +9,12 @@
 //  https://www.christianelies.de
 //
 
+import Foundation
+
 extension CharacterDetailView {
     enum Action: Equatable {
         case onAppear
+        case setSelectedCharacter(url: URL?)
+        case setSelectedHouse(url: URL?)
     }
 }

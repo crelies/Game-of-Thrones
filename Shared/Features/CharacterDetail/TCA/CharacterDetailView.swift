@@ -32,7 +32,7 @@ struct CharacterDetailView: View {
                             viewStore.send(.onAppear)
                         }
                 case let .loaded(character):
-                    loadedView(character: character)
+                    loadedView(character: character, viewStore: viewStore)
                 case let .failure(error):
                     Text(error.localizedDescription)
                 }
@@ -52,7 +52,10 @@ struct CharacterDetailView: View {
 
 private extension CharacterDetailView {
     @ViewBuilder
-    func loadedView(character: CharacterDataModel) -> some View {
+    func loadedView(
+        character: CharacterDataModel,
+        viewStore: ViewStore<CharacterDetailView.State, Action>
+    ) -> some View {
         List {
             Section(header: Text("General")) {
                 LabeledContent("Name", value: character.name)
@@ -86,19 +89,26 @@ private extension CharacterDetailView {
 
             Section(header: Label("Family", systemImage: "person.3")) {
                 if let father = character.father {
-                    NavigationLink(value: father) {
+                    Button {
+                        viewStore.send(.setSelectedCharacter(url: father))
+                    } label: {
                         Label("Father", systemImage: "person")
                     }
+
                 }
 
                 if let mother = character.mother {
-                    NavigationLink(value: mother) {
+                    Button {
+                        viewStore.send(.setSelectedCharacter(url: mother))
+                    } label: {
                         Label("Mother", systemImage: "person")
                     }
                 }
 
                 if let spouse = character.spouse {
-                    NavigationLink(value: spouse) {
+                    Button {
+                        viewStore.send(.setSelectedCharacter(url: spouse))
+                    } label: {
                         Label("Spouse", systemImage: "person")
                     }
                 }
@@ -106,7 +116,9 @@ private extension CharacterDetailView {
 
             Section(header: Label("Allegiances", systemImage: "flag.2.crossed")) {
                 ForEach(character.allegiances, id: \.self) { allegiance in
-                    NavigationLink(value: allegiance) {
+                    Button {
+                        viewStore.send(.setSelectedHouse(url: allegiance))
+                    } label: {
                         Label("House (id: \(allegiance.pathComponents.last ?? "-"))", systemImage: "house")
                     }
                 }

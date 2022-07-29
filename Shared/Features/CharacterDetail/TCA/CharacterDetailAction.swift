@@ -9,10 +9,14 @@
 //  https://www.christianelies.de
 //
 
+import Foundation
+
 enum CharacterDetailAction: Equatable {
     case onAppear
     case fetchCharacter
     case characterResponse(Result<CharacterDataModel, CharacterClientError>)
+    case setSelectedCharacter(url: URL?)
+    case setSelectedHouse(url: URL?)
 }
 
 extension CharacterDetailAction: Hashable {}

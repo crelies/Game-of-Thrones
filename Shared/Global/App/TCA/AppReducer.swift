@@ -101,6 +101,18 @@ extension AppModule {
                 case let .houseDetail(.setSelectedHouse(url)):
                     return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
 
+                case let .houseDetail(.characterDetail(.setSelectedHouse(url))):
+                    return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
+
+                case let .characterDetail(.setSelectedHouse(url: url)):
+                    if let url {
+                        state.selectedHouse = .init(url: url)
+                    }
+                    return .init(value: .setSelectedCategory(category: .houses))
+
+                case let .characterDetail(.setSelectedCharacter(url: url)):
+                    return .init(value: .categoryList(.characters(.setSelection(selection: url))))
+
                 default: ()
                 }
                 return .none

@@ -62,6 +62,9 @@ extension HouseDetailModule {
                 case .setSelectedCharacterPresented(false):
                     state.selectedCharacter = nil
 
+                case let .characterDetail(.setSelectedCharacter(url: url)):
+                    return .init(value: .setSelectedCharacter(url: url))
+
                 default: ()
                 }
 
