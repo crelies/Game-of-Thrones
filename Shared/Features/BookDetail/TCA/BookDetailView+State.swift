@@ -11,6 +11,6 @@
 
 extension BookDetailView {
     struct State: Equatable {
-
+        let viewState: ViewState<BookDataModel, BookClientError>
     }
 }

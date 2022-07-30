@@ -16,6 +16,23 @@ enum BookDetailModule {}
 extension BookDetailModule {
     static var reducer: Reducer<BookDetailState, BookDetailAction, BookDetailEnvironment> {
         .init { state, action, environment in
+            switch action {
+            case .onAppear:
+                return .init(value: .fetchBook)
+
+            case .fetchBook:
+                return environment.fetchBook(state.url)
+                    .receive(on: environment.mainQueue())
+                    .catchToEffect(BookDetailAction.bookResponse)
+
+            case let .bookResponse(.success(book)):
+                state.viewState = .loaded(book)
+
+            case let .bookResponse(.failure(error)):
+                state.viewState = .failure(error)
+
+            default: ()
+            }
             return .none
         }
     }

@@ -24,7 +24,115 @@ struct BookDetailView: View {
                 }
             )
         ) { viewStore in
-            Text("Hello world!")
+            VStack {
+                switch viewStore.viewState {
+                case .loading:
+                    ProgressView()
+                        .onAppear {
+                            viewStore.send(.onAppear)
+                        }
+                case let .loaded(book):
+                    loadedView(book: book, viewStore: viewStore)
+                case let .failure(error):
+                    Text(error.localizedDescription)
+                }
+            }
+            #if os(macOS)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(viewStore.viewState.value?.name ?? "Book Details")
+                }
+            }
+            #else
+            .navigationTitle(viewStore.viewState.value?.name ?? "Book Details")
+            #endif
         }
+    }
+}
+
+private extension BookDetailView {
+    func loadedView(
+        book: BookDataModel,
+        viewStore: ViewStore<BookDetailView.State, Action>
+    ) -> some View {
+        List {
+            Section("General") {
+                LabeledContent("Name", value: book.name)
+
+                LabeledContent {
+                    Text(book.isbn)
+                } label: {
+                    Label("ISBN", systemImage: "barcode")
+                }
+
+                LabeledContent {
+                    Text(String(book.numberOfPages))
+                } label: {
+                    Label("Pages", systemImage: "number")
+                }
+
+                LabeledContent("Publisher", value: book.publisher)
+
+                LabeledContent {
+                    Text(book.country)
+                } label: {
+                    Label("Country", systemImage: "flag")
+                }
+
+
+                LabeledContent("Media type", value: book.mediaType)
+
+                if let releasedDate = book.released {
+                    LabeledContent {
+                        Text(releasedDate, style: .date)
+                    } label: {
+                        Label("Released", systemImage: "calendar")
+                    }
+                }
+            }
+
+            Section(header: Label("Authors", systemImage: "person.3.sequence")) {
+                ForEach(book.authors, id: \.self) { author in
+                    Text(author)
+                }
+            }
+
+            Section(header: Label("Characters", systemImage: "person.3")) {
+                ForEach(book.characters, id: \.self) { character in
+                    Button {
+                        viewStore.send(.setSelectedCharacter(url: character))
+                    } label: {
+                        Text("Character \(character.pathComponents.last ?? "")")
+                    }
+                }
+            }
+
+            Section(header: Label("POV Characters", systemImage: "person.3")) {
+                ForEach(book.povCharacters, id: \.self) { character in
+                    Button {
+                        viewStore.send(.setSelectedCharacter(url: character))
+                    } label: {
+                        Text("Character \(character.pathComponents.last ?? "")")
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct BookDetailView_Provider: PreviewProvider {
+    static var previews: some View {
+        BookDetailView(
+            store: .init(
+                initialState: .init(url: URL(string: "https://christianelies.de")!),
+                reducer: BookDetailModule.reducer,
+                environment: .init(
+                    mainQueue: { .main },
+                    fetchBook: { _ in
+                        Effect(value: .mock())
+                    }
+                )
+            )
+        )
     }
 }

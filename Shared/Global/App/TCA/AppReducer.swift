@@ -45,8 +45,8 @@ extension AppModule {
                 .pullback(
                     state: \.selectedBook,
                     action: /AppAction.bookDetail,
-                    environment: { _ in
-                        .init()
+                    environment: {
+                        .init(mainQueue: $0.mainQueue, fetchBook: $0.bookClient.fetchBook)
                     }
                 )
             ,

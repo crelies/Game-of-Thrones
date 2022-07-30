@@ -10,7 +10,9 @@
 //
 
 import ComposableArchitecture
+import Foundation
 
 struct BookDetailEnvironment {
-
+    var mainQueue: () -> AnySchedulerOf<DispatchQueue>
+    var fetchBook: (URL) -> Effect<BookDataModel, BookClientError>
 }

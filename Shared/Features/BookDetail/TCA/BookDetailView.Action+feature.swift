@@ -14,6 +14,8 @@ extension BookDetailView.Action {
         switch self {
         case .onAppear:
             return .onAppear
+        case let .setSelectedCharacter(url):
+            return .setSelectedCharacter(url: url)
         }
     }
 }

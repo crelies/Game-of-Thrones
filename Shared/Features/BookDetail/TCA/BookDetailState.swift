@@ -13,6 +13,7 @@ import Foundation
 
 struct BookDetailState: Equatable {
     let url: URL
+    var viewState: ViewState<BookDataModel, BookClientError> = .loading()
 }
 
 extension BookDetailState: Identifiable {

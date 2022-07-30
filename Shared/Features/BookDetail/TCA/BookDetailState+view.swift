@@ -11,6 +11,6 @@
 
 extension BookDetailState {
     var view: BookDetailView.State {
-        .init()
+        .init(viewState: viewState)
     }
 }

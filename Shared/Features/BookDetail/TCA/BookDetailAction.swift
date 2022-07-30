@@ -9,6 +9,13 @@
 //  https://www.christianelies.de
 //
 
+import Foundation
+
 enum BookDetailAction: Equatable {
     case onAppear
+    case fetchBook
+    case bookResponse(Result<BookDataModel, BookClientError>)
+    case setSelectedCharacter(url: URL)
 }
+
+extension BookDetailAction: Hashable {}
