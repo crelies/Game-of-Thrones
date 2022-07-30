@@ -14,6 +14,6 @@ import Foundation
 extension BookDetailView {
     enum Action: Equatable {
         case onAppear
-        case setSelectedCharacter(url: URL)
+        case setSelectedCharacter(url: URL?)
     }
 }

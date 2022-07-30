@@ -16,5 +16,6 @@ extension CharacterDetailView {
         case onAppear
         case setSelectedCharacter(url: URL?)
         case setSelectedHouse(url: URL?)
+        case setSelectedBook(url: URL?)
     }
 }

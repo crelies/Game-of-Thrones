@@ -17,6 +17,7 @@ enum CharacterDetailAction: Equatable {
     case characterResponse(Result<CharacterDataModel, CharacterClientError>)
     case setSelectedCharacter(url: URL?)
     case setSelectedHouse(url: URL?)
+    case setSelectedBook(url: URL?)
 }
 
 extension CharacterDetailAction: Hashable {}

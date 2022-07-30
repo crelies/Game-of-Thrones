@@ -83,11 +83,6 @@ extension AppModule {
                         state.categoryList = .books(.init())
                         state.selectedHouse = nil
                         state.selectedCharacter = nil
-                    default:
-                        state.categoryList = nil
-                        state.selectedHouse = nil
-                        state.selectedCharacter = nil
-                        state.selectedBook = nil
                     }
 
                 case .setSelectedCategory(.none):
@@ -116,6 +111,8 @@ extension AppModule {
                 case .categoryList(.characters(.setSelection(selection: .none))):
                     state.selectedCharacter = nil
 
+                // MARK: - House detail
+
                 case let .houseDetail(.setSelectedHouse(url)):
                     return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
 
@@ -125,6 +122,8 @@ extension AppModule {
                         .init(value: .categoryList(.houseList(.setSelection(selection: url))))
                     )
 
+                // MARK: - Character detail
+
                 case let .characterDetail(.setSelectedHouse(url: url)):
                     if let url {
                         state.selectedHouse = .init(url: url)
@@ -133,6 +132,20 @@ extension AppModule {
 
                 case let .characterDetail(.setSelectedCharacter(url: url)):
                     return .init(value: .categoryList(.characters(.setSelection(selection: url))))
+
+                case let .characterDetail(.setSelectedBook(url: url)):
+                    if let url {
+                        state.selectedBook = .init(url: url)
+                    }
+                    return .init(value: .setSelectedCategory(category: .books))
+
+                // MARK: - Book detail
+
+                case let .bookDetail(.setSelectedCharacter(url: url)):
+                    if let url {
+                        state.selectedCharacter = .init(url: url)
+                    }
+                    return .init(value: .setSelectedCategory(category: .characters))
 
                 default: ()
                 }

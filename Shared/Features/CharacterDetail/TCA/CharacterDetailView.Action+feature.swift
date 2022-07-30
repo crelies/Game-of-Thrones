@@ -18,6 +18,8 @@ extension CharacterDetailView.Action {
             return .setSelectedCharacter(url: url)
         case let .setSelectedHouse(url):
             return .setSelectedHouse(url: url)
+        case let .setSelectedBook(url):
+            return .setSelectedBook(url: url)
         }
     }
 }

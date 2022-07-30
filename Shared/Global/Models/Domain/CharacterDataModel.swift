@@ -26,6 +26,7 @@ struct CharacterDataModel {
     let spouse: URL?
     // house URLs
     let allegiances: [URL]
+    // book URLs
     let books: [URL]
     // book URLs
     let povBooks: [URL]
