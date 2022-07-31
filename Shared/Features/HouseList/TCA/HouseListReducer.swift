@@ -128,6 +128,8 @@ extension HouseListModule {
 
                 case .setSelection(selection: .none):
                     state.selection = nil
+
+                default: ()
                 }
 
                 return .none

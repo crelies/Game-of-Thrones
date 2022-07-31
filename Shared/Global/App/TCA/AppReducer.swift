@@ -90,6 +90,7 @@ extension AppModule {
                     state.categoryList = nil
                     state.selectedHouse = nil
                     state.selectedCharacter = nil
+                    state.selectedBook = nil
 
                 // MARK: - House list
 
@@ -103,6 +104,16 @@ extension AppModule {
                 case .categoryList(.houseList(.setSelection(selection: .none))):
                     state.selectedHouse = nil
 
+                case .categoryList(.houseList(.onDisappear)):
+                    switch state.categoryList {
+                    case .houseList:
+                        guard state.selectedHouse == nil else {
+                            return .none
+                        }
+                        return .init(value: .setSelectedCategory(category: .none))
+                    default: ()
+                    }
+
                 // MARK: - Character list
 
                 case .categoryList(.characters(.setSelection(selection: .some))):
@@ -115,6 +126,16 @@ extension AppModule {
                 case .categoryList(.characters(.setSelection(selection: .none))):
                     state.selectedCharacter = nil
 
+                case .categoryList(.characters(.onDisappear)):
+                    switch state.categoryList {
+                    case .characters:
+                        guard state.selectedCharacter == nil else {
+                            return .none
+                        }
+                        return .init(value: .setSelectedCategory(category: .none))
+                    default: ()
+                    }
+
                 // MARK: - Book list
 
                 case .categoryList(.books(.setSelection(selection: .some))):
@@ -126,6 +147,16 @@ extension AppModule {
 
                 case .categoryList(.books(.setSelection(selection: .none))):
                     state.selectedBook = nil
+
+                case .categoryList(.books(.onDisappear)):
+                    switch state.categoryList {
+                    case .books:
+                        guard state.selectedBook == nil else {
+                            return .none
+                        }
+                        return .init(value: .setSelectedCategory(category: .none))
+                    default: ()
+                    }
 
                 // MARK: - House detail
 

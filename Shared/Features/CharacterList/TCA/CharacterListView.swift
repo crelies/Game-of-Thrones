@@ -57,6 +57,9 @@ struct CharacterListView: View {
                 }
             }
             .navigationTitle("Characters")
+            .onDisappear {
+                viewStore.send(.onDisappear)
+            }
         }
     }
 }

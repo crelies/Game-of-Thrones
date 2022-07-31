@@ -22,6 +22,7 @@ enum HouseListAction: Equatable {
     case setSelection(selection: URL?)
     case presentAlert(error: HouseListError)
     case alertDismissed
+    case onDisappear
 }
 
 extension HouseListAction: Hashable {}

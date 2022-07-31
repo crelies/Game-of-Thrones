@@ -58,6 +58,9 @@ struct HouseListView: View {
                 }
             }
             .navigationTitle("Houses")
+            .onDisappear {
+                viewStore.send(.onDisappear)
+            }
         }
     }
 }

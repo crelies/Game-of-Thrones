@@ -18,6 +18,8 @@ extension BookListView.Action {
             return .refresh
         case let .setSelection(selection):
             return .setSelection(selection: selection)
+        case .onDisappear:
+            return .onDisappear
         }
     }
 }

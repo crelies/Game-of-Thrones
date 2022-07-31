@@ -57,6 +57,9 @@ struct BookListView: View {
                 }
             }
             .navigationTitle("Books")
+            .onDisappear {
+                viewStore.send(.onDisappear)
+            }
         }
     }
 }

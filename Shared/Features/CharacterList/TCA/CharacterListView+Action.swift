@@ -14,5 +14,6 @@ extension CharacterListView {
         case onAppear
         case refresh
         case setSelection(selection: CharacterMetadataModel.ID?)
+        case onDisappear
     }
 }

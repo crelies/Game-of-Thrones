@@ -14,5 +14,6 @@ extension BookListView {
         case onAppear
         case refresh
         case setSelection(selection: BookMetadataModel.ID?)
+        case onDisappear
     }
 }

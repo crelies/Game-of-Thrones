@@ -16,5 +16,6 @@ extension HouseListView {
         case onAppear
         case refresh
         case setSelection(selection: URL?)
+        case onDisappear
     }
 }

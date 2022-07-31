@@ -18,6 +18,8 @@ extension HouseListView.Action {
             return .setSelection(selection: selection)
         case .refresh:
             return .refresh
+        case .onDisappear:
+            return .onDisappear
         }
     }
 }

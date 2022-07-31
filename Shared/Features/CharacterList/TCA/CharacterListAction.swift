@@ -16,6 +16,7 @@ enum CharacterListAction: Equatable {
     case charactersResponse(Result<[CharacterMetadataModel], CharacterClientError>)
     case setSelection(selection: CharacterMetadataModel.ID?)
     case alertDismissed
+    case onDisappear
 }
 
 extension CharacterListAction: Hashable {}
