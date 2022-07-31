@@ -4,8 +4,13 @@ SwiftUI App for Game of Thrones fans
 
 ## Motivation
 
-I learn and improve my skills by implementing different apps in SwiftUI.
+I further improve my skills through implementing different apps in **SwiftUI** using **The Composable Architecture**.
 
 ## Preview
 
-![Screenshot of the app running on an iPad Pro](https://github.com/crelies/Game-of-Thrones-SwiftUI/blob/master/Preview.png)
+### macOS
+
+<div style="display: inline-block;">
+  <img src="https://github.com/crelies/Game-of-Thrones/blob/master/screenshots/macos-characters.png" alt="Preview Image Character List - Mac" height="400"/>
+  <img src="https://github.com/crelies/Game-of-Thrones/blob/master/screenshots/macos-houses.png" alt="Preview Image House List - Mac" height="400"/>
+</div>
