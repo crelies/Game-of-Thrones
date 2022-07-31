@@ -137,6 +137,7 @@
 		B9CEA2AA2896BB0900F9FAFA /* BookDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2A92896BB0900F9FAFA /* BookDetailTests.swift */; };
 		B9CEA2AC2896BB1200F9FAFA /* CharacterDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2AB2896BB1200F9FAFA /* CharacterDetailTests.swift */; };
 		B9CEA2AF2897127400F9FAFA /* HouseMetadataModel+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2AD2897127000F9FAFA /* HouseMetadataModel+mock.swift */; };
+		B9CEA2B228971B0500F9FAFA /* CharacterMetadataModel+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2B028971AF900F9FAFA /* CharacterMetadataModel+mock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +276,7 @@
 		B9CEA2A92896BB0900F9FAFA /* BookDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTests.swift; sourceTree = "<group>"; };
 		B9CEA2AB2896BB1200F9FAFA /* CharacterDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailTests.swift; sourceTree = "<group>"; };
 		B9CEA2AD2897127000F9FAFA /* HouseMetadataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseMetadataModel+mock.swift"; sourceTree = "<group>"; };
+		B9CEA2B028971AF900F9FAFA /* CharacterMetadataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterMetadataModel+mock.swift"; sourceTree = "<group>"; };
 		B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModel.swift; sourceTree = "<group>"; };
 		B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseResponseModel.swift; sourceTree = "<group>"; };
 		B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModelConvertibleError.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				B972EB162885EDB700D5028B /* CharacterDataModel+mock.swift */,
 				B972EB0828849B3300D5028B /* CharacterDataModelConvertible.swift */,
 				B972EB142884A1FF00D5028B /* CharacterMetadataModel.swift */,
+				B9CEA2B028971AF900F9FAFA /* CharacterMetadataModel+mock.swift */,
 				B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */,
 				B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */,
 				B9E03AC723032FDD00E2B3F5 /* HouseDataModelConvertible.swift */,
@@ -822,6 +825,7 @@
 				B972EAED288494DD00D5028B /* CharacterListView+State.swift in Sources */,
 				B972EB0F28849F8700D5028B /* HouseClient.swift in Sources */,
 				B972EB0B28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift in Sources */,
+				B9CEA2B228971B0500F9FAFA /* CharacterMetadataModel+mock.swift in Sources */,
 				B936305A2883698E00D48437 /* CategoryEnvironment.swift in Sources */,
 				B95616F024C8C7FD003A3ACF /* HouseResponseModel.swift in Sources */,
 				B92B651726DB963C004EB679 /* HouseListRowState.swift in Sources */,
