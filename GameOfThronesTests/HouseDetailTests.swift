@@ -24,4 +24,27 @@ final class HouseDetailTests: XCTestCase {
             )
         )
     }
+
+    func testOnAppear_ShouldFetchBook() {
+        // Prepare
+
+        let store = self.store
+
+        let house: HouseDataModel = .mock()
+        store.environment.fetchHouse = { _ in
+            Effect(value: house)
+        }
+
+        // Action
+
+        store.send(.onAppear)
+
+        // Validate
+
+        store.receive(.fetchHouse)
+
+        store.receive(.houseResponse(.success(house))) {
+            $0.viewState = .loaded(house)
+        }
+    }
 }

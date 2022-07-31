@@ -23,4 +23,27 @@ final class CharacterDetailTests: XCTestCase {
             )
         )
     }
+
+    func testOnAppear_ShouldFetchCharacter() {
+        // Prepare
+
+        let store = self.store
+
+        let character: CharacterDataModel = .mock()
+        store.environment.fetchCharacter = { _ in
+            Effect(value: character)
+        }
+
+        // Action
+
+        store.send(.onAppear)
+
+        // Validate
+
+        store.receive(.fetchCharacter)
+
+        store.receive(.characterResponse(.success(character))) {
+            $0.viewState = .loaded(character)
+        }
+    }
 }

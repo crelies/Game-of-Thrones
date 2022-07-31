@@ -23,4 +23,27 @@ final class BookDetailTests: XCTestCase {
             )
         )
     }
+
+    func testOnAppear_ShouldFetchBook() {
+        // Prepare
+
+        let store = self.store
+
+        let book: BookDataModel = .mock()
+        store.environment.fetchBook = { _ in
+            Effect(value: book)
+        }
+
+        // Action
+
+        store.send(.onAppear)
+
+        // Validate
+
+        store.receive(.fetchBook)
+
+        store.receive(.bookResponse(.success(book))) {
+            $0.viewState = .loaded(book)
+        }
+    }
 }
