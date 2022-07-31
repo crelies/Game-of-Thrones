@@ -46,7 +46,7 @@ struct AppView: View {
                                 store.scope(state: \.selectedHouse, action: AppAction.houseDetail),
                                 then: HouseDetailView.init,
                                 else: {
-                                    Text("No item selected")
+                                    Text("No house selected")
                                 }
                             )
                             .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
@@ -55,12 +55,22 @@ struct AppView: View {
                                 store.scope(state: \.selectedCharacter, action: AppAction.characterDetail),
                                 then: CharacterDetailView.init,
                                 else: {
-                                    Text("No item selected")
+                                    Text("No character selected")
+                                }
+                            )
+                            .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
+                        } else if viewStore.selectedBook != nil {
+                            IfLetStore(
+                                store.scope(state: \.selectedBook, action: AppAction.bookDetail),
+                                then: BookDetailView.init,
+                                else: {
+                                    Text("No book selected")
                                 }
                             )
                             .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
                         } else {
                             Text("No item selected")
+                                .frame(minWidth: 500, maxWidth: 700, minHeight: 700)
                         }
                     }
                 }

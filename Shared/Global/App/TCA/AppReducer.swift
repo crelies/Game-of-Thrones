@@ -91,6 +91,8 @@ extension AppModule {
                     state.selectedHouse = nil
                     state.selectedCharacter = nil
 
+                // MARK: - House list
+
                 case .categoryList(.houseList(.setSelection(selection: .some))):
                     switch state.categoryList {
                     case let .houseList(houseListState):
@@ -101,6 +103,8 @@ extension AppModule {
                 case .categoryList(.houseList(.setSelection(selection: .none))):
                     state.selectedHouse = nil
 
+                // MARK: - Character list
+
                 case .categoryList(.characters(.setSelection(selection: .some))):
                     switch state.categoryList {
                     case let .characters(characterListState):
@@ -110,6 +114,18 @@ extension AppModule {
 
                 case .categoryList(.characters(.setSelection(selection: .none))):
                     state.selectedCharacter = nil
+
+                // MARK: - Book list
+
+                case .categoryList(.books(.setSelection(selection: .some))):
+                    switch state.categoryList {
+                    case let .books(bookListState):
+                        state.selectedBook = bookListState.selection
+                    default: ()
+                    }
+
+                case .categoryList(.books(.setSelection(selection: .none))):
+                    state.selectedBook = nil
 
                 // MARK: - House detail
 

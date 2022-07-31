@@ -45,8 +45,6 @@ extension BookListModule {
 
             case .alertDismissed:
                 state.alertState = nil
-
-            default: ()
             }
             return .none
         }

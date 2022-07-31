@@ -126,13 +126,21 @@ private extension CharacterDetailView {
 
             Section(header: Label("Books", systemImage: "book")) {
                 ForEach(character.books, id: \.self) { book in
-                    NavigationLink("Book (id: \(book.pathComponents.last ?? "-"))", value: book)
+                    Button {
+                        viewStore.send(.setSelectedBook(url: book))
+                    } label: {
+                        Text("Book (id: \(book.pathComponents.last ?? "-"))")
+                    }
                 }
             }
 
             Section(header: Label("POV Books", systemImage: "book")) {
                 ForEach(character.povBooks, id: \.self) { povBook in
-                    NavigationLink("Book (id: \(povBook.pathComponents.last ?? "-"))", value: povBook)
+                    Button {
+                        viewStore.send(.setSelectedBook(url: povBook))
+                    } label: {
+                        Text("Book (id: \(povBook.pathComponents.last ?? "-"))")
+                    }
                 }
             }
 
