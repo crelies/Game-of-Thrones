@@ -21,12 +21,12 @@ struct CategoryListView: View {
                 HouseListView(store: houseListStore)
             }
 
-            CaseLet(state: /CategoryListState.characters, action: CategoryListAction.characters) { store in
-                CharacterListView(store: store)
+            CaseLet(state: /CategoryListState.characters, action: CategoryListAction.characters) { characterListStore in
+                CharacterListView(store: characterListStore)
             }
 
-            CaseLet(state: /CategoryListState.books, action: CategoryListAction.books) { store in
-                BookListView(store: store)
+            CaseLet(state: /CategoryListState.books, action: CategoryListAction.books) { booksStore in
+                BookListView(store: booksStore)
             }
 
             Default {
