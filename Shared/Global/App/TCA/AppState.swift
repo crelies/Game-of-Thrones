@@ -13,7 +13,7 @@ import ComposableArchitecture
 
 struct AppState: Equatable {
     var selectedCategory: Category?
-    var categoryList: CategoryListState?
+    var category: CategoryState?
     var selectedHouse: HouseDetailState?
     var selectedCharacter: CharacterDetailState?
     var selectedBook: BookDetailState?

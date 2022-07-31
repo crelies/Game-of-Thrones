@@ -1,5 +1,5 @@
 //
-//  CategoryListState+view.swift
+//  CategoryView+Action.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created Christian Elies on 16/07/2022.
@@ -9,8 +9,8 @@
 //  https://www.christianelies.de
 //
 
-extension CategoryListState {
-    var view: CategoryListView.State {
-        .init()
+extension CategoryView {
+    enum Action: Equatable {
+        case onAppear
     }
 }

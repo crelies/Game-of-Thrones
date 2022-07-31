@@ -1,5 +1,5 @@
 //
-//  CategoryListView.swift
+//  CategoryView.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created Christian Elies on 16/07/2022.
@@ -12,20 +12,20 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct CategoryListView: View {
-    let store: Store<CategoryListState, CategoryListAction>
+struct CategoryView: View {
+    let store: Store<CategoryState, CategoryAction>
 
     var body: some View {
         SwitchStore(store) {
-            CaseLet(state: /CategoryListState.houseList, action: CategoryListAction.houseList) { houseListStore in
+            CaseLet(state: /CategoryState.houseList, action: CategoryAction.houseList) { houseListStore in
                 HouseListView(store: houseListStore)
             }
 
-            CaseLet(state: /CategoryListState.characters, action: CategoryListAction.characters) { characterListStore in
+            CaseLet(state: /CategoryState.characters, action: CategoryAction.characters) { characterListStore in
                 CharacterListView(store: characterListStore)
             }
 
-            CaseLet(state: /CategoryListState.books, action: CategoryListAction.books) { booksStore in
+            CaseLet(state: /CategoryState.books, action: CategoryAction.books) { booksStore in
                 BookListView(store: booksStore)
             }
 

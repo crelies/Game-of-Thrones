@@ -37,15 +37,15 @@
 		B92B652A26DC24FD004EB679 /* HouseDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92B652126DC24FD004EB679 /* HouseDetailState.swift */; };
 		B936304528834ABA00D48437 /* Store+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304428834ABA00D48437 /* Store+Hashable.swift */; };
 		B93630492883628400D48437 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630482883628400D48437 /* ViewState.swift */; };
-		B93630552883698E00D48437 /* CategoryListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304C2883698E00D48437 /* CategoryListAction.swift */; };
-		B93630562883698E00D48437 /* CategoryListState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304D2883698E00D48437 /* CategoryListState+view.swift */; };
-		B93630572883698E00D48437 /* CategoryListView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304E2883698E00D48437 /* CategoryListView.Action+feature.swift */; };
-		B93630582883698E00D48437 /* CategoryListView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304F2883698E00D48437 /* CategoryListView+Action.swift */; };
-		B93630592883698E00D48437 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630502883698E00D48437 /* CategoryListView.swift */; };
-		B936305A2883698E00D48437 /* CategoryListEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630512883698E00D48437 /* CategoryListEnvironment.swift */; };
-		B936305B2883698E00D48437 /* CategoryListView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630522883698E00D48437 /* CategoryListView+State.swift */; };
-		B936305C2883698E00D48437 /* CategoryListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630532883698E00D48437 /* CategoryListReducer.swift */; };
-		B936305D2883698E00D48437 /* CategoryListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630542883698E00D48437 /* CategoryListState.swift */; };
+		B93630552883698E00D48437 /* CategoryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304C2883698E00D48437 /* CategoryAction.swift */; };
+		B93630562883698E00D48437 /* CategoryState+view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304D2883698E00D48437 /* CategoryState+view.swift */; };
+		B93630572883698E00D48437 /* CategoryView.Action+feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304E2883698E00D48437 /* CategoryView.Action+feature.swift */; };
+		B93630582883698E00D48437 /* CategoryView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936304F2883698E00D48437 /* CategoryView+Action.swift */; };
+		B93630592883698E00D48437 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630502883698E00D48437 /* CategoryView.swift */; };
+		B936305A2883698E00D48437 /* CategoryEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630512883698E00D48437 /* CategoryEnvironment.swift */; };
+		B936305B2883698E00D48437 /* CategoryView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630522883698E00D48437 /* CategoryView+State.swift */; };
+		B936305C2883698E00D48437 /* CategoryReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630532883698E00D48437 /* CategoryReducer.swift */; };
+		B936305D2883698E00D48437 /* CategoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630542883698E00D48437 /* CategoryState.swift */; };
 		B936306028836FB500D48437 /* CategorySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B936305F28836FB500D48437 /* CategorySelection.swift */; };
 		B93630622883752700D48437 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93630612883752700D48437 /* Dependencies.swift */; };
 		B951BD9C2894861700FCB77A /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BD9B2894861700FCB77A /* BookResponseModel.swift */; };
@@ -173,15 +173,15 @@
 		B92B652126DC24FD004EB679 /* HouseDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDetailState.swift; sourceTree = "<group>"; };
 		B936304428834ABA00D48437 /* Store+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Hashable.swift"; sourceTree = "<group>"; };
 		B93630482883628400D48437 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		B936304C2883698E00D48437 /* CategoryListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListAction.swift; sourceTree = "<group>"; };
-		B936304D2883698E00D48437 /* CategoryListState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryListState+view.swift"; sourceTree = "<group>"; };
-		B936304E2883698E00D48437 /* CategoryListView.Action+feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryListView.Action+feature.swift"; sourceTree = "<group>"; };
-		B936304F2883698E00D48437 /* CategoryListView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryListView+Action.swift"; sourceTree = "<group>"; };
-		B93630502883698E00D48437 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
-		B93630512883698E00D48437 /* CategoryListEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListEnvironment.swift; sourceTree = "<group>"; };
-		B93630522883698E00D48437 /* CategoryListView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryListView+State.swift"; sourceTree = "<group>"; };
-		B93630532883698E00D48437 /* CategoryListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListReducer.swift; sourceTree = "<group>"; };
-		B93630542883698E00D48437 /* CategoryListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListState.swift; sourceTree = "<group>"; };
+		B936304C2883698E00D48437 /* CategoryAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAction.swift; sourceTree = "<group>"; };
+		B936304D2883698E00D48437 /* CategoryState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryState+view.swift"; sourceTree = "<group>"; };
+		B936304E2883698E00D48437 /* CategoryView.Action+feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryView.Action+feature.swift"; sourceTree = "<group>"; };
+		B936304F2883698E00D48437 /* CategoryView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryView+Action.swift"; sourceTree = "<group>"; };
+		B93630502883698E00D48437 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		B93630512883698E00D48437 /* CategoryEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEnvironment.swift; sourceTree = "<group>"; };
+		B93630522883698E00D48437 /* CategoryView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryView+State.swift"; sourceTree = "<group>"; };
+		B93630532883698E00D48437 /* CategoryReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryReducer.swift; sourceTree = "<group>"; };
+		B93630542883698E00D48437 /* CategoryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryState.swift; sourceTree = "<group>"; };
 		B936305F28836FB500D48437 /* CategorySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelection.swift; sourceTree = "<group>"; };
 		B93630612883752700D48437 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		B943C44A230336DF00E1BBA0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -381,26 +381,26 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		B936304A288368EF00D48437 /* CategoryList */ = {
+		B936304A288368EF00D48437 /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
 				B936304B288368FF00D48437 /* TCA */,
 			);
-			path = CategoryList;
+			path = CategoryView;
 			sourceTree = "<group>";
 		};
 		B936304B288368FF00D48437 /* TCA */ = {
 			isa = PBXGroup;
 			children = (
-				B936304C2883698E00D48437 /* CategoryListAction.swift */,
-				B93630512883698E00D48437 /* CategoryListEnvironment.swift */,
-				B93630532883698E00D48437 /* CategoryListReducer.swift */,
-				B93630542883698E00D48437 /* CategoryListState.swift */,
-				B936304D2883698E00D48437 /* CategoryListState+view.swift */,
-				B936304E2883698E00D48437 /* CategoryListView.Action+feature.swift */,
-				B93630502883698E00D48437 /* CategoryListView.swift */,
-				B936304F2883698E00D48437 /* CategoryListView+Action.swift */,
-				B93630522883698E00D48437 /* CategoryListView+State.swift */,
+				B936304C2883698E00D48437 /* CategoryAction.swift */,
+				B93630512883698E00D48437 /* CategoryEnvironment.swift */,
+				B93630532883698E00D48437 /* CategoryReducer.swift */,
+				B93630542883698E00D48437 /* CategoryState.swift */,
+				B936304D2883698E00D48437 /* CategoryState+view.swift */,
+				B936304E2883698E00D48437 /* CategoryView.Action+feature.swift */,
+				B93630502883698E00D48437 /* CategoryView.swift */,
+				B936304F2883698E00D48437 /* CategoryView+Action.swift */,
+				B93630522883698E00D48437 /* CategoryView+State.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";
@@ -624,7 +624,7 @@
 			children = (
 				B951BDA728948CC000FCB77A /* BookList */,
 				B951BDBB28948D3300FCB77A /* BookDetail */,
-				B936304A288368EF00D48437 /* CategoryList */,
+				B936304A288368EF00D48437 /* CategoryView */,
 				B972EADC288494C200D5028B /* CharacterDetail */,
 				B972EADA288494B500D5028B /* CharacterList */,
 				B9E03AB223032E7700E2B3F5 /* HouseDetail */,
@@ -804,18 +804,18 @@
 				B972EAED288494DD00D5028B /* CharacterListView+State.swift in Sources */,
 				B972EB0F28849F8700D5028B /* HouseClient.swift in Sources */,
 				B972EB0B28849B8100D5028B /* CharacterResponseModel+CharacterDataModelConvertible.swift in Sources */,
-				B936305A2883698E00D48437 /* CategoryListEnvironment.swift in Sources */,
+				B936305A2883698E00D48437 /* CategoryEnvironment.swift in Sources */,
 				B95616F024C8C7FD003A3ACF /* HouseResponseModel.swift in Sources */,
 				B92B651726DB963C004EB679 /* HouseListRowState.swift in Sources */,
 				B93630622883752700D48437 /* Dependencies.swift in Sources */,
 				B972EAEC288494DD00D5028B /* CharacterListEnvironment.swift in Sources */,
 				B98956C626DD8FF900FE3277 /* AppView.Action+feature.swift in Sources */,
 				B951BDC728948D4200FCB77A /* BookDetailState+view.swift in Sources */,
-				B936305D2883698E00D48437 /* CategoryListState.swift in Sources */,
+				B936305D2883698E00D48437 /* CategoryState.swift in Sources */,
 				B98956D226DD8FF900FE3277 /* AppState.swift in Sources */,
 				B972EB00288494EB00D5028B /* CharacterDetailReducer.swift in Sources */,
 				B972EAEB288494DD00D5028B /* CharacterListView.swift in Sources */,
-				B93630562883698E00D48437 /* CategoryListState+view.swift in Sources */,
+				B93630562883698E00D48437 /* CategoryState+view.swift in Sources */,
 				B972EAFD288494EB00D5028B /* CharacterDetailView.swift in Sources */,
 				B951BDB228948D2E00FCB77A /* BookListAction.swift in Sources */,
 				B93630492883628400D48437 /* ViewState.swift in Sources */,
@@ -827,7 +827,7 @@
 				B972EB032884986000D5028B /* CharactersAPIService.swift in Sources */,
 				B92B650126DB92E1004EB679 /* HouseListReducer.swift in Sources */,
 				B972EB01288494EB00D5028B /* CharacterDetailState.swift in Sources */,
-				B93630552883698E00D48437 /* CategoryListAction.swift in Sources */,
+				B93630552883698E00D48437 /* CategoryAction.swift in Sources */,
 				B951BDD528948E8A00FCB77A /* BookClientError.swift in Sources */,
 				B92B64FF26DB92E1004EB679 /* HouseListView+State.swift in Sources */,
 				B972EAFC288494EB00D5028B /* CharacterDetailView+Action.swift in Sources */,
@@ -844,11 +844,11 @@
 				B951BDB428948D2E00FCB77A /* BookListView.Action+feature.swift in Sources */,
 				B972EB152884A1FF00D5028B /* CharacterMetadataModel.swift in Sources */,
 				B951BDC828948D4200FCB77A /* BookDetailView.Action+feature.swift in Sources */,
-				B93630572883698E00D48437 /* CategoryListView.Action+feature.swift in Sources */,
+				B93630572883698E00D48437 /* CategoryView.Action+feature.swift in Sources */,
 				B92B652226DC24FD004EB679 /* HouseDetailAction.swift in Sources */,
 				B972EAFF288494EB00D5028B /* CharacterDetailView+State.swift in Sources */,
 				B92B651126DB963C004EB679 /* HouseListRowView.Action+feature.swift in Sources */,
-				B936305B2883698E00D48437 /* CategoryListView+State.swift in Sources */,
+				B936305B2883698E00D48437 /* CategoryView+State.swift in Sources */,
 				B972EAEE288494DD00D5028B /* CharacterListReducer.swift in Sources */,
 				B92B651626DB963C004EB679 /* HouseListRowReducer.swift in Sources */,
 				B951BDCC28948D4200FCB77A /* BookDetailView+State.swift in Sources */,
@@ -863,7 +863,7 @@
 				B92B652826DC24FD004EB679 /* HouseDetailView+State.swift in Sources */,
 				B951BD9E289486D800FCB77A /* BookDataModel.swift in Sources */,
 				B972EB132884A1C000D5028B /* CharacterClientError.swift in Sources */,
-				B93630582883698E00D48437 /* CategoryListView+Action.swift in Sources */,
+				B93630582883698E00D48437 /* CategoryView+Action.swift in Sources */,
 				B951BDB328948D2E00FCB77A /* BookListState+view.swift in Sources */,
 				B92B64FD26DB92E1004EB679 /* HouseListEnvironment.swift in Sources */,
 				B92B652626DC24FD004EB679 /* HouseDetailView.swift in Sources */,
@@ -877,7 +877,7 @@
 				B92B650F26DB963C004EB679 /* HouseListRowAction.swift in Sources */,
 				B951BDCD28948D4200FCB77A /* BookDetailReducer.swift in Sources */,
 				B951BDB928948D2E00FCB77A /* BookListReducer.swift in Sources */,
-				B936305C2883698E00D48437 /* CategoryListReducer.swift in Sources */,
+				B936305C2883698E00D48437 /* CategoryReducer.swift in Sources */,
 				B972EB0728849A9A00D5028B /* CharacterDataModel.swift in Sources */,
 				B92B651026DB963C004EB679 /* HouseListRowState+view.swift in Sources */,
 				B972EAFE288494EB00D5028B /* CharacterDetailEnvironment.swift in Sources */,
@@ -889,7 +889,7 @@
 				B956172D24C8ED08003A3ACF /* Category.swift in Sources */,
 				B95616F824C8C801003A3ACF /* HouseDataModelConvertible.swift in Sources */,
 				B956171824C8C81B003A3ACF /* HouseListError.swift in Sources */,
-				B93630592883698E00D48437 /* CategoryListView.swift in Sources */,
+				B93630592883698E00D48437 /* CategoryView.swift in Sources */,
 				B951BDCE28948D4200FCB77A /* BookDetailState.swift in Sources */,
 				B95616FA24C8C805003A3ACF /* DefaultAPIService.swift in Sources */,
 				B92B64FB26DB92E1004EB679 /* HouseListView.swift in Sources */,

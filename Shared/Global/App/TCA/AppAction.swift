@@ -12,7 +12,7 @@
 enum AppAction: Equatable {
     case onAppear
     case setSelectedCategory(category: Category?)
-    case categoryList(CategoryListAction)
+    case category(CategoryAction)
     case houseDetail(HouseDetailAction)
     case characterDetail(CharacterDetailAction)
     case bookDetail(BookDetailAction)

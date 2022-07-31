@@ -1,5 +1,5 @@
 //
-//  CategoryListEnvironment.swift
+//  CategoryEnvironment.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created Christian Elies on 16/07/2022.
@@ -12,7 +12,7 @@
 import ComposableArchitecture
 import Foundation
 
-struct CategoryListEnvironment {
+struct CategoryEnvironment {
     var mainQueue: () -> AnySchedulerOf<DispatchQueue>
     var houseClient: HouseClient
     var characterClient: CharacterClient

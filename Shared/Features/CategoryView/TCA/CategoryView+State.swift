@@ -1,5 +1,5 @@
 //
-//  CategoryListView+State.swift
+//  CategoryView+State.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created Christian Elies on 16/07/2022.
@@ -9,7 +9,7 @@
 //  https://www.christianelies.de
 //
 
-extension CategoryListView {
+extension CategoryView {
     struct State: Equatable {
 
     }

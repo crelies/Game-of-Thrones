@@ -1,5 +1,5 @@
 //
-//  CategoryListAction.swift
+//  CategoryAction.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created Christian Elies on 16/07/2022.
@@ -9,7 +9,7 @@
 //  https://www.christianelies.de
 //
 
-enum CategoryListAction: Equatable {
+enum CategoryAction: Equatable {
     case onAppear
     case houseList(HouseListAction)
     case characters(CharacterListAction)

@@ -1,5 +1,5 @@
 //
-//  CategoryListReducer.swift
+//  CategoryReducer.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created Christian Elies on 16/07/2022.
@@ -12,15 +12,15 @@
 import ComposableArchitecture
 import Foundation
 
-enum CategoryListModule {}
+enum CategoryModule {}
 
-extension CategoryListModule {
-    static var reducer: Reducer<CategoryListState, CategoryListAction, CategoryListEnvironment> {
+extension CategoryModule {
+    static var reducer: Reducer<CategoryState, CategoryAction, CategoryEnvironment> {
         .combine(
             CharacterListModule.reducer
                 .pullback(
-                    state: /CategoryListState.characters,
-                    action: /CategoryListAction.characters,
+                    state: /CategoryState.characters,
+                    action: /CategoryAction.characters,
                     environment: {
                         .init(
                             mainQueue: $0.mainQueue,
@@ -31,8 +31,8 @@ extension CategoryListModule {
             ,
             HouseListModule.reducer
                 .pullback(
-                    state: /CategoryListState.houseList,
-                    action: /CategoryListAction.houseList,
+                    state: /CategoryState.houseList,
+                    action: /CategoryAction.houseList,
                     environment: {
                         .init(
                             mainQueue: $0.mainQueue,
@@ -43,8 +43,8 @@ extension CategoryListModule {
             ,
             BookListModule.reducer
                 .pullback(
-                    state: /CategoryListState.books,
-                    action: /CategoryListAction.books,
+                    state: /CategoryState.books,
+                    action: /CategoryAction.books,
                     environment: {
                         .init(
                             mainQueue: $0.mainQueue,

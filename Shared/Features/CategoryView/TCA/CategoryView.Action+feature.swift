@@ -1,5 +1,5 @@
 //
-//  CategoryListState.swift
+//  CategoryView.Action+feature.swift
 //  Game-of-Thrones-SwiftUI
 //
 //  Created Christian Elies on 16/07/2022.
@@ -9,8 +9,11 @@
 //  https://www.christianelies.de
 //
 
-enum CategoryListState: Equatable {
-    case houseList(HouseListState)
-    case characters(CharacterListState)
-    case books(BookListState)
+extension CategoryView.Action {
+    var feature: CategoryAction {
+        switch self {
+        case .onAppear:
+            return .onAppear
+        }
+    }
 }

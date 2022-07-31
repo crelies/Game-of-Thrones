@@ -50,11 +50,11 @@ extension AppModule {
                     }
                 )
             ,
-            CategoryListModule.reducer
+            CategoryModule.reducer
                 .optional()
                 .pullback(
-                    state: \.categoryList,
-                    action: /AppAction.categoryList,
+                    state: \.category,
+                    action: /AppAction.category,
                     environment: {
                         .init(
                             mainQueue: $0.mainQueue,
@@ -72,40 +72,40 @@ extension AppModule {
 
                     switch category {
                     case .houses:
-                        state.categoryList = .houseList(.init())
+                        state.category = .houseList(.init())
                         state.selectedCharacter = nil
                         state.selectedBook = nil
                     case .characters:
-                        state.categoryList = .characters(.init())
+                        state.category = .characters(.init())
                         state.selectedHouse = nil
                         state.selectedBook = nil
                     case .books:
-                        state.categoryList = .books(.init())
+                        state.category = .books(.init())
                         state.selectedHouse = nil
                         state.selectedCharacter = nil
                     }
 
                 case .setSelectedCategory(.none):
                     state.selectedCategory = nil
-                    state.categoryList = nil
+                    state.category = nil
                     state.selectedHouse = nil
                     state.selectedCharacter = nil
                     state.selectedBook = nil
 
                 // MARK: - House list
 
-                case .categoryList(.houseList(.setSelection(selection: .some))):
-                    switch state.categoryList {
+                case .category(.houseList(.setSelection(selection: .some))):
+                    switch state.category {
                     case let .houseList(houseListState):
                         state.selectedHouse = houseListState.selection
                     default: ()
                     }
 
-                case .categoryList(.houseList(.setSelection(selection: .none))):
+                case .category(.houseList(.setSelection(selection: .none))):
                     state.selectedHouse = nil
 
-                case .categoryList(.houseList(.onDisappear)):
-                    switch state.categoryList {
+                case .category(.houseList(.onDisappear)):
+                    switch state.category {
                     case .houseList:
                         guard state.selectedHouse == nil else {
                             return .none
@@ -116,18 +116,18 @@ extension AppModule {
 
                 // MARK: - Character list
 
-                case .categoryList(.characters(.setSelection(selection: .some))):
-                    switch state.categoryList {
+                case .category(.characters(.setSelection(selection: .some))):
+                    switch state.category {
                     case let .characters(characterListState):
                         state.selectedCharacter = characterListState.selection
                     default: ()
                     }
 
-                case .categoryList(.characters(.setSelection(selection: .none))):
+                case .category(.characters(.setSelection(selection: .none))):
                     state.selectedCharacter = nil
 
-                case .categoryList(.characters(.onDisappear)):
-                    switch state.categoryList {
+                case .category(.characters(.onDisappear)):
+                    switch state.category {
                     case .characters:
                         guard state.selectedCharacter == nil else {
                             return .none
@@ -138,18 +138,18 @@ extension AppModule {
 
                 // MARK: - Book list
 
-                case .categoryList(.books(.setSelection(selection: .some))):
-                    switch state.categoryList {
+                case .category(.books(.setSelection(selection: .some))):
+                    switch state.category {
                     case let .books(bookListState):
                         state.selectedBook = bookListState.selection
                     default: ()
                     }
 
-                case .categoryList(.books(.setSelection(selection: .none))):
+                case .category(.books(.setSelection(selection: .none))):
                     state.selectedBook = nil
 
-                case .categoryList(.books(.onDisappear)):
-                    switch state.categoryList {
+                case .category(.books(.onDisappear)):
+                    switch state.category {
                     case .books:
                         guard state.selectedBook == nil else {
                             return .none
@@ -161,7 +161,7 @@ extension AppModule {
                 // MARK: - House detail
 
                 case let .houseDetail(.setSelectedHouse(url)):
-                    return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
+                    return .init(value: .category(.houseList(.setSelection(selection: url))))
 
                 case let .houseDetail(.setSelectedCharacter(url: url)):
                     if let url {
@@ -178,7 +178,7 @@ extension AppModule {
                     return .init(value: .setSelectedCategory(category: .houses))
 
                 case let .characterDetail(.setSelectedCharacter(url: url)):
-                    return .init(value: .categoryList(.characters(.setSelection(selection: url))))
+                    return .init(value: .category(.characters(.setSelection(selection: url))))
 
                 case let .characterDetail(.setSelectedBook(url: url)):
                     if let url {

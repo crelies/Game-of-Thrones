@@ -31,8 +31,8 @@ struct AppView: View {
             } content: {
                 // Content view / second column
                 IfLetStore(
-                    store.scope(state: \.categoryList, action: AppAction.categoryList),
-                    then: CategoryListView.init,
+                    store.scope(state: \.category, action: AppAction.category),
+                    then: CategoryView.init,
                     else: {
                         Text("No category selected")
                     }
