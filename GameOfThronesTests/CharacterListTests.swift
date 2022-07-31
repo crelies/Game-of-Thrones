@@ -49,6 +49,29 @@ final class CharacterListTests: XCTestCase {
         }
     }
 
+    func testRefresh_ShouldFetchCharacters() {
+        // Prepare
+
+        let store = self.store
+
+        let character: CharacterMetadataModel = .mock()
+        store.environment.characterClient.fetchCharacters = { _, _ in
+            Effect(value: [character])
+        }
+
+        // Action
+
+        store.send(.refresh)
+
+        // Validate
+
+        store.receive(.fetchCharacters)
+
+        store.receive(.charactersResponse(.success([character]))) {
+            $0.viewState = .loaded(.init(uniqueElements: [character]))
+        }
+    }
+
     func testSelectRow_ShouldSetSelection() {
         // Prepare
 
