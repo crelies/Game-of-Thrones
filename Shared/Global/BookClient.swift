@@ -37,3 +37,14 @@ extension BookClient {
         )
     }
 }
+
+#if DEBUG
+extension BookClient {
+    static func none() -> Self {
+        .init(
+            fetchBooks: { _, _ in .none },
+            fetchBook: { _ in .none }
+        )
+    }
+}
+#endif

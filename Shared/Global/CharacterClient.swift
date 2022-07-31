@@ -46,7 +46,7 @@ extension CharacterClient {
 
 #if DEBUG
 extension CharacterClient {
-    static func mock() -> Self {
+    static func none() -> Self {
         .init(
             fetchCharacters: { _, _ in .none },
             fetchCharacter: { _ in .none }
