@@ -131,6 +131,12 @@
 		B98956D226DD8FF900FE3277 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956C126DD8FF900FE3277 /* AppState.swift */; };
 		B98956E226E6CA8C00FE3277 /* HouseListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956E126E6CA8C00FE3277 /* HouseListTests.swift */; };
 		B997A7D52896A1F5008F4F4E /* BookDataModel+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997A7D42896A1F5008F4F4E /* BookDataModel+mock.swift */; };
+		B9CEA2A42896BAF100F9FAFA /* BookListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2A32896BAF100F9FAFA /* BookListTests.swift */; };
+		B9CEA2A62896BAF700F9FAFA /* CharacterListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2A52896BAF700F9FAFA /* CharacterListTests.swift */; };
+		B9CEA2A82896BB0200F9FAFA /* HouseDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2A72896BB0200F9FAFA /* HouseDetailTests.swift */; };
+		B9CEA2AA2896BB0900F9FAFA /* BookDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2A92896BB0900F9FAFA /* BookDetailTests.swift */; };
+		B9CEA2AC2896BB1200F9FAFA /* CharacterDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2AB2896BB1200F9FAFA /* CharacterDetailTests.swift */; };
+		B9CEA2AF2897127400F9FAFA /* HouseMetadataModel+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA2AD2897127000F9FAFA /* HouseMetadataModel+mock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +269,12 @@
 		B98956E126E6CA8C00FE3277 /* HouseListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListTests.swift; sourceTree = "<group>"; };
 		B997A7D42896A1F5008F4F4E /* BookDataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDataModel+mock.swift"; sourceTree = "<group>"; };
 		B9BA37A023096E3300D3CCA8 /* HouseListError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListError.swift; sourceTree = "<group>"; };
+		B9CEA2A32896BAF100F9FAFA /* BookListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTests.swift; sourceTree = "<group>"; };
+		B9CEA2A52896BAF700F9FAFA /* CharacterListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListTests.swift; sourceTree = "<group>"; };
+		B9CEA2A72896BB0200F9FAFA /* HouseDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDetailTests.swift; sourceTree = "<group>"; };
+		B9CEA2A92896BB0900F9FAFA /* BookDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTests.swift; sourceTree = "<group>"; };
+		B9CEA2AB2896BB1200F9FAFA /* CharacterDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailTests.swift; sourceTree = "<group>"; };
+		B9CEA2AD2897127000F9FAFA /* HouseMetadataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseMetadataModel+mock.swift"; sourceTree = "<group>"; };
 		B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModel.swift; sourceTree = "<group>"; };
 		B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseResponseModel.swift; sourceTree = "<group>"; };
 		B9E03ABF23032FD600E2B3F5 /* HouseDataModelConvertibleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModelConvertibleError.swift; sourceTree = "<group>"; };
@@ -514,6 +526,7 @@
 				B972EAD328843C9300D5028B /* HouseDataModel+mock.swift */,
 				B9E03AC723032FDD00E2B3F5 /* HouseDataModelConvertible.swift */,
 				B9E03ACB23032FEA00E2B3F5 /* HouseMetadataModel.swift */,
+				B9CEA2AD2897127000F9FAFA /* HouseMetadataModel+mock.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -590,6 +603,11 @@
 		B98956D926E6CA0900FE3277 /* GameOfThronesTests */ = {
 			isa = PBXGroup;
 			children = (
+				B9CEA2A92896BB0900F9FAFA /* BookDetailTests.swift */,
+				B9CEA2A32896BAF100F9FAFA /* BookListTests.swift */,
+				B9CEA2AB2896BB1200F9FAFA /* CharacterDetailTests.swift */,
+				B9CEA2A52896BAF700F9FAFA /* CharacterListTests.swift */,
+				B9CEA2A72896BB0200F9FAFA /* HouseDetailTests.swift */,
 				B98956E126E6CA8C00FE3277 /* HouseListTests.swift */,
 			);
 			path = GameOfThronesTests;
@@ -905,6 +923,7 @@
 				B951BDA22894870E00FCB77A /* BookResponseModel+BookDataModelConvertible.swift in Sources */,
 				B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */,
 				B92B652A26DC24FD004EB679 /* HouseDetailState.swift in Sources */,
+				B9CEA2AF2897127400F9FAFA /* HouseMetadataModel+mock.swift in Sources */,
 				B92B64F526DB92E1004EB679 /* HouseListState+view.swift in Sources */,
 				B972EAD928844ACF00D5028B /* HousesAPIService.swift in Sources */,
 				B951BDD028948DE600FCB77A /* BookMetadataModel.swift in Sources */,
@@ -925,7 +944,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9CEA2A62896BAF700F9FAFA /* CharacterListTests.swift in Sources */,
+				B9CEA2A42896BAF100F9FAFA /* BookListTests.swift in Sources */,
+				B9CEA2AC2896BB1200F9FAFA /* CharacterDetailTests.swift in Sources */,
 				B98956E226E6CA8C00FE3277 /* HouseListTests.swift in Sources */,
+				B9CEA2AA2896BB0900F9FAFA /* BookDetailTests.swift in Sources */,
+				B9CEA2A82896BB0200F9FAFA /* HouseDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
