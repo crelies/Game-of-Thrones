@@ -16,8 +16,6 @@ enum HouseDetailAction: Equatable {
     case fetchHouse
     case houseResponse(Result<HouseDataModel, HouseListError>)
     case setSelectedCharacter(url: URL?)
-    case setSelectedCharacterPresented(isPresented: Bool)
-    case characterDetail(CharacterDetailAction)
     case setSelectedHouse(url: URL?)
 }
 

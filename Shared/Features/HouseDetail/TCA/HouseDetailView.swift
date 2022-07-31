@@ -110,17 +110,6 @@ private extension HouseDetailView {
                 }
             }
         }
-        .navigationDestination(
-            isPresented: viewStore.binding(
-                get: { $0.selectedCharacter != nil },
-                send: Action.setSelectedCharacterPresented
-            )
-        ) {
-            IfLetStore(
-                store.scope(state: \.selectedCharacter, action: HouseDetailAction.characterDetail),
-                then: CharacterDetailView.init
-            )
-        }
     }
 
     @ViewBuilder

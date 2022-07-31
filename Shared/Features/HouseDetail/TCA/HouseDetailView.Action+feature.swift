@@ -16,8 +16,6 @@ extension HouseDetailView.Action {
             return .onAppear
         case let .setSelectedCharacter(url):
             return .setSelectedCharacter(url: url)
-        case let .setSelectedCharacterPresented(isPresented):
-            return .setSelectedCharacterPresented(isPresented: isPresented)
         case let .setSelectedHouse(url):
             return .setSelectedHouse(url: url)
         }

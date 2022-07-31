@@ -163,11 +163,11 @@ extension AppModule {
                 case let .houseDetail(.setSelectedHouse(url)):
                     return .init(value: .categoryList(.houseList(.setSelection(selection: url))))
 
-                case let .houseDetail(.characterDetail(.setSelectedHouse(url))):
-                    return .concatenate(
-                        .init(value: .houseDetail(.setSelectedCharacter(url: nil))),
-                        .init(value: .categoryList(.houseList(.setSelection(selection: url))))
-                    )
+                case let .houseDetail(.setSelectedCharacter(url: url)):
+                    if let url {
+                        state.selectedCharacter = .init(url: url)
+                    }
+                    return .init(value: .setSelectedCategory(category: .characters))
 
                 // MARK: - Character detail
 
