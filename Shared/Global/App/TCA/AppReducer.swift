@@ -68,7 +68,7 @@ extension AppModule {
             Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
                 switch action {
                 case let .setSelectedCategory(.some(category)):
-                    state.category = category
+                    state.selectedCategory = category
 
                     switch category {
                     case .houses:
@@ -86,7 +86,7 @@ extension AppModule {
                     }
 
                 case .setSelectedCategory(.none):
-                    state.category = nil
+                    state.selectedCategory = nil
                     state.categoryList = nil
                     state.selectedHouse = nil
                     state.selectedCharacter = nil

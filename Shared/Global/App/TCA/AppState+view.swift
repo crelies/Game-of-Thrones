@@ -11,6 +11,6 @@
 
 extension AppState {
     var view: AppView.State {
-        .init(category: category)
+        .init(category: selectedCategory)
     }
 }
