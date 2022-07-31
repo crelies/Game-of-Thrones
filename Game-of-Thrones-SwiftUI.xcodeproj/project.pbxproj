@@ -130,6 +130,7 @@
 		B98956D026DD8FF900FE3277 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956C026DD8FF900FE3277 /* AppReducer.swift */; };
 		B98956D226DD8FF900FE3277 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956C126DD8FF900FE3277 /* AppState.swift */; };
 		B98956E226E6CA8C00FE3277 /* HouseListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98956E126E6CA8C00FE3277 /* HouseListTests.swift */; };
+		B997A7D52896A1F5008F4F4E /* BookDataModel+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B997A7D42896A1F5008F4F4E /* BookDataModel+mock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,6 +261,7 @@
 		B98956C126DD8FF900FE3277 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B98956D826E6CA0900FE3277 /* GameOfThronesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfThronesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98956E126E6CA8C00FE3277 /* HouseListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListTests.swift; sourceTree = "<group>"; };
+		B997A7D42896A1F5008F4F4E /* BookDataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDataModel+mock.swift"; sourceTree = "<group>"; };
 		B9BA37A023096E3300D3CCA8 /* HouseListError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseListError.swift; sourceTree = "<group>"; };
 		B9E03ABD23032FD600E2B3F5 /* HouseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseDataModel.swift; sourceTree = "<group>"; };
 		B9E03ABE23032FD600E2B3F5 /* HouseResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseResponseModel.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				B951BD9D289486D800FCB77A /* BookDataModel.swift */,
+				B997A7D42896A1F5008F4F4E /* BookDataModel+mock.swift */,
 				B951BD9F289486E400FCB77A /* BookDataModelConvertible.swift */,
 				B951BDCF28948DE600FCB77A /* BookMetadataModel.swift */,
 				B972EB0628849A9A00D5028B /* CharacterDataModel.swift */,
@@ -897,6 +900,7 @@
 				B936306028836FB500D48437 /* CategorySelection.swift in Sources */,
 				B951BDC928948D4200FCB77A /* BookDetailView+Action.swift in Sources */,
 				B92B652426DC24FD004EB679 /* HouseDetailView.Action+feature.swift in Sources */,
+				B997A7D52896A1F5008F4F4E /* BookDataModel+mock.swift in Sources */,
 				B951BDD328948E2A00FCB77A /* BookClient.swift in Sources */,
 				B951BDA22894870E00FCB77A /* BookResponseModel+BookDataModelConvertible.swift in Sources */,
 				B972EAD228843B3600D5028B /* StyleConstants.swift in Sources */,

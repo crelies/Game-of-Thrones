@@ -121,9 +121,6 @@ private extension HouseDetailView {
                 then: CharacterDetailView.init
             )
         }
-        .navigationDestination(for: URL.self) { url in
-            Text(url.absoluteString)
-        }
     }
 
     @ViewBuilder
