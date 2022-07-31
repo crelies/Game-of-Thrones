@@ -17,7 +17,7 @@ struct CategoryView: View {
 
     var body: some View {
         SwitchStore(store) {
-            CaseLet(state: /CategoryState.houseList, action: CategoryAction.houseList) { houseListStore in
+            CaseLet(state: /CategoryState.houses, action: CategoryAction.houses) { houseListStore in
                 HouseListView(store: houseListStore)
             }
 

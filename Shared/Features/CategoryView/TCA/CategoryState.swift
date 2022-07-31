@@ -10,7 +10,7 @@
 //
 
 enum CategoryState: Equatable {
-    case houseList(HouseListState)
+    case houses(HouseListState)
     case characters(CharacterListState)
     case books(BookListState)
 }

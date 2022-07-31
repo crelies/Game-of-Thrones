@@ -31,8 +31,8 @@ extension CategoryModule {
             ,
             HouseListModule.reducer
                 .pullback(
-                    state: /CategoryState.houseList,
-                    action: /CategoryAction.houseList,
+                    state: /CategoryState.houses,
+                    action: /CategoryAction.houses,
                     environment: {
                         .init(
                             mainQueue: $0.mainQueue,
