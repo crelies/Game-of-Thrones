@@ -257,7 +257,6 @@
 		B972EB122884A1C000D5028B /* CharacterClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClientError.swift; sourceTree = "<group>"; };
 		B972EB142884A1FF00D5028B /* CharacterMetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMetadataModel.swift; sourceTree = "<group>"; };
 		B972EB162885EDB700D5028B /* CharacterDataModel+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDataModel+mock.swift"; sourceTree = "<group>"; };
-		B98956B726DD80EC00FE3277 /* Game-of-Thrones-SwiftUI.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Game-of-Thrones-SwiftUI.gif"; sourceTree = "<group>"; };
 		B98956B926DD8FF900FE3277 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		B98956BA26DD8FF900FE3277 /* AppState+view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+view.swift"; sourceTree = "<group>"; };
 		B98956BB26DD8FF900FE3277 /* AppView.Action+feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppView.Action+feature.swift"; sourceTree = "<group>"; };
@@ -623,7 +622,6 @@
 			isa = PBXGroup;
 			children = (
 				B95E9F062883472D006BEB6E /* GameOfThrones.entitlements */,
-				B98956B726DD80EC00FE3277 /* Game-of-Thrones-SwiftUI.gif */,
 				B943C44A230336DF00E1BBA0 /* README.md */,
 				B95616CF24C8BF0D003A3ACF /* Shared */,
 				B95616D824C8BF0F003A3ACF /* iOS */,
